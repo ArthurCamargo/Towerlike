@@ -152,7 +152,7 @@ public class MapGenerator: MonoBehaviour
     
     
     Vector3 CoordToPosition (int x, int y) {
-        return new Vector3(-currentMap.mapSize.x/2 + 0.5f + x, 0, -currentMap.mapSize.y/2 + 0.5f + y) * tileSize;
+        return new Vector3(-currentMap.mapSize.x/2f + 0.5f + x, 0, -currentMap.mapSize.y/2f + 0.5f + y) * tileSize;
     }
     
     public Coord GetRandomCoord() {
