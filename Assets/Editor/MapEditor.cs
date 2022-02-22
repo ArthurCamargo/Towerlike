@@ -13,5 +13,9 @@ public class MapEditor : Editor
         if(DrawDefaultInspector()) {
             map.GenerateMap();
         }
+        
+        if(GUILayout.Button("Generate Map")) {
+            map.GenerateMap();
+        }
     }
 }
