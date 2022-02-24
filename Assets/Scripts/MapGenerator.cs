@@ -6,11 +6,15 @@ public class MapGenerator: MonoBehaviour
 {
     public Map[] maps;
     public int mapIndex;
+    public Vector2 maxMapSize;
 
     public Transform tilePrefab;
     public Transform obstaclePrefab;
     public Transform basePrefab;
     public Transform enemySpawnerPrefab;
+    public Transform navmeshMaskPrefab;
+    public Transform navmeshFloor;
+    
 
     
     [Range(0, 1)]
@@ -110,6 +114,24 @@ public class MapGenerator: MonoBehaviour
                 currentObstacleCount--;
             }
         }
+
+        Transform maskLeft = Instantiate(navmeshMaskPrefab, Vector3.left * (currentMap.mapSize.x + maxMapSize.x) / 4f * tileSize, Quaternion.identity) as Transform;
+        maskLeft.parent = mapHolder;
+        maskLeft.localScale = new Vector3((maxMapSize.x - currentMap.mapSize.x) / 2f, 1, currentMap.mapSize.y) * tileSize;
+
+        Transform maskRight = Instantiate(navmeshMaskPrefab, Vector3.right * (currentMap.mapSize.x + maxMapSize.x) / 4f * tileSize, Quaternion.identity) as Transform;
+        maskRight.parent = mapHolder;
+        maskRight.localScale = new Vector3((maxMapSize.x - currentMap.mapSize.x) / 2f, 1, currentMap.mapSize.y) * tileSize;
+
+        Transform maskTop = Instantiate(navmeshMaskPrefab, Vector3.forward * (currentMap.mapSize.y + maxMapSize.y) / 4f * tileSize, Quaternion.identity) as Transform;
+        maskTop.parent = mapHolder;
+        maskTop.localScale = new Vector3(maxMapSize.x, 1, (maxMapSize.y - currentMap.mapSize.y) / 2) * tileSize;
+
+        Transform maskBottom = Instantiate(navmeshMaskPrefab, Vector3.back * (currentMap.mapSize.y + maxMapSize.y) / 4f * tileSize, Quaternion.identity) as Transform;
+        maskBottom.parent = mapHolder;
+        maskBottom.localScale = new Vector3(maxMapSize.x, 1, (maxMapSize.y - currentMap.mapSize.y) / 2) * tileSize;
+
+        navmeshFloor.localScale = new Vector3(maxMapSize.x, maxMapSize.y) * tileSize;
     }
     
     bool MapisFullyAccessible(bool[,] obstacleMap, int currentObstacleCount)

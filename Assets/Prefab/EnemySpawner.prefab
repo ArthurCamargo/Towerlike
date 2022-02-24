@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3592222981901830266}
   - component: {fileID: 2243639224273565115}
   - component: {fileID: 6255971209290366227}
+  - component: {fileID: 7692480156027811976}
   m_Layer: 0
   m_Name: EnemySpawner
-  m_TagString: Untagged
+  m_TagString: EnemySpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,3 +97,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &7692480156027811976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350814044443599044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dddbc15b1de39447b91164c2776dbb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waves:
+  - enemyCount: 20
+    timeBetweenSapawns: 0.5
+  enemy: {fileID: 428468556249255120, guid: 61fc0366c5e13324c9f2133e1beeca8b, type: 3}
