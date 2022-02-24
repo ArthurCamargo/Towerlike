@@ -7,11 +7,17 @@ public class Tower : MonoBehaviour
 {
     public Transform towerPrefab;
     public Transform placeToShoot;
-    public Transform Target;
+    public float range;
+    Transform Target;
     public Projectile projectile;
     public float msBetweenShoots = 100;
     public float shootSpeed = 5;
     public float damage = 1.0f;
+    
+    //See if there is an enemy at sight
+    public void Aim()
+    {
+    }
     public void Shoot(Transform Target) {
         
         Projectile newProjectile = Instantiate(projectile, placeToShoot.position, placeToShoot.rotation) as Projectile;
