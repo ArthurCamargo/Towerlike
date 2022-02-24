@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[RequireComponent (typeof(Tower))]
+[RequireComponent(typeof(Renderer), typeof(Transform))]
 public class Player : MonoBehaviour
 {
     public Color highlightColor = Color.yellow;
@@ -13,14 +12,14 @@ public class Player : MonoBehaviour
     private Collider hitObject;
     private Color initialColor;
     private Material hitObjectMaterial;
-    private Camera camera;
+    private Camera playerCamera;
     
     Tower currentTower;
 
     // Start is called before the first frame update
     void Start()
     {
-        camera = Camera.main;
+        playerCamera = Camera.main;
         currentTower = towers[towerIndex];
     }
     
@@ -31,7 +30,7 @@ public class Player : MonoBehaviour
     
     void SelectObstacle() {
         RaycastHit hit;
-        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         
         if(Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Obstacle")) {
 

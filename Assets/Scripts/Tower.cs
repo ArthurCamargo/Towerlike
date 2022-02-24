@@ -14,6 +14,7 @@ public class Tower : MonoBehaviour
     public float msBetweenShoots = 100;
     public float shootSpeed = 5;
     public float damage = 1.0f;
+
     
     float nextShotTime;
     
@@ -70,6 +71,7 @@ public class Tower : MonoBehaviour
         Projectile newProjectile = Instantiate(projectile, placeToShoot.position, placeToShoot.rotation) as Projectile;
         newProjectile.SetSpeed(shootSpeed);
         newProjectile.SetTarget(target);
+        newProjectile.SetDamage(damage);
     }
     public void SetDamage(float newDamage) {
         damage = newDamage;
