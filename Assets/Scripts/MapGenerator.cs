@@ -90,9 +90,9 @@ public class MapGenerator: MonoBehaviour
         int obstacleCount = (int) (currentMap.mapSize.x * currentMap.mapSize.y * currentMap.obstaclePercent);
         int currentObstacleCount = 0;
         
-        Dictionary<Coord, Vector2> vectorField = generateVectorField();
-        printVectorField(vectorField);
-        bool[,] viablePath = generateViablePath(vectorField);
+        //Dictionary<Coord, Vector2> vectorField = generateVectorField();
+        //printVectorField(vectorField);
+        //bool[,] viablePath = generateViablePath(vectorField);
 
         for (int i = 0; i < obstacleCount; i ++) {
             Coord randomCoord = GetRandomCoord();
