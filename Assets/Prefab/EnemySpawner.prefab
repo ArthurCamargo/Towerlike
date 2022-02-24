@@ -111,13 +111,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemyCount: 2
-    timeBetweenSapawns: 0.5
+    timeBetweenSpawns: 0
   - enemyCount: 4
-    timeBetweenSapawns: 0.5
+    timeBetweenSpawns: 0
   - enemyCount: 2
-    timeBetweenSapawns: 1
+    timeBetweenSpawns: 0
   - enemyCount: 10
-    timeBetweenSapawns: 0.2
+    timeBetweenSpawns: 0
   - enemyCount: 1
-    timeBetweenSapawns: 1
+    timeBetweenSpawns: 0
   enemy: {fileID: 428468556249255120, guid: 61fc0366c5e13324c9f2133e1beeca8b, type: 3}

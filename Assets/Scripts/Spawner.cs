@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
     void Update() {
         if(enemiesRemainingToSpawn > 0 && Time.time > nextSpawnTime) {
             enemiesRemainingToSpawn--;
-            nextSpawnTime = Time.time + currentWave.timeBetweenSapawns;
+            nextSpawnTime = Time.time + currentWave.timeBetweenSpawns;
 
             Enemy spawnedEnemy = Instantiate(enemy, GameObject.FindGameObjectWithTag("EnemySpawner").transform.position, Quaternion.identity) as Enemy;
             spawnedEnemy.OnDeath += OnEnemyDeath;
@@ -51,6 +51,6 @@ public class Spawner : MonoBehaviour
     [System.Serializable]
     public class Wave {
         public int enemyCount;
-        public float timeBetweenSapawns;
+        public float timeBetweenSpawns;
     }
 }
