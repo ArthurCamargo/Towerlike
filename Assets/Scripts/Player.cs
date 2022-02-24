@@ -3,20 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+[RequireComponent (typeof(Tower))]
 public class Player : MonoBehaviour
 {
     public Color highlightColor = Color.yellow;
-    public Transform[] towers;
+    public Tower[] towers;
+    public int towerIndex;
     
     private Collider hitObject;
     private Color initialColor;
     private Material hitObjectMaterial;
     private Camera camera;
+    
+    Tower currentTower;
 
     // Start is called before the first frame update
     void Start()
     {
         camera = Camera.main;
+        currentTower = towers[towerIndex];
     }
     
     void Update()
@@ -38,6 +43,11 @@ public class Player : MonoBehaviour
             hitObjectMaterial = hitObject.GetComponent<Renderer>().material;
             initialColor = hitObjectMaterial.color;
             hitObjectMaterial.color = highlightColor;
+            
+            if(Input.GetMouseButtonDown(0))
+            {
+                PlaceTower(currentTower, hitObject.GetComponent<Transform>());
+            }
         }
         else if(hitObject != null)
         {
@@ -47,5 +57,8 @@ public class Player : MonoBehaviour
         }
 
     }
-
+    
+    void PlaceTower(Tower t, Transform obj) {
+        Transform newTower = Instantiate(t.towerPrefab, obj.position + Vector3.up * obj.localScale.y/2f + Vector3.up*t.towerPrefab.localScale.y, Quaternion.identity) as Transform;
+    }
 }
