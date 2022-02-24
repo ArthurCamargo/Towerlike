@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     float speed = 2f;
     float damage = 1f;
     Transform target;
+    LivingEntity targetEntity;
 
     public void SetSpeed(float newSpeed)
     {
@@ -28,6 +29,9 @@ public class Projectile : MonoBehaviour
     {
         float moveDistance = speed * Time.deltaTime;
 
+        targetEntity = target.GetComponent<LivingEntity>();
+        targetEntity.OnDeath += OnTargetDeath;
+
         CheckCollisions(moveDistance);
         // Homing shot
         transform.position = Vector3.MoveTowards(transform.position, target.position, moveDistance);
@@ -47,6 +51,10 @@ public class Projectile : MonoBehaviour
         if(damageableObject != null) {
             damageableObject.TakeHit(damage, hit);
         }
+        GameObject.Destroy(gameObject);
+    }
+
+    void OnTargetDeath() {
         GameObject.Destroy(gameObject);
     }
 }   
