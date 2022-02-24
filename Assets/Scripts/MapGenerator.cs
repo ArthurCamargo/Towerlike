@@ -16,7 +16,7 @@ public class MapGenerator: MonoBehaviour
     public Transform navmeshFloor;
     
 
-    
+
     [Range(0, 1)]
     public float outlinePercent;
     
@@ -33,7 +33,6 @@ public class MapGenerator: MonoBehaviour
 
     public void GenerateMap()
     {
-        
         currentMap = maps[mapIndex];
 
         System.Random prng = new System.Random (currentMap.seed);
@@ -90,12 +89,21 @@ public class MapGenerator: MonoBehaviour
         
         int obstacleCount = (int) (currentMap.mapSize.x * currentMap.mapSize.y * currentMap.obstaclePercent);
         int currentObstacleCount = 0;
+        
+        Dictionary<Coord, Vector2> vectorField = generateVectorField();
+        printVectorField(vectorField);
+        bool[,] viablePath = generateViablePath(vectorField);
+
         for (int i = 0; i < obstacleCount; i ++) {
             Coord randomCoord = GetRandomCoord();
             obstacleMap[randomCoord.x, randomCoord.y] = true;
             currentObstacleCount ++;
             
-            if (randomCoord != currentMap.baseCoord && MapisFullyAccessible(obstacleMap, currentObstacleCount) && randomCoord != currentMap.enemySpawnerCoord) {
+            if (randomCoord != currentMap.baseCoord
+                && MapisFullyAccessible(obstacleMap, currentObstacleCount)
+                //&& !isInViablePath(randomCoord, viablePath)
+                && randomCoord != currentMap.enemySpawnerCoord) {
+
                 float obstacleHeight = Mathf.Lerp(currentMap.minObstacleHeight, currentMap.maxObstacleHeight, (float) prng.NextDouble());
                 Vector3 obstaclePosition = CoordToPosition(randomCoord.x, randomCoord.y);
                 Transform newObstacle = Instantiate(obstaclePrefab, obstaclePosition + Vector3.up * obstacleHeight/2, Quaternion.identity) as Transform;
@@ -134,6 +142,87 @@ public class MapGenerator: MonoBehaviour
         navmeshFloor.localScale = new Vector3(maxMapSize.x, maxMapSize.y) * tileSize;
     }
     
+    //Generate a random path from the base to the spawner
+    Dictionary<Coord,Vector2> generateVectorField()
+    {
+        bool[,] mapFlags = new bool[currentMap.mapSize.x, currentMap.mapSize.y];
+        Queue<Coord> queue = new Queue<Coord> ();
+        Dictionary<Coord,Vector2> vectorField = new Dictionary<Coord, Vector2>();
+
+        Coord currentLocation = currentMap.baseCoord;
+        vectorField.Add(currentLocation, Vector2.zero);
+        mapFlags[currentLocation.x, currentLocation.y] = true;
+        
+        queue.Enqueue(currentLocation);
+        
+        Vector2[] movePossible = new Vector2[4];
+
+        movePossible[0] = Vector2.up;
+        movePossible[1] = Vector2.down;
+        movePossible[2] = Vector2.left;
+        movePossible[3] = Vector2.right;
+
+        while (queue.Count > 0) {
+            currentLocation = queue.Dequeue();
+            for(int i = 0; i < movePossible.Length; i ++)
+            {
+                Coord nextNeighbor = currentLocation;
+                nextNeighbor.AddVector(movePossible[i]);
+                /*
+                Debug.Log(currentLocation.x);
+                Debug.Log(currentLocation.y);
+                Debug.Log(movePossible[i]);
+                Debug.Log(nextNeighbor.x);
+                Debug.Log(nextNeighbor.y);
+                */
+                if(nextNeighbor.x >= 0 && nextNeighbor.x < currentMap.mapSize.x
+                    && nextNeighbor.y >= 0 && nextNeighbor.y < currentMap.mapSize.y) {
+                    if(!mapFlags[nextNeighbor.x, nextNeighbor.y]) {
+                        mapFlags[nextNeighbor.x, nextNeighbor.y] = true;
+                        queue.Enqueue(nextNeighbor);
+                        vectorField.Add(nextNeighbor, -movePossible[i]);
+                    }
+                }
+            }
+        }
+        return vectorField;
+    }
+    
+    void printVectorField(Dictionary<Coord, Vector2> vectorField)
+    {
+        foreach(var item in vectorField)
+        {
+            Debug.Log("Coord x:");
+            Debug.Log(item.Key.x);
+            Debug.Log("Coord y:");
+            Debug.Log(item.Key.y);
+            Debug.Log(item.Value);
+        }
+    }
+    
+    bool[,] generateViablePath(Dictionary<Coord, Vector2>vectorField)
+    {
+        bool[,] path = new bool[currentMap.mapSize.x, currentMap.mapSize.y];
+
+        Coord currentLocation = currentMap.enemySpawnerCoord;
+        path[currentLocation.x, currentLocation.y] = true;
+        while(currentLocation != currentMap.baseCoord)
+        {
+            Debug.Log(currentLocation.x);
+            Debug.Log(currentLocation.y);
+
+            currentLocation.AddVector(vectorField[currentLocation]);
+            path[currentLocation.x, currentLocation.y] = true;
+        }
+        
+        return path;
+    }
+    
+    bool isInViablePath(Coord _coord, bool[,] path)
+    {
+        return path[_coord.x, _coord.y];
+    }
+
     bool MapisFullyAccessible(bool[,] obstacleMap, int currentObstacleCount)
     {
         bool[,] mapFlags = new bool[obstacleMap.GetLength(0), obstacleMap.GetLength(1)];
@@ -142,7 +231,7 @@ public class MapGenerator: MonoBehaviour
         mapFlags [currentMap.baseCoord.x, currentMap.baseCoord.y] = true;
         
         int accessibleTileCount = 1;
-        
+
         while (queue.Count > 0) {
             Coord tile = queue.Dequeue();
             
@@ -159,7 +248,6 @@ public class MapGenerator: MonoBehaviour
                                 queue.Enqueue(new Coord(neightbourX, neightbourY));
                                 accessibleTileCount ++;
                             }
-
                         }
                     }
                 }
@@ -200,7 +288,22 @@ public class MapGenerator: MonoBehaviour
         public static bool operator !=(Coord c1, Coord c2) {
             return !(c1 == c2);
         }
+
+        public void AddVector(Vector2 v1) {
+            this.x +=  (int) v1.x;
+            this.y +=  (int) v1.y;
+        }
         
+        public override int GetHashCode() {
+            unchecked
+            {
+                int hash = (int) 2166136261;
+                // Suitable nullity checks etc, of course :)
+                hash = (hash * 16777619) ^ x.GetHashCode();
+                hash = (hash * 16777619) ^ y.GetHashCode();
+                return hash;
+            }       
+        }
     }
     
     [System.Serializable]
