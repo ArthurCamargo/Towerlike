@@ -120,4 +120,6 @@ MonoBehaviour:
     timeBetweenSpawns: 0
   - enemyCount: 1
     timeBetweenSpawns: 0
+  - enemyCount: 20
+    timeBetweenSapawns: 1
   enemy: {fileID: 428468556249255120, guid: 61fc0366c5e13324c9f2133e1beeca8b, type: 3}

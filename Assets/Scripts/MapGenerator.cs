@@ -25,7 +25,7 @@ public class MapGenerator: MonoBehaviour
     List<Coord> allTileCoords;
     Queue<Coord> shuffledTileCoords;
     
-    Map currentMap;
+    public Map currentMap;
     
     private void Start() {
         GenerateMap();
@@ -305,7 +305,7 @@ public class MapGenerator: MonoBehaviour
             }       
         }
     }
-    
+
     [System.Serializable]
     public class Map {
         public Coord mapSize;

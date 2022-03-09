@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Renderer), typeof(Transform))]
+[RequireComponent(typeof(Renderer), typeof(Transform), typeof(CameraController))]
 public class Player : MonoBehaviour
 {
     public Color highlightColor = Color.yellow;
@@ -13,6 +13,9 @@ public class Player : MonoBehaviour
     private Color initialColor;
     private Material hitObjectMaterial;
     private Camera playerCamera;
+    private CameraController controller;
+    
+    public float cameraSpeed = 50f;
     
     Tower currentTower;
 
@@ -20,11 +23,16 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerCamera = Camera.main;
+        controller = playerCamera.GetComponent<CameraController>();
         currentTower = towers[towerIndex];
     }
     
     void Update()
     {
+        Vector3 moveInput = new Vector3 (Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        Vector3 moveVelocity = moveInput.normalized * cameraSpeed;
+        controller.Move(moveVelocity);
+    
         SelectObstacle();
     }
     
