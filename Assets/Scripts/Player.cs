@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Renderer), typeof(Transform), typeof(CameraController))]
 public class Player : MonoBehaviour
@@ -29,6 +30,9 @@ public class Player : MonoBehaviour
     
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         Vector3 moveInput = new Vector3 (Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         Vector3 moveVelocity = moveInput.normalized * cameraSpeed;
         controller.Move(moveVelocity);

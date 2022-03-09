@@ -25,6 +25,7 @@ public class LivingEntity : MonoBehaviour, IDamageable {
         if (health <= 0 && !dead)
         {
             Die();
+            Drop();
         }
     }
 
@@ -42,5 +43,10 @@ public class LivingEntity : MonoBehaviour, IDamageable {
             OnDeath();
         }
         GameObject.Destroy(gameObject);
+    }
+
+    protected void Drop()
+    {
+        Inventory.instance.AddRandom();
     }
 }
