@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         offset = transform.position - target.transform.position;
-        maxZoom = map.currentMap.mapSize.y * map.tileSize / (20f * 60f);
+        //maxZoom = map.currentMap.mapSize.y * map.tileSize / (20f * 60f);
     }
     public void Move(Vector3 _velocity)
     {

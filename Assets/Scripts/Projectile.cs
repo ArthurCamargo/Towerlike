@@ -51,11 +51,14 @@ public class Projectile : MonoBehaviour
         if(damageableObject != null) {
             damageableObject.TakeHit(damage, hit);
         }
-        GameObject.Destroy(gameObject);
+        if(gameObject != null)
+            GameObject.Destroy(gameObject);
     }
 
     void OnTargetDeath() {
-        GameObject.Destroy(gameObject);
+        if(gameObject != null) {
+            GameObject.Destroy(gameObject);
+        }
     }
 }   
 

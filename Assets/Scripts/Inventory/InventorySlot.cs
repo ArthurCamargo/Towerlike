@@ -12,7 +12,7 @@ public class InventorySlot : MonoBehaviour
     {
         item = newItem;
 
-        icon.sprite = item.icon;
+        icon.sprite = item.itemScriptableObject.icon;
         icon.enabled = true;
         removeButton.interactable = true;
     }
@@ -35,7 +35,7 @@ public class InventorySlot : MonoBehaviour
     {
         if (item != null)
         {
-            item.Use();
+            item.itemScriptableObject.Use();
         }
     }
 

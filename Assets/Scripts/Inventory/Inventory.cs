@@ -13,8 +13,7 @@ public class Inventory : MonoBehaviour
             return;
         }
         instance = this;
-        //allItems = Resources.LoadAll<Item>("../Resources/Items");
-        //Debug.Log(allItems.Length);
+        allItems = Resources.LoadAll<Item>("Items");
     }
 
     #endregion

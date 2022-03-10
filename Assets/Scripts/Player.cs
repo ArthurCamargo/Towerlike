@@ -7,8 +7,6 @@ using UnityEngine.EventSystems;
 public class Player : MonoBehaviour
 {
     public Color highlightColor = Color.yellow;
-    public Tower[] towers;
-    public int towerIndex;
     
     private Collider hitObject;
     private Color initialColor;
@@ -17,15 +15,13 @@ public class Player : MonoBehaviour
     private CameraController controller;
     
     public float cameraSpeed = 50f;
-    
-    Tower currentTower;
+    public Tower currentTower;
 
     // Start is called before the first frame update
     void Start()
     {
         playerCamera = Camera.main;
         controller = playerCamera.GetComponent<CameraController>();
-        currentTower = towers[towerIndex];
     }
     
     void Update()
@@ -70,6 +66,7 @@ public class Player : MonoBehaviour
     }
     
     void PlaceTower(Tower t, Transform obj) {
+        //TODO: See if the tower already is on this object
         Transform newTower = Instantiate(t.towerPrefab, obj.position + Vector3.up * obj.localScale.y/2f + Vector3.up*t.towerPrefab.localScale.y, Quaternion.identity) as Transform;
     }
 }

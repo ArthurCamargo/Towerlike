@@ -168,13 +168,7 @@ public class MapGenerator: MonoBehaviour
             {
                 Coord nextNeighbor = currentLocation;
                 nextNeighbor.AddVector(movePossible[i]);
-                /*
-                Debug.Log(currentLocation.x);
-                Debug.Log(currentLocation.y);
-                Debug.Log(movePossible[i]);
-                Debug.Log(nextNeighbor.x);
-                Debug.Log(nextNeighbor.y);
-                */
+
                 if(nextNeighbor.x >= 0 && nextNeighbor.x < currentMap.mapSize.x
                     && nextNeighbor.y >= 0 && nextNeighbor.y < currentMap.mapSize.y) {
                     if(!mapFlags[nextNeighbor.x, nextNeighbor.y]) {
