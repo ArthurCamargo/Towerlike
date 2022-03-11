@@ -6,6 +6,7 @@ public class InventoryUI : MonoBehaviour
     public GameObject inventoryUI;
     
     Inventory inventory;
+    int oi;
 
     InventorySlot[] slots;
 
@@ -15,6 +16,7 @@ public class InventoryUI : MonoBehaviour
         inventory.onItemChangedCallback += UpdateUI;
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
+        UpdateUI();
     }
 
     void Update()

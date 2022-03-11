@@ -51,8 +51,6 @@ public class Projectile : MonoBehaviour
         if(damageableObject != null) {
             damageableObject.TakeHit(damage, hit);
         }
-        if(gameObject != null)
-            GameObject.Destroy(gameObject);
     }
 
     void OnTargetDeath() {

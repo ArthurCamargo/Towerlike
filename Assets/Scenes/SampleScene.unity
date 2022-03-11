@@ -21204,8 +21204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   space: 20
+  defaultItem: {fileID: 11400000, guid: 221b8a3881667c9499be7abb1403b47e, type: 2}
   items: []
-  allItems: []
 --- !u!1 &1869313957
 GameObject:
   m_ObjectHideFlags: 0

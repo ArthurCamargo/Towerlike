@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerItem : MonoBehaviour
+[CreateAssetMenu(fileName = "New Tower Item", menuName = "Inventory/Tower Item")]
+public class TowerItem : Item
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Use()
     {
-        
+        base.Use();
+        Player.instance.StartSelectObstacle(this);
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

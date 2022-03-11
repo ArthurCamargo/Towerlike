@@ -6,6 +6,21 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Renderer), typeof(Transform), typeof(CameraController))]
 public class Player : MonoBehaviour
 {
+    #region Singleton
+    public static Player instance;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("More than one instance of Player found!");
+            return;
+        }
+        instance = this;
+    }
+
+    #endregion
+
     public Color highlightColor = Color.yellow;
     
     private Collider hitObject;
@@ -13,6 +28,9 @@ public class Player : MonoBehaviour
     private Material hitObjectMaterial;
     private Camera playerCamera;
     private CameraController controller;
+
+    private bool selectObstacleOn;
+    private Item currentItem;
     
     public float cameraSpeed = 50f;
     public Tower currentTower;
@@ -22,6 +40,7 @@ public class Player : MonoBehaviour
     {
         playerCamera = Camera.main;
         controller = playerCamera.GetComponent<CameraController>();
+        selectObstacleOn = false;
     }
     
     void Update()
@@ -33,7 +52,8 @@ public class Player : MonoBehaviour
         Vector3 moveVelocity = moveInput.normalized * cameraSpeed;
         controller.Move(moveVelocity);
     
-        SelectObstacle();
+        if(selectObstacleOn)
+            SelectObstacle();
     }
     
     void SelectObstacle() {
@@ -54,6 +74,14 @@ public class Player : MonoBehaviour
             if(Input.GetMouseButtonDown(0))
             {
                 PlaceTower(currentTower, hitObject.GetComponent<Transform>());
+                EndSelectObstacle();
+                if (hitObject != null)
+                {
+                    hitObjectMaterial.color = initialColor;
+                    hitObject = null;
+                    hitObjectMaterial = null;
+                }
+
             }
         }
         else if(hitObject != null)
@@ -68,5 +96,20 @@ public class Player : MonoBehaviour
     void PlaceTower(Tower t, Transform obj) {
         //TODO: See if the tower already is on this object
         Transform newTower = Instantiate(t.towerPrefab, obj.position + Vector3.up * obj.localScale.y/2f + Vector3.up*t.towerPrefab.localScale.y, Quaternion.identity) as Transform;
+    }
+
+    public void StartSelectObstacle(Item usedItem) {
+        currentItem = usedItem;
+        if (!selectObstacleOn)
+            selectObstacleOn = true;
+
+    }
+
+    public void EndSelectObstacle()
+    {
+        Inventory.instance.Remove(currentItem);
+        if (selectObstacleOn)
+            selectObstacleOn = false;
+
     }
 }
