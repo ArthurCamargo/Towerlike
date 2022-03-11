@@ -31,7 +31,9 @@ public class Player : MonoBehaviour
 
     private bool selectObstacleOn = false;
     private bool equipingItemOn = false;
+    private bool changingClassOn = false;
     private Item currentItem;
+    private CombatItem currentCombatItem;
     public float cameraSpeed = 50f;
     public Tower currentTower;
 
@@ -55,10 +57,50 @@ public class Player : MonoBehaviour
         if(selectObstacleOn)
             SelectObstacle();
         if(equipingItemOn)
-            SelectTower();
+            SelectTowerAndEquip();
+        if(changingClassOn)
+            SelectTowerAndChangeClass();
+    }
+    void SelectTowerAndChangeClass() {
+        RaycastHit hit;
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        
+        if(Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Tower")) {
+
+            if( hitObject != null)
+                hitObjectMaterial.color = initialColor;
+            hitObject = hit.collider;
+
+            hitObjectMaterial = hitObject.GetComponent<Renderer>().material;
+            initialColor = hitObjectMaterial.color;
+            hitObjectMaterial.color = highlightColor;
+            
+            if(Input.GetMouseButtonDown(0))
+            {
+                currentTower = hitObject.GetComponentInParent<Tower>();
+                InstantiateFromItem(currentCombatItem, currentTower.transform);
+                EndChangingClass(currentCombatItem);
+                if (hitObject != null)
+                {
+                    hitObjectMaterial.color = initialColor;
+                    hitObject = null;
+                    hitObjectMaterial = null;
+                }
+            }
+        }
+        else if(hitObject != null)
+        {
+            hitObjectMaterial.color = initialColor;
+            hitObject = null;
+            hitObjectMaterial = null;
+        }
+    }
+    void InstantiateFromItem(CombatItem usedItem, Transform transform)
+    {
+        Instantiate(usedItem.towerPrefab, transform.position, Quaternion.identity);
     }
     
-    void SelectTower() {
+    void SelectTowerAndEquip() {
         RaycastHit hit;
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         
@@ -153,6 +195,17 @@ public class Player : MonoBehaviour
     }
 
     public void EndEquipingItem(Item usedItem) {
+        Inventory.instance.Remove(currentItem);
+        if (equipingItemOn)
+            equipingItemOn = false;
+    }
+    public void StartChangingClass(Item usedItem) {
+        currentItem = usedItem;
+        if (!equipingItemOn)
+            equipingItemOn = true;
+    }
+
+    public void EndChangingClass(Item usedItem) {
         Inventory.instance.Remove(currentItem);
         if (equipingItemOn)
             equipingItemOn = false;
