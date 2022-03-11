@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Damage Buff
   m_EditorClassIdentifier: 
   name: Damage Buff
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 753357a2fc1fc1ecf9b9ed4e01e7706c, type: 3}

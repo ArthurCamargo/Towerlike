@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TowerLv1
   m_EditorClassIdentifier: 
   name: Tower Lv1
-  icon: {fileID: 21300000, guid: e3ffd9d7c0178b441a37f89776ff1d1f, type: 3}
+  icon: {fileID: 21300000, guid: 7974e80ea0e6eed0ca653fb07f12d76f, type: 3}
