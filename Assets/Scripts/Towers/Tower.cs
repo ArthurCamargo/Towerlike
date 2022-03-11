@@ -24,8 +24,8 @@ public abstract class Tower : MonoBehaviour
         placeToShoot = towerPrefab.Find("Crystal").transform;
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
-    
-    void Update() {
+
+    protected virtual void Update() {
        if(target == null)
            return;
        
@@ -83,6 +83,9 @@ public abstract class Tower : MonoBehaviour
     
     void UpdateAttributes()
     {
+        msBetweenShoots -= 200;
+        if(msBetweenShoots < 50f)
+            msBetweenShoots = 50;
         Debug.Log("Tu es mais forte agora");
     }
     
