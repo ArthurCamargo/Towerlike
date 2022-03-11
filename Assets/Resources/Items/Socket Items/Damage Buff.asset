@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e130a7ff22424758ecae98a1b1c86a, type: 3}
   m_Name: Damage Buff
   m_EditorClassIdentifier: 
-  name: New Item
+  name: Damage Buff
   icon: {fileID: 0}
