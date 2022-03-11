@@ -3,25 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Tower : MonoBehaviour
+public abstract class Tower : MonoBehaviour
 {
     public Transform towerPrefab;
     public Transform placeToShoot;
 
     public Transform target;
-    string enemyTag = "Enemy";
+    public string enemyTag = "Enemy";
     public Projectile projectile;
     public float msBetweenShoots = 100;
     public float shootSpeed = 5;
+    protected float nextShotTime;
     public float damage = 1.0f;
     public float range = 5;
     public int socketNumber = 4;
     public List<Item> equipedItems;
-    
-    float nextShotTime;
-    
-    void Start() {
-        InvokeRepeating("UpdateTarget", 0f, 0.5f);
+
+
+    protected virtual void Start() {
+
     }
     
     void Update() {
@@ -32,44 +32,13 @@ public class Tower : MonoBehaviour
         if(Time.time > nextShotTime)
         {
             nextShotTime = Time.time + msBetweenShoots/ 1000;
-            Shoot(target);
-        }
-    }
-    //See if there is an enemy at sight
-    public void UpdateTarget()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-        float shortestDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
-        
-        foreach (GameObject enemy in enemies)
-        {
-            float distaceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if(distaceToEnemy < shortestDistance)
-            {
-                shortestDistance = distaceToEnemy;
-                nearestEnemy = enemy;
-            }
-
-        }
-        
-        if (nearestEnemy != null && shortestDistance < range)
-        {
-            target = nearestEnemy.transform;
-        }
-        else
-        {
-            target = null;
+            Attack();
         }
     }
     
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, range);
-    }
-    
-    void ChangeClass(string className)
-    {
     }
     
     void UpdateAttributes()
@@ -89,14 +58,5 @@ public class Tower : MonoBehaviour
         UpdateAttributes();
     }
 
-    public void Shoot(Transform target) {
-        
-        Projectile newProjectile = Instantiate(projectile, placeToShoot.position, placeToShoot.rotation) as Projectile;
-        newProjectile.SetSpeed(shootSpeed);
-        newProjectile.SetTarget(target);
-        newProjectile.SetDamage(damage);
-    }
-    public void SetDamage(float newDamage) {
-        damage = newDamage;
-    }
+    public abstract void Attack();
 }
