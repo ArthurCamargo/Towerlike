@@ -19635,7 +19635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   cameraSpeed: 50
-  currentTower: {fileID: 8949151997085051845, guid: e6ca6d43319ccb88bafcc34eb1f74cb0, type: 3}
+  currentTower: {fileID: -8777373747539528623, guid: e6ca6d43319ccb88bafcc34eb1f74cb0, type: 3}
 --- !u!4 &1865939914
 Transform:
   m_ObjectHideFlags: 0

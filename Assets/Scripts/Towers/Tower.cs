@@ -13,7 +13,7 @@ public abstract class Tower : MonoBehaviour
     public Projectile projectile;
     public float msBetweenShoots = 100;
     public float shootSpeed = 5;
-    protected float nextShotTime;
+    private float nextShotTime;
     public float damage = 1.0f;
     public float range = 5;
     public int socketNumber = 4;
@@ -21,7 +21,8 @@ public abstract class Tower : MonoBehaviour
 
 
     protected virtual void Start() {
-
+        placeToShoot = towerPrefab.Find("Crystal").transform;
+        InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
     
     void Update() {
@@ -35,7 +36,35 @@ public abstract class Tower : MonoBehaviour
             Attack();
         }
     }
-    
+
+    //See if there is an enemy at sight
+    public void UpdateTarget()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        float shortestDistance = Mathf.Infinity;
+        GameObject nearestEnemy = null;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distaceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distaceToEnemy < shortestDistance)
+            {
+                shortestDistance = distaceToEnemy;
+                nearestEnemy = enemy;
+            }
+
+        }
+
+        if (nearestEnemy != null && shortestDistance < range)
+        {
+            target = nearestEnemy.transform;
+        }
+        else
+        {
+            target = null;
+        }
+    }
+
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, range);
