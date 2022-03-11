@@ -8,18 +8,15 @@ public class Tower : MonoBehaviour
     public Transform towerPrefab;
     public Transform placeToShoot;
 
-    public float range = 5;
     public Transform target;
     string enemyTag = "Enemy";
     public Projectile projectile;
     public float msBetweenShoots = 100;
     public float shootSpeed = 5;
     public float damage = 1.0f;
-    
-    public int slots = 4;
-    
+    public float range = 5;
+    public int socketNumber = 4;
     public List<Item> equipedItems;
-
     
     float nextShotTime;
     
@@ -77,15 +74,16 @@ public class Tower : MonoBehaviour
     
     void UpdateAttributes()
     {
+        Debug.Log("Tu es mais forte agora");
     }
     
-    void EquipItem(Item item)
+    public void EquipItem(Item item)
     {
         equipedItems.Add(item);
         UpdateAttributes();
     }
     
-    void UnequipItem(Item item)
+    public void UnequipItem(Item item)
     {
         equipedItems.Remove(item);
         UpdateAttributes();

@@ -34,7 +34,8 @@ public class Projectile : MonoBehaviour
 
         CheckCollisions(moveDistance);
         // Homing shot
-        transform.position = Vector3.MoveTowards(transform.position, target.position, moveDistance);
+        if(target != null)
+            transform.position = Vector3.MoveTowards(transform.position, target.position, moveDistance);
     }
 
     void CheckCollisions(float moveDistance) {

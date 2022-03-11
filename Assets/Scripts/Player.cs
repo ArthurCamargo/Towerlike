@@ -29,9 +29,9 @@ public class Player : MonoBehaviour
     private Camera playerCamera;
     private CameraController controller;
 
-    private bool selectObstacleOn;
+    private bool selectObstacleOn = false;
+    private bool equipingItemOn = false;
     private Item currentItem;
-    
     public float cameraSpeed = 50f;
     public Tower currentTower;
 
@@ -54,6 +54,43 @@ public class Player : MonoBehaviour
     
         if(selectObstacleOn)
             SelectObstacle();
+        if(equipingItemOn)
+            SelectTower();
+    }
+    
+    void SelectTower() {
+        RaycastHit hit;
+        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        
+        if(Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Tower")) {
+
+            if( hitObject != null)
+                hitObjectMaterial.color = initialColor;
+            hitObject = hit.collider;
+
+            hitObjectMaterial = hitObject.GetComponent<Renderer>().material;
+            initialColor = hitObjectMaterial.color;
+            hitObjectMaterial.color = highlightColor;
+            
+            if(Input.GetMouseButtonDown(0))
+            {
+                currentTower = hitObject.GetComponentInParent<Tower>();
+                currentTower.EquipItem(currentItem);
+                EndEquipingItem(currentItem);
+                if (hitObject != null)
+                {
+                    hitObjectMaterial.color = initialColor;
+                    hitObject = null;
+                    hitObjectMaterial = null;
+                }
+            }
+        }
+        else if(hitObject != null)
+        {
+            hitObjectMaterial.color = initialColor;
+            hitObject = null;
+            hitObjectMaterial = null;
+        }
     }
     
     void SelectObstacle() {
@@ -102,14 +139,22 @@ public class Player : MonoBehaviour
         currentItem = usedItem;
         if (!selectObstacleOn)
             selectObstacleOn = true;
-
     }
 
-    public void EndSelectObstacle()
-    {
+    public void EndSelectObstacle() {
         Inventory.instance.Remove(currentItem);
         if (selectObstacleOn)
             selectObstacleOn = false;
+    }
+    public void StartEquipingItem(Item usedItem) {
+        currentItem = usedItem;
+        if (!equipingItemOn)
+            equipingItemOn = true;
+    }
 
+    public void EndEquipingItem(Item usedItem) {
+        Inventory.instance.Remove(currentItem);
+        if (equipingItemOn)
+            equipingItemOn = false;
     }
 }
