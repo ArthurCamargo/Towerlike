@@ -44,8 +44,9 @@ public class Spawner : MonoBehaviour
             enemiesRemainingToSpawn = currentWave.enemyCount;
             enemiesRemainingAlive = enemiesRemainingToSpawn;
 
+            if (currentWaveNumber > 1)
+                Inventory.instance.AddRandom();
         }
-        
     }
 
     [System.Serializable]
