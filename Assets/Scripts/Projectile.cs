@@ -29,6 +29,7 @@ public class Projectile : MonoBehaviour
     {
         float moveDistance = speed * Time.deltaTime;
 
+        //TODO Try to see a better way to resolve those
         targetEntity = target.GetComponent<LivingEntity>();
         targetEntity.OnDeath += OnTargetDeath;
 

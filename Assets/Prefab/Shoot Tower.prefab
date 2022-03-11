@@ -200,7 +200,8 @@ MonoBehaviour:
   placeToShoot: {fileID: 8949151996830685219}
   target: {fileID: 0}
   enemyTag: Enemy
-  projectile: {fileID: 1193494048644701146, guid: 5c36dc677fe58707db611263a981afed, type: 3}
+  projectile: {fileID: 1193494048644701146, guid: 5c36dc677fe58707db611263a981afed,
+    type: 3}
   msBetweenShoots: 850
   shootSpeed: 5
   damage: 1
@@ -298,7 +299,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4346721b5f492d2dba8f2fe22a4dddcc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

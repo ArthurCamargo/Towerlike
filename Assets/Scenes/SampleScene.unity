@@ -19635,7 +19635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   cameraSpeed: 50
-  currentTower: {fileID: -8777373747539528623, guid: e6ca6d43319ccb88bafcc34eb1f74cb0, type: 3}
+  defautTower: {fileID: -8777373747539528623, guid: e6ca6d43319ccb88bafcc34eb1f74cb0, type: 3}
 --- !u!4 &1865939914
 Transform:
   m_ObjectHideFlags: 0
@@ -19644,7 +19644,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865939911}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.03, y: 3.6744366, z: 4.8418474}
+  m_LocalPosition: {x: 25.03, y: 1.21, z: 4.8418474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

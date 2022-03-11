@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Shoot
   icon: {fileID: 21300000, guid: 9c5fdf7f134e51b4f828ff9448aec54b, type: 3}
+  towerPrefab: {fileID: 1663335110803329029, guid: 25f5879ebdd634a45bf63b0d45edfbcc, type: 3}

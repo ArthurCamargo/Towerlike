@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     private Item currentItem;
     private CombatItem currentCombatItem;
     public float cameraSpeed = 50f;
-    public Tower currentTower;
+    public Tower defautTower;
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
             SelectTowerAndChangeClass();
     }
     void SelectTowerAndChangeClass() {
+        Tower currentTower;
         RaycastHit hit;
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         
@@ -80,6 +81,7 @@ public class Player : MonoBehaviour
                 currentTower = hitObject.GetComponentInParent<Tower>();
                 InstantiateFromItem(currentCombatItem, currentTower.transform);
                 EndChangingClass(currentCombatItem);
+                Destroy(currentTower);
                 if (hitObject != null)
                 {
                     hitObjectMaterial.color = initialColor;
@@ -101,6 +103,7 @@ public class Player : MonoBehaviour
     }
     
     void SelectTowerAndEquip() {
+        Tower currentTower;
         RaycastHit hit;
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         
@@ -152,7 +155,7 @@ public class Player : MonoBehaviour
             
             if(Input.GetMouseButtonDown(0))
             {
-                PlaceTower(currentTower, hitObject.GetComponent<Transform>());
+                PlaceTower(defautTower, hitObject.GetComponent<Transform>());
                 EndSelectObstacle();
                 if (hitObject != null)
                 {
@@ -199,15 +202,15 @@ public class Player : MonoBehaviour
         if (equipingItemOn)
             equipingItemOn = false;
     }
-    public void StartChangingClass(Item usedItem) {
-        currentItem = usedItem;
-        if (!equipingItemOn)
-            equipingItemOn = true;
+    public void StartChangingClass(CombatItem usedItem) {
+        currentCombatItem = usedItem;
+        if (!changingClassOn)
+            changingClassOn = true;
     }
 
     public void EndChangingClass(Item usedItem) {
         Inventory.instance.Remove(currentItem);
-        if (equipingItemOn)
-            equipingItemOn = false;
+        if (changingClassOn)
+            changingClassOn = false;
     }
 }
