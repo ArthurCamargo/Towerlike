@@ -19664,7 +19664,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   space: 20
   defaultItem: {fileID: 11400000, guid: 221b8a3881667c9499be7abb1403b47e, type: 2}
-  items: []
+  items:
+  - {fileID: 11400000, guid: d63977721cd6e944eb670954035be1ac, type: 2}
 --- !u!1 &1878677764
 GameObject:
   m_ObjectHideFlags: 0
@@ -20219,7 +20220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - enemyCount: 2
+  - enemyCount: 20
     timeBetweenSpawns: 0.5
   - enemyCount: 4
     timeBetweenSpawns: 0.5
