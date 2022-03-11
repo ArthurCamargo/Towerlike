@@ -30,7 +30,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 2, z: 1}
   m_Children: []
-  m_Father: {fileID: 6771165808122621593}
+  m_Father: {fileID: 1663335110803329029}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1663335109884959148
@@ -125,7 +125,7 @@ Transform:
   m_LocalPosition: {x: 7.249998, y: 0.32556343, z: 2.4}
   m_LocalScale: {x: 1, y: 1, z: 1.5}
   m_Children:
-  - {fileID: 6771165808122621593}
+  - {fileID: 1663335109884959145}
   - {fileID: 8949151997809141481}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -200,45 +200,13 @@ MonoBehaviour:
   placeToShoot: {fileID: 8949151996830685219}
   target: {fileID: 0}
   enemyTag: Enemy
-  projectile: {fileID: 1193494048644701146, guid: 5c36dc677fe58707db611263a981afed,
-    type: 3}
+  projectile: {fileID: 1193494048644701146, guid: 5c36dc677fe58707db611263a981afed, type: 3}
   msBetweenShoots: 850
   shootSpeed: 5
   damage: 1
   range: 5
   socketNumber: 4
   equipedItems: []
---- !u!1 &6556849729826137601
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6771165808122621593}
-  m_Layer: 0
-  m_Name: Graphics
-  m_TagString: Tower
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6771165808122621593
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6556849729826137601}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1663335109884959145}
-  m_Father: {fileID: 1663335110803329029}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8949151996830685216
 GameObject:
   m_ObjectHideFlags: 0

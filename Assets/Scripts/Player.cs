@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
                 currentTower = hitObject.GetComponentInParent<Tower>();
                 InstantiateFromItem(currentCombatItem, currentTower.transform);
                 EndChangingClass(currentCombatItem);
-                Destroy(currentTower);
+                Destroy(currentTower.gameObject);
                 if (hitObject != null)
                 {
                     hitObjectMaterial.color = initialColor;
