@@ -18,7 +18,7 @@ public class LivingEntity : MonoBehaviour, IDamageable {
         TakeDamage(damage);
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         health -= damage;
 

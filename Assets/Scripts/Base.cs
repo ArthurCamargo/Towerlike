@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Base : LivingEntity
 {
-    void Update()
+    public override void TakeDamage(float damage)
     {
-        
+        health -= damage;
+
+        if (health <= 0 && !dead)
+        {
+            Die();
+        }
     }
 }
