@@ -10,14 +10,13 @@ public class PulseTower : Tower
     }
 
     public override void Attack() {
-        Shoot(target);
+        Pulse();
     }
 
-    public void Shoot(Transform target) {
-
-        Projectile newProjectile = Instantiate(projectile, placeToShoot.position, placeToShoot.rotation) as Projectile;
-        newProjectile.SetSpeed(shootSpeed);
-        newProjectile.SetTarget(target);
-        newProjectile.SetDamage(damage);
+    public void Pulse() {
+        Explode(placeToShoot.transform.position);
+        
     }
+
+
 }

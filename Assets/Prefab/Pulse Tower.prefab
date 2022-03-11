@@ -201,7 +201,7 @@ MonoBehaviour:
   target: {fileID: 0}
   enemyTag: Enemy
   projectile: {fileID: 1193494048644701146, guid: 5c36dc677fe58707db611263a981afed, type: 3}
-  msBetweenShoots: 100
+  msBetweenShoots: 850
   shootSpeed: 5
   damage: 1
   range: 5
