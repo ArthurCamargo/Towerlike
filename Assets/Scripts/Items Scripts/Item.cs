@@ -6,16 +6,6 @@ using UnityEngine.EventSystems;
 public class Item : ScriptableObject
 {
     new public string name = "New Item";
-    /*
-    public enum itemType{
-        Combat,
-        Buff,
-        Tower,
-    };
-    
-    public itemType type = itemType.Combat;
-    */
-    
     public Sprite icon = null;
 
     public virtual void Use() {

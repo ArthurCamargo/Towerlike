@@ -6,14 +6,14 @@ using UnityEngine;
 public abstract class Tower : MonoBehaviour
 {
     public Transform towerPrefab;
-    public Transform placeToShoot;
+    public Transform attackPlaceHolder;
 
     public Transform target;
     public string enemyTag = "Enemy";
     public Projectile projectile;
-    public float msBetweenShoots = 100;
-    public float shootSpeed = 5;
-    private float nextShotTime;
+    public float msBetweenAttacks = 1000;
+    public float attackSpeed = 5;
+    private float nextAttackTime;
     public float damage = 1.0f;
     public float range = 5;
     public int socketNumber = 4;
@@ -21,15 +21,15 @@ public abstract class Tower : MonoBehaviour
 
 
     protected virtual void Start() {
-        placeToShoot = towerPrefab.Find("Crystal").transform;
+        attackPlaceHolder = towerPrefab.Find("Crystal").transform;
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
     protected virtual void Update() {
        if(target != null) {
-            if (Time.time > nextShotTime)
+            if (Time.time > nextAttackTime)
             {
-                nextShotTime = Time.time + msBetweenShoots / 1000;
+                nextAttackTime = Time.time + msBetweenAttacks / 1000;
                 Attack();
             }
         }
@@ -81,9 +81,9 @@ public abstract class Tower : MonoBehaviour
     
     void UpdateAttributes()
     {
-        msBetweenShoots -= 200;
-        if(msBetweenShoots < 50f)
-            msBetweenShoots = 50;
+        msBetweenAttacks -= 200;
+        if(msBetweenAttacks < 50f)
+            msBetweenAttacks = 50;
         Debug.Log("Tu es mais forte agora");
     }
     
