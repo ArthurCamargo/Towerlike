@@ -23,15 +23,21 @@ public class Projectile : MonoBehaviour
     {
         damage = newDamage;
     }
+    private void Start()
+    {
+        if(target == null)
+            GameObject.Destroy(gameObject);
+        else {
+            targetEntity = target.GetComponent<LivingEntity>();
+            targetEntity.OnDeath += OnTargetDeath;
+        }
+
+    }
 
     // Update is called once per frame
     void Update()
     {
         float moveDistance = speed * Time.deltaTime;
-
-        //TODO Try to see a better way to resolve those
-        targetEntity = target.GetComponent<LivingEntity>();
-        targetEntity.OnDeath += OnTargetDeath;
 
         CheckCollisions(moveDistance);
         // Homing shot
@@ -40,6 +46,8 @@ public class Projectile : MonoBehaviour
     }
 
     void CheckCollisions(float moveDistance) {
+        if (gameObject == null || target == null)
+            return;
         Ray ray = new Ray(transform.position, (target.position - transform.position).normalized);
         RaycastHit hit;
 
