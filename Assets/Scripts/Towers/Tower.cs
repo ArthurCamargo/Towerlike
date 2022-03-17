@@ -26,14 +26,12 @@ public abstract class Tower : MonoBehaviour
     }
 
     protected virtual void Update() {
-       if(target == null)
-           return;
-       
-
-        if(Time.time > nextShotTime)
-        {
-            nextShotTime = Time.time + msBetweenShoots/ 1000;
-            Attack();
+       if(target != null) {
+            if (Time.time > nextShotTime)
+            {
+                nextShotTime = Time.time + msBetweenShoots / 1000;
+                Attack();
+            }
         }
     }
 
