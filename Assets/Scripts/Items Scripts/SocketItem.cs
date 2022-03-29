@@ -8,6 +8,6 @@ public class SocketItem : Item
     public override void Use()
     {
         base.Use();
-        Player.instance.StartEquipingItem(this);
+        Player.instance.StartHoldingItem(this);
     }
 }

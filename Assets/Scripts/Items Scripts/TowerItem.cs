@@ -8,7 +8,7 @@ public class TowerItem : Item
     public override void Use()
     {
         base.Use();
-        Player.instance.StartSelectObstacle(this);
+        Player.instance.StartHoldingItem(this);
 
     }
 

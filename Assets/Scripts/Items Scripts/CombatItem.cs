@@ -9,6 +9,6 @@ public class CombatItem : Item
     public override void Use()
     {
         base.Use();
-        Player.instance.StartChangingClass(this);
+        Player.instance.StartHoldingItem(this);
     }
 }
