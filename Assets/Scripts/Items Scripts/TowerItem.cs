@@ -8,7 +8,8 @@ public class TowerItem : Item
     public override void Use()
     {
         base.Use();
-        Player.instance.StartHoldingItem(this);
+        Player.instance.holdingItem = this;
+        Player.instance.currentState = Player.instance.buildingState;
 
     }
 
