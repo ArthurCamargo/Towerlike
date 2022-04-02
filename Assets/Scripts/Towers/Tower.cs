@@ -13,12 +13,11 @@ public abstract class Tower : MonoBehaviour
     public Projectile projectile;
     public float msBetweenAttacks = 1000;
     public float attackSpeed = 5;
-    private float nextAttackTime;
     public float damage = 1.0f;
     public float range = 5;
     public int socketNumber = 4;
-    public List<Item> equipedItems;
-
+    public List<SocketItem> equipedItems;
+    private float nextAttackTime;
 
     protected virtual void Start() {
         attackPlaceHolder = towerPrefab.Find("Crystal").transform;
@@ -35,10 +34,18 @@ public abstract class Tower : MonoBehaviour
         }
     }
 
+    //See if there is an enemy at sight
+    public void Explode(Vector3 pos) {
+        Collider[] colliders = Physics.OverlapSphere(pos, range);
+        foreach(Collider collider in colliders) {
+            if (collider.tag == "Enemy") {
+                collider.GetComponent<Enemy>().TakeDamage(damage);
+            }
+        }
+    }
 
     //See if there is an enemy at sight
-    public void UpdateTarget()
-    {
+    public void UpdateTarget() {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
@@ -54,37 +61,34 @@ public abstract class Tower : MonoBehaviour
 
         }
 
-        if (nearestEnemy != null && shortestDistance < range)
-        {
+        if (nearestEnemy != null && shortestDistance < range) {
             target = nearestEnemy.transform;
         }
-        else
-        {
+        else {
             target = null;
         }
     }
 
-    void OnDrawGizmos()
-    {
+    void OnDrawGizmos() {
         Gizmos.DrawWireSphere(transform.position, range);
     }
     
-    void UpdateAttributes()
-    {
-        msBetweenAttacks -= 200;
-        if(msBetweenAttacks < 50f)
-            msBetweenAttacks = 50;
-        Debug.Log("Tu es mais forte agora");
+    void UpdateAttributes() {
     }
     
-    public void EquipItem(Item item)
-    {
-        equipedItems.Add(item);
+    public void EquipItem(SocketItem item) {
+        int itemIndex;
+        itemIndex = equipedItems.FindIndex(i => i.name == item.name);
+        if(itemIndex != -1) {
+            equipedItems[itemIndex].level ++;
+        }
+        else {
+            equipedItems.Add(item);
+        }
         UpdateAttributes();
     }
     
-    public void UnequipItem(Item item)
-    {
+    public void UnequipItem(SocketItem item) {
         equipedItems.Remove(item);
         UpdateAttributes();
     }

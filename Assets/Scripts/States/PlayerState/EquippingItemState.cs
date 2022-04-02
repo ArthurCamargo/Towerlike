@@ -10,7 +10,7 @@ public class EquippingItemState : PlayerState {
 
         if(hitObject != null) {
             tower = hitObject.GetComponentInParent<Tower>();
-            tower.EquipItem(player.holdingItem);
+            tower.EquipItem(player.holdingItem as SocketItem);
             Inventory.instance.Remove(player.holdingItem);
             
             return player.freeState;
