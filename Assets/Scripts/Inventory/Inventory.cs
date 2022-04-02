@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
         }
         instance = this;
         allItems = Resources.LoadAll<Item>("Items");
-        this.Add(defaultItem);
+        this.Add(Instantiate(defaultItem));
     }
 
     #endregion
@@ -33,7 +33,7 @@ public class Inventory : MonoBehaviour
     public void AddRandom()
     {
         int itemIdx = Random.Range(0, allItems.Length);
-        this.Add(allItems[itemIdx]);
+        this.Add(Instantiate(allItems[itemIdx]));
     }
 
     public void Add(Item item) {

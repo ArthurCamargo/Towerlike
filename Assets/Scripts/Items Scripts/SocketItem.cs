@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Socket Item", menuName = "Inventory/Socket Item")]
 public class SocketItem : Item
 {
-    public int level;
+    public int level = 1;
     public override void Use()
     {
         base.Use();

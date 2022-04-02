@@ -34,9 +34,9 @@ public class PulseTower : Tower
     public void Pulse() {
         //Create sphere as pulse animation
         attackSphere = Instantiate(attackPrefab, attackPlaceHolder.transform.position, Quaternion.identity) as Transform;
-        attackSphere.localScale = Vector3.one * range * 2;
+        attackSphere.localScale = Vector3.one * attributes.range * 2;
         sphereOn = true;
-        pulseEndTime = Time.time + (msBetweenAttacks / 1000)/2;
+        pulseEndTime = Time.time + (1 / attributes.attackSpeed) / 2;
 
         //Do damage on enemies
         Explode(attackPlaceHolder.transform.position);
