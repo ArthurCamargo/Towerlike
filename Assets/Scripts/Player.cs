@@ -38,7 +38,6 @@ public class Player : MonoBehaviour
     private Material hitObjectMaterial;
     private Camera playerCamera;
     private CameraController controller;
-    private string itemTargetTag;
     
     
 
@@ -47,6 +46,7 @@ public class Player : MonoBehaviour
     {
         playerCamera = Camera.main;
         controller = playerCamera.GetComponent<CameraController>();
+        currentState = freeState;
     }
     
     void Update()
