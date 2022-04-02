@@ -35,16 +35,6 @@ public abstract class Tower : MonoBehaviour
         }
     }
 
-    //See if there is an enemy at sight
-    public void Explode(Vector3 pos)
-    {
-        Collider[] colliders = Physics.OverlapSphere(pos, range);
-        foreach(Collider collider in colliders) {
-            if (collider.tag == "Enemy") {
-                collider.GetComponent<Enemy>().TakeDamage(damage);
-            }
-        }
-    }
 
     //See if there is an enemy at sight
     public void UpdateTarget()

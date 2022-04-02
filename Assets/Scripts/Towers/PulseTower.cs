@@ -30,6 +30,18 @@ public class PulseTower : Tower
     public override void Attack() {
         Pulse();
     }
+    
+    //See if there is an enemy at sight
+    public void Explode(Vector3 pos)
+    {
+        Collider[] colliders = Physics.OverlapSphere(pos, range);
+        foreach(Collider collider in colliders) {
+            if (collider.tag == "Enemy") {
+                collider.GetComponent<Enemy>().TakeDamage(damage);
+            }
+        }
+    }
+    
 
     public void Pulse() {
         //Create sphere as pulse animation
