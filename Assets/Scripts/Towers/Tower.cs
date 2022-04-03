@@ -7,7 +7,7 @@ public abstract class Tower : MonoBehaviour {
     public Transform towerPrefab;
     public Transform attackPlaceHolder;
 
-    public Transform target; 
+    public Transform target;
     public string enemyTag = "Enemy";
     public Projectile projectile;
     public List<SocketItem> equipedItems;
@@ -31,7 +31,7 @@ public abstract class Tower : MonoBehaviour {
     protected virtual void Update() {
         if(target != null) {
             if(Time.time > nextAttackTime) {
-                nextAttackTime = Time.time + 1/attributes.attackSpeed;
+                nextAttackTime = Time.time + 1 / attributes.attackSpeed;
                 Attack();
             }
         }
@@ -75,28 +75,79 @@ public abstract class Tower : MonoBehaviour {
     }
 
     void UpdateAttributes() {
+        Attributes itemsAttributes = new Attributes();
+
         foreach(SocketItem item in equipedItems) {
             switch(item.name) {
-                case "Damage Buff":
-                    attributes.damage = baseAttributes.damage * item.level;
-                    attributes.damage *= attributesMultipliers.damage;
+                // Basic Attributes
+                case "Attack Speed":
+                    itemsAttributes.attackSpeed += item.level * 0.2f;
                     break;
 
-                case "Attack Speed Buff":
-                    attributes.attackSpeed = baseAttributes.attackSpeed + item.level * 0.2f;
-                    //attributes.attackSpeed *= attributesMultipliers.attackSpeed;
-
-                    if(attributes.attackSpeed > 50) {
-                        attributes.attackSpeed = 50;
-                    }
+                case "Damage":
+                    itemsAttributes.damage += item.level;
                     break;
 
-                case "Range Buff":
-                    attributes.range = baseAttributes.range + item.level;
-                    attributes.range *= attributesMultipliers.range;
+                case "Range":
+                    itemsAttributes.range += item.level;
+                    break;
+                // Elements
+                case "Fire":
+                    if(itemsAttributes.element == Attributes.Elements.NONE)
+                        itemsAttributes.element = Attributes.Elements.FIRE;
+                    break;
+
+                case "Plant":
+                    if(itemsAttributes.element == Attributes.Elements.NONE)
+                        itemsAttributes.element = Attributes.Elements.PLANT;
+                    break;
+
+                case "Water":
+                    if(itemsAttributes.element == Attributes.Elements.NONE)
+                        itemsAttributes.element = Attributes.Elements.WATER;
+                    break;
+
+                case "Darkness":
+                    if(itemsAttributes.element == Attributes.Elements.NONE)
+                        itemsAttributes.element = Attributes.Elements.DARKNESS;
+                    break;
+
+                case "Light":
+                    if(itemsAttributes.element == Attributes.Elements.NONE)
+                        itemsAttributes.element = Attributes.Elements.LIGHT;
+                    break;
+
+                // Effects
+                case "Bleed":
+                    if(itemsAttributes.effect == Attributes.Effect.NONE)
+                    itemsAttributes.effect = Attributes.Effect.BLEED;
+                    break;
+
+                case "Burn":
+                    if(itemsAttributes.effect == Attributes.Effect.NONE)
+                        itemsAttributes.effect = Attributes.Effect.BURN;
+                    break;
+
+                case "Curse":
+                    if(itemsAttributes.effect == Attributes.Effect.NONE)
+                        itemsAttributes.effect = Attributes.Effect.CURSE;
+                    break;
+
+                case "Poison":
+                    if(itemsAttributes.effect == Attributes.Effect.NONE)
+                        itemsAttributes.effect = Attributes.Effect.POISON;
+                    break;
+
+                case "Slow":
+                    if(itemsAttributes.effect == Attributes.Effect.NONE)
+                        itemsAttributes.effect = Attributes.Effect.SLOW;
                     break;
             }
         }
+        attributes.DeepCopy(baseAttributes);
+        attributes.Add(itemsAttributes);
+        attributes.Multiply(attributesMultipliers);
+
     }
 
     public void EquipItem(SocketItem item) {

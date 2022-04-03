@@ -1,10 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Attributes
-{
+public class Attributes {
     public float damage;
     public float range;
     public float attackSpeed;
@@ -35,6 +35,16 @@ public class Attributes
         CURSE,//damage amplified
     }
 
+    public Attributes() {
+        this.damage = 0;
+        this.range = 0;
+        this.attackSpeed = 0;
+        this.projectileSpeed = 0;
+        this.sockets = 0;
+        this.element = Elements.NONE;
+        this.effect = Effect.NONE;
+    }
+
     public Attributes(float damage, float range, float attackSpeed, float projectileSpeed, float sockets, Elements element, Effect effect) {
         this.damage = damage;
         this.range = range;
@@ -55,6 +65,16 @@ public class Attributes
         this.effect = Effect.NONE;
     }
 
+    public Attributes(Attributes attributes) {
+        this.damage = attributes.damage;
+        this.range = attributes.range;
+        this.attackSpeed = attributes.attackSpeed;
+        this.projectileSpeed = attributes.projectileSpeed;
+        this.sockets = attributes.sockets;
+        this.element = attributes.element;
+        this.effect = attributes.effect;
+    }
+
     public void DeepCopy(Attributes original) {
         this.damage = original.damage;
         this.range = original.range;
@@ -64,5 +84,24 @@ public class Attributes
         this.element = original.element;
         this.effect = original.effect;
     }
+
+    internal void Add(Attributes attributes) {
+        this.damage += attributes.damage;
+        this.range += attributes.range;
+        this.attackSpeed += attributes.attackSpeed;
+        this.projectileSpeed += attributes.projectileSpeed;
+        this.sockets += attributes.sockets;
+        this.element = attributes.element;
+        this.effect = attributes.effect;
+    }
+
+    internal void Multiply(Attributes multipliers) {
+        this.damage *= multipliers.damage;
+        this.range *= multipliers.range;
+        this.attackSpeed *= multipliers.attackSpeed;
+        this.projectileSpeed *= multipliers.projectileSpeed;
+        this.sockets *= multipliers.sockets;
+    }
+
 
 }
