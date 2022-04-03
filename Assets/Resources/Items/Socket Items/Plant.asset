@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e130a7ff22424758ecae98a1b1c86a, type: 3}
   m_Name: Plant
   m_EditorClassIdentifier: 
-  name: New Item
+  name: Plant
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 5c353773e6391774b8b18820c6e91690, type: 3}
   level: 1

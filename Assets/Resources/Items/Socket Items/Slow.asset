@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e130a7ff22424758ecae98a1b1c86a, type: 3}
   m_Name: Slow
   m_EditorClassIdentifier: 
-  name: New Item
+  name: Slow
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 5bf5e31afd26e12448e1e25cc9998e3c, type: 3}
   level: 1

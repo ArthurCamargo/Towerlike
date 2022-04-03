@@ -6,16 +6,18 @@ using UnityEngine;
 public abstract class Tower : MonoBehaviour {
     public Transform towerPrefab;
     public Transform attackPlaceHolder;
-
     public Transform target;
-    public string enemyTag = "Enemy";
-    public Projectile projectile;
-    public List<SocketItem> equipedItems;
-    private float nextAttackTime;
 
+    public string enemyTag = "Enemy";
+
+    public List<SocketItem> equipedItems;
+    public CombatItem combatItem;
+    
     public Attributes baseAttributes;
     public Attributes attributesMultipliers;
     public Attributes attributes;
+
+    private float nextAttackTime;
 
     protected virtual void Start() {
         attackPlaceHolder = towerPrefab.Find("Crystal").transform;

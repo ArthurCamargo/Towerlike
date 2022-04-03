@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e130a7ff22424758ecae98a1b1c86a, type: 3}
   m_Name: Light
   m_EditorClassIdentifier: 
-  name: New Item
+  name: Light
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 124b1a351f181f14b8733b6686f4ef54, type: 3}
   level: 1

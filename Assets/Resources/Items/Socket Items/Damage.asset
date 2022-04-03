@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e130a7ff22424758ecae98a1b1c86a, type: 3}
   m_Name: Damage
   m_EditorClassIdentifier: 
-  name: Damage Buff
+  name: Damage
   description: 
-  icon: {fileID: 21300000, guid: 8aacde1b30437e54caee59b642d8a280, type: 3}
+  icon: {fileID: 21300000, guid: cc2954d040c79d349a2cf8ec05c2dd1c, type: 3}
   level: 1

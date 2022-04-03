@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class ShootTower : Tower
 {
+    public Projectile projectile;
+
     protected override void Start() {
         base.Start();
     }

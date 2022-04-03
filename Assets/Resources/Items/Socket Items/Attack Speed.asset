@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e130a7ff22424758ecae98a1b1c86a, type: 3}
   m_Name: Attack Speed
   m_EditorClassIdentifier: 
-  name: Attack Speed Buff
+  name: Attack Speed
   description: 
   icon: {fileID: 21300000, guid: 9b0e1b41824aee84d8998ebd8efcbd57, type: 3}
   level: 1

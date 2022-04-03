@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e130a7ff22424758ecae98a1b1c86a, type: 3}
   m_Name: Burn
   m_EditorClassIdentifier: 
-  name: New Item
+  name: Burn
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 441e67b63b490974b9ac943c593bc65b, type: 3}
   level: 1
