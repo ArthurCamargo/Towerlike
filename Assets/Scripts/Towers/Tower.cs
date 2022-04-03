@@ -11,22 +11,22 @@ public abstract class Tower : MonoBehaviour {
     public string enemyTag = "Enemy";
 
     public List<SocketItem> equipedItems;
-    public CombatItem combatItem;
-    
+
     public Attributes baseAttributes;
     public Attributes attributesMultipliers;
     public Attributes attributes;
 
     private float nextAttackTime;
 
-    protected virtual void Start() {
-        attackPlaceHolder = towerPrefab.Find("Crystal").transform;
-        InvokeRepeating("UpdateTarget", 0f, 0.5f);
-
-        baseAttributes = new Attributes(1, 5, 1, 10, 2, Attributes.Elements.NONE, Attributes.Effect.NONE);
-        attributesMultipliers = new Attributes(1, 1, 1, 1, 1);
+    protected virtual void Awake() {
+        //baseAttributes = new Attributes(1, 5, 1, 10, 2, Attributes.Elements.NONE, Attributes.Effect.NONE);
+        //attributesMultipliers = new Attributes(1, 1, 1, 1, 1);
         attributes.DeepCopy(baseAttributes);
+        attackPlaceHolder = towerPrefab.Find("Crystal").transform;
+    }
 
+    protected virtual void Start() {
+        InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
 
@@ -76,7 +76,7 @@ public abstract class Tower : MonoBehaviour {
         Gizmos.DrawWireSphere(transform.position, attributes.range);
     }
 
-    void UpdateAttributes() {
+    public void UpdateAttributes() {
         Attributes itemsAttributes = new Attributes();
 
         foreach(SocketItem item in equipedItems) {
@@ -122,7 +122,7 @@ public abstract class Tower : MonoBehaviour {
                 // Effects
                 case "Bleed":
                     if(itemsAttributes.effect == Attributes.Effect.NONE)
-                    itemsAttributes.effect = Attributes.Effect.BLEED;
+                        itemsAttributes.effect = Attributes.Effect.BLEED;
                     break;
 
                 case "Burn":
@@ -171,6 +171,12 @@ public abstract class Tower : MonoBehaviour {
 
     public void UnequipItem(SocketItem item) {
         equipedItems.Remove(item);
+        UpdateAttributes();
+    }
+
+    public void TransferTowerStats(Tower oldTower) {
+        equipedItems = new List<SocketItem>(oldTower.equipedItems);
+        attributes.sockets = oldTower.attributes.sockets;
         UpdateAttributes();
     }
 

@@ -3,25 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PulseTower : Tower
-{
+public class PulseTower : Tower {
     public Transform attackPrefab;
     private Transform attackSphere;
     private float pulseEndTime;
     private bool sphereOn = false;
+
+    protected override void Awake() {
+        base.Awake();
+    }
+
     protected override void Start() {
         base.Start();
     }
 
-    protected override void Update()
-    {
+    protected override void Update() {
         base.Update();
 
-        if (!sphereOn)
+        if(!sphereOn)
             return;
 
-        if (Time.time > pulseEndTime)
-        {
+        if(Time.time > pulseEndTime) {
             Destroy(attackSphere.gameObject);
             sphereOn = false;
         }
@@ -40,7 +42,7 @@ public class PulseTower : Tower
 
         //Do damage on enemies
         Explode(attackPlaceHolder.transform.position);
-        
+
     }
 
 

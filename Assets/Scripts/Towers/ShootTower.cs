@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ShootTower : Tower
-{
+public class ShootTower : Tower {
     public Projectile projectile;
 
     protected override void Start() {
@@ -16,7 +15,7 @@ public class ShootTower : Tower
     }
 
     public void Shoot(Transform target) {
-        
+
         Projectile newProjectile = Instantiate(projectile, attackPlaceHolder.position, attackPlaceHolder.rotation) as Projectile;
         newProjectile.SetSpeed(attributes.projectileSpeed);
         newProjectile.SetTarget(target);

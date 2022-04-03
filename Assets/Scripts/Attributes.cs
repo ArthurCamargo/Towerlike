@@ -9,7 +9,7 @@ public class Attributes {
     public float range;
     public float attackSpeed;
     public float projectileSpeed;
-    public float sockets;
+    public int sockets;
     public Elements element;
     public Effect effect;
 
@@ -45,7 +45,7 @@ public class Attributes {
         this.effect = Effect.NONE;
     }
 
-    public Attributes(float damage, float range, float attackSpeed, float projectileSpeed, float sockets, Elements element, Effect effect) {
+    public Attributes(float damage, float range, float attackSpeed, float projectileSpeed, int sockets, Elements element, Effect effect) {
         this.damage = damage;
         this.range = range;
         this.attackSpeed = attackSpeed;
@@ -55,7 +55,7 @@ public class Attributes {
         this.effect = effect;
     }
 
-    public Attributes(float damage, float range, float attackSpeed, float projectileSpeed, float sockets) {
+    public Attributes(float damage, float range, float attackSpeed, float projectileSpeed, int sockets) {
         this.damage = damage;
         this.range = range;
         this.attackSpeed = attackSpeed;
@@ -100,7 +100,6 @@ public class Attributes {
         this.range *= multipliers.range;
         this.attackSpeed *= multipliers.attackSpeed;
         this.projectileSpeed *= multipliers.projectileSpeed;
-        this.sockets *= multipliers.sockets;
     }
 
 

@@ -4,15 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Renderer), typeof(Transform), typeof(CameraController))]
-public class Player : MonoBehaviour
-{
+public class Player : MonoBehaviour {
     #region Singleton
     public static Player instance;
 
-    void Awake()
-    {
-        if (instance != null)
-        {
+    void Awake() {
+        if(instance != null) {
             Debug.LogWarning("More than one instance of Player found!");
             return;
         }
@@ -38,20 +35,18 @@ public class Player : MonoBehaviour
     private Material hitObjectMaterial;
     private Camera playerCamera;
     private CameraController controller;
-    
-    
+
+
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         playerCamera = Camera.main;
         controller = playerCamera.GetComponent<CameraController>();
         currentState = freeState;
     }
-    
-    void Update()
-    {
-        Vector3 moveInput = new Vector3 (Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+
+    void Update() {
+        Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         Vector3 moveVelocity = moveInput.normalized * cameraSpeed;
         controller.Move(moveVelocity);
 
@@ -62,17 +57,22 @@ public class Player : MonoBehaviour
 
     }
 
-    
 
-    public void ChangeTowerCombat(Tower targetTower) {
-        Instantiate((holdingItem as CombatItem).towerPrefab, targetTower.transform.position, Quaternion.identity);
-        Destroy(targetTower.gameObject);
+
+    public void ChangeTowerCombat(Tower oldTower) {
+        Tower newTower;
+        List<SocketItem> oldTowerItems = oldTower.equipedItems;
+
+        newTower = Instantiate((holdingItem as CombatItem).towerPrefab, oldTower.transform.position, Quaternion.identity).GetComponent<Tower>();
+        newTower.TransferTowerStats(oldTower);
+
+        Destroy(oldTower.gameObject);
         Inventory.instance.Remove(holdingItem);
     }
 
     public void PlaceTower(Tower t, Transform obj) {
         //TODO: See if the tower already is on this object
-        Transform newTower = Instantiate(t.towerPrefab, obj.position + Vector3.up * obj.localScale.y/2f + Vector3.up*t.towerPrefab.localScale.y, Quaternion.identity) as Transform;
+        Transform newTower = Instantiate(t.towerPrefab, obj.position + Vector3.up * obj.localScale.y / 2f + Vector3.up * t.towerPrefab.localScale.y, Quaternion.identity) as Transform;
         Inventory.instance.Remove(holdingItem);
     }
 

@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour 
-{
+public class Inventory : MonoBehaviour {
     #region Singleton
     public static Inventory instance;
 
@@ -24,14 +23,13 @@ public class Inventory : MonoBehaviour
 
     public int space = 20;
 
-    public Item defaultItem; 
+    public Item defaultItem;
 
     public List<Item> items = new List<Item>();
 
     private Item[] allItems;
 
-    public void AddRandom()
-    {
+    public void AddRandom() {
         int itemIdx = Random.Range(0, allItems.Length);
         this.Add(Instantiate(allItems[itemIdx]));
     }
@@ -51,7 +49,7 @@ public class Inventory : MonoBehaviour
     public void Remove(Item item) {
         items.Remove(item);
 
-        if (onItemChangedCallback != null)
+        if(onItemChangedCallback != null)
             onItemChangedCallback.Invoke();
     }
 }
