@@ -14,18 +14,18 @@ public class LivingEntity : MonoBehaviour, IDamageable {
         health = startingHealth;
     }
 
-    public void TakeHit(float damage, RaycastHit hit) {
-        TakeDamage(damage);
+    public void TakeHit(Attack attack, RaycastHit hit) {
+        TakeAttack(attack);
     }
 
-    public virtual void TakeDamage(float damage)
+    public virtual void TakeAttack(Attack attack)
     {
-        health -= damage;
+        health -= attack.damage;
 
         if (health <= 0 && !dead)
         {
-            Die();
             Drop();
+            Die();
         }
     }
 

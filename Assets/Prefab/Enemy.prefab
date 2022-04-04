@@ -401,7 +401,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dca3cde6364aa04a9285539a34fe8b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 1
+  startingHealth: 4
+  enemyDamage: 1
+  enemyElement: 1
 --- !u!195 &2339609094376889211
 NavMeshAgent:
   m_ObjectHideFlags: 0

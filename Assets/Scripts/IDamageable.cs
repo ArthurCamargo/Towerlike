@@ -4,9 +4,9 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    void TakeHit(float damage, RaycastHit hit);
+    void TakeHit(Attack attack, RaycastHit hit);
 
-    void TakeDamage(float damage);
+    void TakeAttack(Attack attack);
 
     void BaseHit();
 }

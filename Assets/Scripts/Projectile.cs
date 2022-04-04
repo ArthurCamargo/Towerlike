@@ -5,8 +5,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public LayerMask collisionMask;
-    float speed = 2f;
-    float damage = 1f;
+    float speed;
+    Attack attack;
     Transform target;
     LivingEntity targetEntity;
 
@@ -19,9 +19,9 @@ public class Projectile : MonoBehaviour
         target = newTarget;
     }
 
-    public void SetDamage(float newDamage)
+    public void SetAttack(Attack newAttack)
     {
-        damage = newDamage;
+        attack = newAttack;
     }
     private void Start()
     {
@@ -59,7 +59,7 @@ public class Projectile : MonoBehaviour
     void OnHitObject(RaycastHit hit) {
         IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
         if(damageableObject != null) {
-            damageableObject.TakeHit(damage, hit);
+            damageableObject.TakeHit(attack, hit);
         }
     }
 

@@ -11,7 +11,7 @@ public class Attributes {
     public float projectileSpeed;
     public int sockets;
     public Elements element;
-    public Effect effect;
+    public Effects effect;
 
     public enum Elements {
         NONE,
@@ -22,7 +22,7 @@ public class Attributes {
         DARKNESS,
     }
 
-    public enum Effect {
+    public enum Effects {
         NONE,
         BURN,
         BLEED,
@@ -42,10 +42,10 @@ public class Attributes {
         this.projectileSpeed = 0;
         this.sockets = 0;
         this.element = Elements.NONE;
-        this.effect = Effect.NONE;
+        this.effect = Effects.NONE;
     }
 
-    public Attributes(float damage, float range, float attackSpeed, float projectileSpeed, int sockets, Elements element, Effect effect) {
+    public Attributes(float damage, float range, float attackSpeed, float projectileSpeed, int sockets, Elements element, Effects effect) {
         this.damage = damage;
         this.range = range;
         this.attackSpeed = attackSpeed;
@@ -62,7 +62,7 @@ public class Attributes {
         this.projectileSpeed = projectileSpeed;
         this.sockets = sockets;
         this.element = Elements.NONE;
-        this.effect = Effect.NONE;
+        this.effect = Effects.NONE;
     }
 
     public Attributes(Attributes attributes) {

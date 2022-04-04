@@ -39,12 +39,12 @@ public abstract class Tower : MonoBehaviour {
         }
     }
 
-    //See if there is an enemy at sight
+    //Do damage to all enemies in a circle radius with center in pos
     public void Explode(Vector3 pos) {
         Collider[] colliders = Physics.OverlapSphere(pos, attributes.range);
         foreach(Collider collider in colliders) {
             if(collider.tag == "Enemy") {
-                collider.GetComponent<Enemy>().TakeDamage(attributes.damage);
+                collider.GetComponent<Enemy>().TakeAttack(new Attack(attributes.damage, attributes.effect, attributes.element));
             }
         }
     }
@@ -121,28 +121,28 @@ public abstract class Tower : MonoBehaviour {
 
                 // Effects
                 case "Bleed":
-                    if(itemsAttributes.effect == Attributes.Effect.NONE)
-                        itemsAttributes.effect = Attributes.Effect.BLEED;
+                    if(itemsAttributes.effect == Attributes.Effects.NONE)
+                        itemsAttributes.effect = Attributes.Effects.BLEED;
                     break;
 
                 case "Burn":
-                    if(itemsAttributes.effect == Attributes.Effect.NONE)
-                        itemsAttributes.effect = Attributes.Effect.BURN;
+                    if(itemsAttributes.effect == Attributes.Effects.NONE)
+                        itemsAttributes.effect = Attributes.Effects.BURN;
                     break;
 
                 case "Curse":
-                    if(itemsAttributes.effect == Attributes.Effect.NONE)
-                        itemsAttributes.effect = Attributes.Effect.CURSE;
+                    if(itemsAttributes.effect == Attributes.Effects.NONE)
+                        itemsAttributes.effect = Attributes.Effects.CURSE;
                     break;
 
                 case "Poison":
-                    if(itemsAttributes.effect == Attributes.Effect.NONE)
-                        itemsAttributes.effect = Attributes.Effect.POISON;
+                    if(itemsAttributes.effect == Attributes.Effects.NONE)
+                        itemsAttributes.effect = Attributes.Effects.POISON;
                     break;
 
                 case "Slow":
-                    if(itemsAttributes.effect == Attributes.Effect.NONE)
-                        itemsAttributes.effect = Attributes.Effect.SLOW;
+                    if(itemsAttributes.effect == Attributes.Effects.NONE)
+                        itemsAttributes.effect = Attributes.Effects.SLOW;
                     break;
             }
         }

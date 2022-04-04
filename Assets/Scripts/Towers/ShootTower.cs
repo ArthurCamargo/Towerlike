@@ -19,6 +19,6 @@ public class ShootTower : Tower {
         Projectile newProjectile = Instantiate(projectile, attackPlaceHolder.position, attackPlaceHolder.rotation) as Projectile;
         newProjectile.SetSpeed(attributes.projectileSpeed);
         newProjectile.SetTarget(target);
-        newProjectile.SetDamage(attributes.damage);
+        newProjectile.SetAttack(new Attack(attributes.damage, attributes.effect, attributes.element));
     }
 }

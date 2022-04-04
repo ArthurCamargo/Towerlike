@@ -20618,6 +20618,7 @@ MonoBehaviour:
   defaultItem: {fileID: 11400000, guid: 221b8a3881667c9499be7abb1403b47e, type: 2}
   items:
   - {fileID: 11400000, guid: d63977721cd6e944eb670954035be1ac, type: 2}
+  - {fileID: 11400000, guid: 863ba39fe70d7a54d9c1e214fc63591c, type: 2}
 --- !u!1 &1869803589
 GameObject:
   m_ObjectHideFlags: 0

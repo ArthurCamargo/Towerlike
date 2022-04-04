@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Base : LivingEntity
 {
-    public override void TakeDamage(float damage)
+    public override void TakeAttack(Attack attack)
     {
-        health -= damage;
+        health -= attack.damage;
 
         if (health <= 0 && !dead)
         {
