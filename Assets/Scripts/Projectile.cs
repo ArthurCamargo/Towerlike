@@ -59,7 +59,9 @@ public class Projectile : MonoBehaviour
     void OnHitObject(RaycastHit hit) {
         IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
         if(damageableObject != null) {
+            //Debug.Log("hit");
             damageableObject.TakeHit(attack, hit);
+            GameObject.Destroy(gameObject);
         }
     }
 

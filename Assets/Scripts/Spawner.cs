@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
-{
+public class Spawner : MonoBehaviour {
     public Wave[] waves;
     public Enemy enemy;
 
@@ -40,11 +39,11 @@ public class Spawner : MonoBehaviour
         currentWaveNumber++;
         if(currentWaveNumber - 1 < waves.Length) {
             currentWave = waves[currentWaveNumber - 1];
-            
+
             enemiesRemainingToSpawn = currentWave.enemyCount;
             enemiesRemainingAlive = enemiesRemainingToSpawn;
 
-            if (currentWaveNumber > 1)
+            if(currentWaveNumber > 1)
                 Inventory.instance.AddRandom();
         }
     }

@@ -6,16 +6,24 @@ using UnityEngine;
 [System.Serializable]
 public class Attack {
     public float damage;
-    public Attributes.Effects effect;
+    public List<Attributes.Effects> effects;
     public Attributes.Elements element;
 
-    public Attack(float damage, Attributes.Effects effect, Attributes.Elements element) {
+    public Attack(float damage, Attributes.Elements element, List<Attributes.Effects> effects) {
         this.damage = damage;
-        this.effect = effect;
         this.element = element;
+        this.effects = effects;   
+    }
+
+    public Attack(float damage, Attributes.Elements element) {
+        this.damage = damage;
+        this.element = element;
+        this.effects = new List<Attributes.Effects>();
     }
 
     public Attack(float damage) {
         this.damage = damage;
+        this.element = Attributes.Elements.NONE;
+        this.effects = new List<Attributes.Effects>();
     }
 }

@@ -11,7 +11,7 @@ public class Attributes {
     public float projectileSpeed;
     public int sockets;
     public Elements element;
-    public Effects effect;
+    public List<Effects> effects;
 
     public enum Elements {
         NONE,
@@ -42,17 +42,17 @@ public class Attributes {
         this.projectileSpeed = 0;
         this.sockets = 0;
         this.element = Elements.NONE;
-        this.effect = Effects.NONE;
+        this.effects = new List<Effects>();
     }
 
-    public Attributes(float damage, float range, float attackSpeed, float projectileSpeed, int sockets, Elements element, Effects effect) {
+    public Attributes(float damage, float range, float attackSpeed, float projectileSpeed, int sockets, Elements element, List<Effects> effects) {
         this.damage = damage;
         this.range = range;
         this.attackSpeed = attackSpeed;
         this.projectileSpeed = projectileSpeed;
         this.sockets = sockets;
         this.element = element;
-        this.effect = effect;
+        this.effects = effects;
     }
 
     public Attributes(float damage, float range, float attackSpeed, float projectileSpeed, int sockets) {
@@ -62,7 +62,7 @@ public class Attributes {
         this.projectileSpeed = projectileSpeed;
         this.sockets = sockets;
         this.element = Elements.NONE;
-        this.effect = Effects.NONE;
+        this.effects = new List<Effects>();
     }
 
     public Attributes(Attributes attributes) {
@@ -72,7 +72,7 @@ public class Attributes {
         this.projectileSpeed = attributes.projectileSpeed;
         this.sockets = attributes.sockets;
         this.element = attributes.element;
-        this.effect = attributes.effect;
+        this.effects = attributes.effects;
     }
 
     public void DeepCopy(Attributes original) {
@@ -82,7 +82,7 @@ public class Attributes {
         this.projectileSpeed = original.projectileSpeed;
         this.sockets = original.sockets;
         this.element = original.element;
-        this.effect = original.effect;
+        this.effects = original.effects;
     }
 
     internal void Add(Attributes attributes) {
@@ -92,7 +92,7 @@ public class Attributes {
         this.projectileSpeed += attributes.projectileSpeed;
         this.sockets += attributes.sockets;
         this.element = attributes.element;
-        this.effect = attributes.effect;
+        this.effects = attributes.effects;
     }
 
     internal void Multiply(Attributes multipliers) {

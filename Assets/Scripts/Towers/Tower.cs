@@ -44,7 +44,7 @@ public abstract class Tower : MonoBehaviour {
         Collider[] colliders = Physics.OverlapSphere(pos, attributes.range);
         foreach(Collider collider in colliders) {
             if(collider.tag == "Enemy") {
-                collider.GetComponent<Enemy>().TakeAttack(new Attack(attributes.damage, attributes.effect, attributes.element));
+                collider.GetComponent<Enemy>().TakeAttack(new Attack(attributes.damage, attributes.element, attributes.effects));
             }
         }
     }
@@ -121,28 +121,27 @@ public abstract class Tower : MonoBehaviour {
 
                 // Effects
                 case "Bleed":
-                    if(itemsAttributes.effect == Attributes.Effects.NONE)
-                        itemsAttributes.effect = Attributes.Effects.BLEED;
+                    itemsAttributes.effects.Add(Attributes.Effects.BLEED);
                     break;
 
                 case "Burn":
-                    if(itemsAttributes.effect == Attributes.Effects.NONE)
-                        itemsAttributes.effect = Attributes.Effects.BURN;
+                    itemsAttributes.effects.Add(Attributes.Effects.BURN);
                     break;
 
                 case "Curse":
-                    if(itemsAttributes.effect == Attributes.Effects.NONE)
-                        itemsAttributes.effect = Attributes.Effects.CURSE;
+                    itemsAttributes.effects.Add(Attributes.Effects.CURSE);
                     break;
 
                 case "Poison":
-                    if(itemsAttributes.effect == Attributes.Effects.NONE)
-                        itemsAttributes.effect = Attributes.Effects.POISON;
+                    itemsAttributes.effects.Add(Attributes.Effects.POISON);
                     break;
 
                 case "Slow":
-                    if(itemsAttributes.effect == Attributes.Effects.NONE)
-                        itemsAttributes.effect = Attributes.Effects.SLOW;
+                    itemsAttributes.effects.Add(Attributes.Effects.SLOW);
+                    break;
+
+                case "Stun":
+                    itemsAttributes.effects.Add(Attributes.Effects.STUN);
                     break;
             }
         }
@@ -153,13 +152,24 @@ public abstract class Tower : MonoBehaviour {
     }
 
     public void EquipItem(SocketItem item) {
-        int itemIndex;
-        itemIndex = equipedItems.FindIndex(i => i.name == item.name);
+        int itemIndex = equipedItems.FindIndex(i => i.name == item.name);
+
         if(itemIndex != -1) {
             equipedItems[itemIndex].level++;
         }
         else if(equipedItems.Count < attributes.sockets) {
-            equipedItems.Add(item);
+            if(item.type == SocketItem.SocketType.ELEMENT) {
+                if(attributes.element != Attributes.Elements.NONE) {
+                    itemIndex = equipedItems.FindIndex(i => i.type == SocketItem.SocketType.ELEMENT);
+                    equipedItems[itemIndex] = item;
+                }
+                else {
+                    equipedItems.Add(item);
+                }
+            }
+            else {
+                equipedItems.Add(item);
+            }
         }
         else {
             Debug.Log("Torre sem Sockets disponíveis");

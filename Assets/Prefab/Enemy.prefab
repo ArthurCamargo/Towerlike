@@ -402,6 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 4
+  health: 0
   enemyDamage: 1
   enemyElement: 1
 --- !u!195 &2339609094376889211

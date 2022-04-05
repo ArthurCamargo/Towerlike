@@ -5,6 +5,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Socket Item", menuName = "Inventory/Socket Item")]
 public class SocketItem : Item {
     public int level = 1;
+    public SocketType type;
+    public enum SocketType {
+        STAT,
+        EFFECT,
+        ELEMENT,
+    }
+
     public override void Use() {
         base.Use();
         Player.instance.holdingItem = this;
