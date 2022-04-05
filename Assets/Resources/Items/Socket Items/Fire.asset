@@ -16,3 +16,4 @@ MonoBehaviour:
   description: 
   icon: {fileID: 21300000, guid: 9f3180932d8dfd64f932d3dc14b8ae91, type: 3}
   level: 1
+  type: 2

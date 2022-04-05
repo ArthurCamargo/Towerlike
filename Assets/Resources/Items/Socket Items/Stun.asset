@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e130a7ff22424758ecae98a1b1c86a, type: 3}
   m_Name: Stun
   m_EditorClassIdentifier: 
-  name: New Item
+  name: Stun
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 5905ec66a5e3d2c419c4316ed0f056e9, type: 3}
   level: 1
-  type: 0
+  type: 1
