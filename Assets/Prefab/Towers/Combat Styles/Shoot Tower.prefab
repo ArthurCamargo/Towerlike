@@ -202,7 +202,7 @@ MonoBehaviour:
   enemyTag: Enemy
   equipedItems: []
   baseAttributes:
-    damage: 0
+    damage: 3
     range: 5
     attackSpeed: 1
     projectileSpeed: 10
