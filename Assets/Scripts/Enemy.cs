@@ -65,7 +65,7 @@ public class Enemy : LivingEntity {
     private void LockOnTargetByTag(string targetTag) {
         GameObject playerBase = GameObject.FindGameObjectWithTag(targetTag);
 
-        if(playerBase.transform != null) {
+        if(playerBase != null) {
             hasTarget = true;
 
             target = playerBase.transform;
