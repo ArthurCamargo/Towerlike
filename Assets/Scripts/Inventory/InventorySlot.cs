@@ -8,12 +8,18 @@ public class InventorySlot : MonoBehaviour
 
     Item item;
 
+    TooltipTrigger tooltipTrigger;
+
     public void AddItem(Item newItem)
     {
         item = newItem;
+        tooltipTrigger = icon.GetComponent<TooltipTrigger>();
 
         icon.sprite = item.icon;
         icon.enabled = true;
+        tooltipTrigger.header = item.name;
+        tooltipTrigger.body = item.description;
+
         removeButton.interactable = true;
     }
 
