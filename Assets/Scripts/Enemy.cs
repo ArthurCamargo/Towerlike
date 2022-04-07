@@ -130,7 +130,9 @@ public class Enemy : LivingEntity {
                 }
                 break;
         }
-
+        if(effects.Exists(e => e.effect == Attributes.Effects.CURSE)) {
+            elementalDamage *= 1.5f;
+        }
         health -= elementalDamage;
 
         if(health <= 0 && !dead) {
@@ -185,9 +187,9 @@ public class Enemy : LivingEntity {
                 if(!effect.isOn) {
                     effect.isOn = true;
                     this.transform.GetComponent<Renderer>().material.color = Color.blue;
-                    effect.damage = this.GetComponent<NavMeshAgent>().speed * (effect.damagePercent / 100);
+                    NavMeshAgent navMeshAgent = this.GetComponent<NavMeshAgent>();
+                    effect.damage = navMeshAgent.speed * (effect.damagePercent / 100);
                     this.GetComponent<NavMeshAgent>().speed -= effect.damage;
-                    Debug.Log("oi");
                 }
                 break;
 
@@ -206,15 +208,24 @@ public class Enemy : LivingEntity {
                 break;
 
             case Attributes.Effects.FEAR:
+                if(!effect.isOn) {
+                    effect.isOn = true;
+                    this.transform.GetComponent<Renderer>().material.color = Color.cyan;
+                    pathfinder.SetDestination(GameObject.FindGameObjectWithTag("EnemySpawner").transform.position);
+                }
                 break;
 
             case Attributes.Effects.KNOCKBACK:
-                break;
-
-            case Attributes.Effects.HEAL:
+                if(!effect.isOn) {
+                    effect.isOn= true;
+                } 
                 break;
 
             case Attributes.Effects.CURSE:
+                if(!effect.isOn) {
+                    effect.isOn = true;
+                    this.transform.GetComponent<Renderer>().material.color = Color.magenta;
+                }
                 break;
         }
     }
@@ -231,7 +242,6 @@ public class Enemy : LivingEntity {
                 break;
 
             case Attributes.Effects.SLOW:
-                Debug.Log("xau");
                 this.GetComponent<NavMeshAgent>().speed += effect.damage;
                 break;
 
@@ -243,12 +253,10 @@ public class Enemy : LivingEntity {
                 break;
 
             case Attributes.Effects.FEAR:
+                pathfinder.SetDestination(target.transform.position);
                 break;
 
             case Attributes.Effects.KNOCKBACK:
-                break;
-
-            case Attributes.Effects.HEAL:
                 break;
 
             case Attributes.Effects.CURSE:

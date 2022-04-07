@@ -127,7 +127,7 @@ public abstract class Tower : MonoBehaviour {
                     break;
 
                 case "Curse":
-                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.CURSE, 4, 1, 0.5f, 0, 50));
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.CURSE, 2, 0, 0, 0, 50));
                     break;
 
                 case "Poison":
@@ -135,11 +135,15 @@ public abstract class Tower : MonoBehaviour {
                     break;
 
                 case "Slow":
-                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.SLOW, 4, 1, 0, 20, 100));
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.SLOW, 4, 1, 0, 50, 50));
                     break;
 
                 case "Stun":
                     itemsAttributes.AddEffect(new Effect(Attributes.Effects.STUN, 2, 2, 0, 0, 50));
+                    break;
+
+                case "Fear":
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.FEAR, 2, 0, 0, 0, 50));
                     break;
             }
         }

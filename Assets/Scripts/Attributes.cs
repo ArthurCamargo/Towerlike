@@ -31,7 +31,6 @@ public class Attributes {
         STUN,
         FEAR,
         KNOCKBACK,
-        HEAL,
         CURSE,//damage amplified
     }
 

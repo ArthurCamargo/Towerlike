@@ -45,6 +45,9 @@ public class Projectile : MonoBehaviour
 
         float moveDistance = speed * Time.deltaTime;
 
+        this.transform.LookAt(target);
+        this.transform.Rotate(90, 0, 0);
+
         CheckCollisions(moveDistance);
         // Homing shot
         if(target != null)

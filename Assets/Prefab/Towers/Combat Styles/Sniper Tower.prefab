@@ -106,9 +106,9 @@ GameObject:
   - component: {fileID: 1663335110803329029}
   - component: {fileID: 6313882521353933918}
   - component: {fileID: 2136600000016206297}
-  - component: {fileID: 6926699723355525812}
+  - component: {fileID: -8777373747539528623}
   m_Layer: 0
-  m_Name: Pulse Tower
+  m_Name: Sniper Tower
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6926699723355525812
+--- !u!114 &-8777373747539528623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1663335110803329028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5338a0d991daa37e08d985f3f867ffd8, type: 3}
+  m_Script: {fileID: 11500000, guid: d4ea36521a3ebc547a0f40f0faa5a6ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 1663335110803329029}
@@ -202,10 +202,10 @@ MonoBehaviour:
   enemyTag: Enemy
   equipedItems: []
   baseAttributes:
-    damage: 2
-    range: 4
-    attackSpeed: 0.33
-    projectileSpeed: 0
+    damage: 10
+    range: 15
+    attackSpeed: 0.2
+    projectileSpeed: 40
     sockets: 5
     element: 0
     effects: []
@@ -225,7 +225,7 @@ MonoBehaviour:
     sockets: 0
     element: 0
     effects: []
-  attackPrefab: {fileID: 983918047957640819, guid: 05ee20aea0b9cfd43817c8d78eef020c, type: 3}
+  projectile: {fileID: 1193494048644701146, guid: c461e7c07fc29124c9ff2d6595bcd62a, type: 3}
 --- !u!1 &8949151996830685216
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9d862c848c9b1f1d494352bb52758891, type: 2}
+  - {fileID: 2100000, guid: 4346721b5f492d2dba8f2fe22a4dddcc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -330,8 +330,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8949151997809141481}
-  - component: {fileID: 8515457298411875919}
-  - component: {fileID: 3539690111159919771}
+  - component: {fileID: 8863305791043007817}
+  - component: {fileID: 5425831898638833937}
   m_Layer: 0
   m_Name: Crystal
   m_TagString: Tower
@@ -354,7 +354,7 @@ Transform:
   m_Father: {fileID: 1663335110803329029}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &8515457298411875919
+--- !u!65 &8863305791043007817
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -367,7 +367,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &3539690111159919771
+--- !u!23 &5425831898638833937
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

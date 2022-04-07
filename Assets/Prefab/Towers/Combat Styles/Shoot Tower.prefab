@@ -202,11 +202,11 @@ MonoBehaviour:
   enemyTag: Enemy
   equipedItems: []
   baseAttributes:
-    damage: 0
+    damage: 1
     range: 5
     attackSpeed: 1
-    projectileSpeed: 10
-    sockets: 2
+    projectileSpeed: 20
+    sockets: 5
     element: 0
     effects: []
   attributesMultipliers:
