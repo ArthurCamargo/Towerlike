@@ -18951,7 +18951,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1351.29, y: -177}
+  m_AnchoredPosition: {x: -960, y: -720}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1652206596
@@ -24335,3 +24335,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20e5dca493489434784a43d17e63c228, type: 3}
+--- !u!1 &959740962023240903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 959740960871535269, guid: 20e5dca493489434784a43d17e63c228, type: 3}
+  m_PrefabInstance: {fileID: 959740962023240902}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &959740962023240904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959740962023240903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c342a87893d9b674ca8cadf3d4f374b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: Inventory
+  header: There you go mate

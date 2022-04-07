@@ -6,7 +6,6 @@ public class InventoryUI : MonoBehaviour
     public GameObject inventoryUI;
     
     Inventory inventory;
-    int oi;
 
     InventorySlot[] slots;
 

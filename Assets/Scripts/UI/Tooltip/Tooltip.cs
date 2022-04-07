@@ -14,6 +14,11 @@ public class Tooltip : MonoBehaviour
 
     public int characterWrapLimit;
 
+    public RectTransform rectTransform;
+
+    private void Awake () { 
+        rectTransform = GetComponent<RectTransform>();
+    }
     private void Update()
     {
         if(Application.isEditor)
@@ -21,9 +26,17 @@ public class Tooltip : MonoBehaviour
             int headerLength = headerField.text.Length;
             int bodyLength = bodyField.text.Length;
 
-            layoutElement.enabled = (headerLength > characterWrapLimit || bodyLength > characterWrapLimit) ? true : false;
+            layoutElement.enabled = (headerLength > characterWrapLimit || bodyLength > characterWrapLimit);
         }
+
+        Vector2 position = Input.mousePosition;
+        float pivotX = position.x / Screen.width;
+        float pivotY = position.y / Screen.height;
         
+
+        rectTransform.pivot = new Vector2(pivotX, pivotY);
+
+        transform.position = position;
     }
 
     public void SetText(string body, string header = "")
