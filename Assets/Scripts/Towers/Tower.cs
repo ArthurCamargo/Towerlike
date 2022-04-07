@@ -121,27 +121,27 @@ public abstract class Tower : MonoBehaviour {
 
                 // Effects
                 case "Bleed":
-                    itemsAttributes.effects.Add(Attributes.Effects.BLEED);
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.BLEED, 4, 1, 0.5f, 50));
                     break;
 
                 case "Burn":
-                    itemsAttributes.effects.Add(Attributes.Effects.BURN);
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.BURN, 4, 1, 0.5f, 50));
                     break;
 
                 case "Curse":
-                    itemsAttributes.effects.Add(Attributes.Effects.CURSE);
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.CURSE, 4, 1, 0.5f, 50));
                     break;
 
                 case "Poison":
-                    itemsAttributes.effects.Add(Attributes.Effects.POISON);
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.POISON, 4, 1, 0.5f, 50));
                     break;
 
                 case "Slow":
-                    itemsAttributes.effects.Add(Attributes.Effects.SLOW);
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.SLOW, 4, 1, 0.5f, 50));
                     break;
 
                 case "Stun":
-                    itemsAttributes.effects.Add(Attributes.Effects.STUN);
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.STUN, 2, 2, 0, 50));
                     break;
             }
         }

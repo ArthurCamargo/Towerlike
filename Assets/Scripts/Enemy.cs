@@ -14,8 +14,7 @@ public class Enemy : LivingEntity {
     float attackDistanceThreshold = 1f;
     public float enemyDamage = 1;
     public Attributes.Elements enemyElement;
-
-    public EffectsController effects;
+    public List<Effect> effects;
 
     bool hasTarget;
 
@@ -23,7 +22,7 @@ public class Enemy : LivingEntity {
     protected override void Start() {
         base.Start();
         pathfinder = GetComponent<NavMeshAgent>();
-        effects = new EffectsController();
+        effects = new List<Effect>();
 
         LockOnTargetByTag("Base");
     }
@@ -37,8 +36,7 @@ public class Enemy : LivingEntity {
             return;
         }
 
-        effects.UpdateDurations();
-        ApllyEffects(effects);
+        UpdateEffects(effects);
     }
 
     void OnBaseHit() {
@@ -51,6 +49,9 @@ public class Enemy : LivingEntity {
     }
 
     private bool CheckTowerHit() {
+        if(!hasTarget)
+            return false;
+
         float sqrDstToTarget = (target.position - transform.position).sqrMagnitude;
 
         if(sqrDstToTarget < Mathf.Pow(attackDistanceThreshold, 2)) {
@@ -77,7 +78,7 @@ public class Enemy : LivingEntity {
     public override void TakeAttack(Attack attack) {
         float elementalDamage = 0;
 
-        Debug.Log("Attack " + attack.damage + ", " + attack.element);
+        Debug.Log("Attack " + attack.damage + ", " + attack.element + ", " + attack.effects.ToString());
 
         switch(attack.element) {
             case Attributes.Elements.NONE:
@@ -138,59 +139,104 @@ public class Enemy : LivingEntity {
             return;
         }
 
-        foreach(Attributes.Effects effect in attack.effects) {
-            switch(effect) {
-                case Attributes.Effects.NONE:
-                    break;
-
-                case Attributes.Effects.BURN:
-                    effects.burn.StartEffect(4, 1, 0.5f);
-                    break;
-
-                case Attributes.Effects.BLEED:
-                    break;
-
-                case Attributes.Effects.SLOW:
-                    break;
-
-                case Attributes.Effects.POISON:
-                    break;
-
-                case Attributes.Effects.STUN:
-                    effects.stun.StartEffect(2, 2, 0);
-                    break;
-
-                case Attributes.Effects.FEAR:
-                    break;
-
-                case Attributes.Effects.KNOCKBACK:
-                    break;
-
-                case Attributes.Effects.HEAL:
-                    break;
-
-                case Attributes.Effects.CURSE:
-                    break;
+        foreach(Effect effect in attack.effects) {
+            if(effect.TryEffectProc()) {
+                effects.Add(effect);
             }
         }
-
     }
 
-    private void ApllyEffects(EffectsController effects) {
-        if(effects.burn.isOn) {
-            if(effects.burn.Tick()) {
-                this.TakeAttack(new Attack(effects.burn.damage, Attributes.Elements.FIRE));
-            }
-        }
+    private void UpdateEffects(List<Effect> effects) {
+        List<int> effectsIndexToRemove = new List<int>();
+        int index = 0;
 
-        if(effects.stun.isOn) {
-            if(effects.stun.ExpiredDuration()) {
-                effects.stun.isOn = false;
-                pathfinder.isStopped = false;
+        foreach(Effect effect in effects) {
+            if(effect.ExpiredDuration()) {
+                ApplyEffectEnd(effect);
+                effectsIndexToRemove.Add(index);
             }
-            else if(!pathfinder.isStopped) {
+            else {
+                ApplyEffect(effect);
+            }
+            index++;
+        }
+        foreach(int effectIndex in effectsIndexToRemove) {
+            effects.RemoveAt(effectIndex);
+        }
+    }
+
+    private void ApplyEffect(Effect effect) {
+        switch(effect.effect) {
+            case Attributes.Effects.NONE:
+                break;
+
+            case Attributes.Effects.BURN:
+                if(effect.Tick()) {
+                    this.TakeAttack(new Attack(effect.damage, Attributes.Elements.FIRE));
+                    this.transform.GetComponent<Renderer>().material.color = Color.blue;
+                }
+                break;
+
+            case Attributes.Effects.BLEED:
+                break;
+
+            case Attributes.Effects.SLOW:
+                break;
+
+            case Attributes.Effects.POISON:
+                break;
+
+            case Attributes.Effects.STUN:
                 pathfinder.isStopped = true;
-            }
+                break;
+
+            case Attributes.Effects.FEAR:
+                break;
+
+            case Attributes.Effects.KNOCKBACK:
+                break;
+
+            case Attributes.Effects.HEAL:
+                break;
+
+            case Attributes.Effects.CURSE:
+                break;
+        }
+    }
+
+    private void ApplyEffectEnd(Effect effect) {
+        switch(effect.effect) {
+            case Attributes.Effects.NONE:
+                break;
+
+            case Attributes.Effects.BURN:
+                this.transform.GetComponent<Renderer>().material.color = Color.red;
+                break;
+
+            case Attributes.Effects.BLEED:
+                break;
+
+            case Attributes.Effects.SLOW:
+                break;
+
+            case Attributes.Effects.POISON:
+                break;
+
+            case Attributes.Effects.STUN:
+                pathfinder.isStopped = false;
+                break;
+
+            case Attributes.Effects.FEAR:
+                break;
+
+            case Attributes.Effects.KNOCKBACK:
+                break;
+
+            case Attributes.Effects.HEAL:
+                break;
+
+            case Attributes.Effects.CURSE:
+                break;
         }
     }
 }

@@ -6,7 +6,8 @@ public class Projectile : MonoBehaviour
 {
     public LayerMask collisionMask;
     float speed;
-    Attack attack;
+    public Attack attack;
+    bool destroyed = false;
     Transform target;
     LivingEntity targetEntity;
 
@@ -25,8 +26,10 @@ public class Projectile : MonoBehaviour
     }
     private void Start()
     {
-        if(target == null)
+        if(target == null) {
+            destroyed = true;
             GameObject.Destroy(gameObject);
+        }    
         else {
             targetEntity = target.GetComponent<LivingEntity>();
             targetEntity.OnDeath += OnTargetDeath;
@@ -37,6 +40,9 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(destroyed)
+            return;
+
         float moveDistance = speed * Time.deltaTime;
 
         CheckCollisions(moveDistance);
@@ -61,12 +67,20 @@ public class Projectile : MonoBehaviour
         if(damageableObject != null) {
             //Debug.Log("hit");
             damageableObject.TakeHit(attack, hit);
-            GameObject.Destroy(gameObject);
+            if(!destroyed) {
+                destroyed = true;
+                GameObject.Destroy(gameObject);
+            }
+            
         }
     }
 
     void OnTargetDeath() {
+        if(destroyed)
+            return;
+
         if(gameObject != null) {
+            destroyed = true;
             GameObject.Destroy(gameObject);
         }
     }

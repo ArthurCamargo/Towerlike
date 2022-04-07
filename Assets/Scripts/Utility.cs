@@ -17,4 +17,9 @@ public static class Utility
 
         return array;
     }
+
+    public static bool ProcTest(float procPercentage) {
+        System.Random rand = new System.Random();
+        return rand.NextDouble() < procPercentage / 100.0;
+    }
 }

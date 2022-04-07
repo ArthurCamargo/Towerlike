@@ -11,7 +11,7 @@ public class Attributes {
     public float projectileSpeed;
     public int sockets;
     public Elements element;
-    public List<Effects> effects;
+    public List<Effect> effects;
 
     public enum Elements {
         NONE,
@@ -42,10 +42,10 @@ public class Attributes {
         this.projectileSpeed = 0;
         this.sockets = 0;
         this.element = Elements.NONE;
-        this.effects = new List<Effects>();
+        this.effects = new List<Effect>();
     }
 
-    public Attributes(float damage, float range, float attackSpeed, float projectileSpeed, int sockets, Elements element, List<Effects> effects) {
+    public Attributes(float damage, float range, float attackSpeed, float projectileSpeed, int sockets, Elements element, List<Effect> effects) {
         this.damage = damage;
         this.range = range;
         this.attackSpeed = attackSpeed;
@@ -62,7 +62,7 @@ public class Attributes {
         this.projectileSpeed = projectileSpeed;
         this.sockets = sockets;
         this.element = Elements.NONE;
-        this.effects = new List<Effects>();
+        this.effects = new List<Effect>();
     }
 
     public Attributes(Attributes attributes) {
@@ -102,5 +102,13 @@ public class Attributes {
         this.projectileSpeed *= multipliers.projectileSpeed;
     }
 
-
+    internal void AddEffect(Effect effect) {
+        int effectIndex = effects.FindIndex(i => i.effect == effect.effect);
+        if (effectIndex != -1) {
+            effects[effectIndex].Merge(effect);
+        }
+        else {
+            effects.Add(effect);
+        }
+    }
 }
