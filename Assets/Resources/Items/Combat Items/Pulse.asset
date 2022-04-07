@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Pulse
   description: 
-  icon: {fileID: 21300000, guid: 9c5fdf7f134e51b4f828ff9448aec54b, type: 3}
+  icon: {fileID: 21300000, guid: 99d319cec9aa9d9288bd63c96d2bd6f4, type: 3}
   towerPrefab: {fileID: 1663335110803329029, guid: 25f5879ebdd634a45bf63b0d45edfbcc, type: 3}
