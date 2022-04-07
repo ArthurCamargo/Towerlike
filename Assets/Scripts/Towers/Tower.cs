@@ -16,7 +16,7 @@ public abstract class Tower : MonoBehaviour {
     public Attributes attributesMultipliers;
     public Attributes attributes;
 
-    private float nextAttackTime;
+    protected float nextAttackTime;
 
     protected virtual void Awake() {
         attributes.DeepCopy(baseAttributes);
@@ -48,7 +48,7 @@ public abstract class Tower : MonoBehaviour {
     }
 
     //See if there is an enemy at sight
-    public void UpdateTarget() {
+    public bool UpdateTarget() {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
@@ -64,9 +64,11 @@ public abstract class Tower : MonoBehaviour {
 
         if(nearestEnemy != null && shortestDistance < attributes.range) {
             target = nearestEnemy.transform;
+            return true;
         }
         else {
             target = null;
+            return false;
         }
     }
 
