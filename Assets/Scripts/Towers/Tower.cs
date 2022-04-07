@@ -39,12 +39,15 @@ public abstract class Tower : MonoBehaviour {
 
     //Do damage to all enemies in a circle radius with center in pos
     public void Explode(Vector3 pos) {
+        Utility.Explode(pos, attributes.range, attributes.damage, attributes.element, attributes.effects);
+        /*
         Collider[] colliders = Physics.OverlapSphere(pos, attributes.range);
         foreach(Collider collider in colliders) {
             if(collider.tag == "Enemy") {
                 collider.GetComponent<Enemy>().TakeAttack(new Attack(attributes.damage, attributes.element, attributes.effects));
             }
         }
+        */
     }
 
     //See if there is an enemy at sight

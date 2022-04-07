@@ -5,8 +5,9 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public LayerMask collisionMask;
-    float speed;
+    protected float speed;
     public Attack attack;
+
     bool destroyed = false;
     Transform target;
     LivingEntity targetEntity;
@@ -24,7 +25,7 @@ public class Projectile : MonoBehaviour
     {
         attack = newAttack;
     }
-    private void Start()
+    protected virtual void Start()
     {
         if(target == null) {
             destroyed = true;
@@ -38,7 +39,7 @@ public class Projectile : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if(destroyed)
             return;
