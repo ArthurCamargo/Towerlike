@@ -10,6 +10,7 @@ public class Effect {
     public float tickFrequency;
     public float damage;
     public float procChance;
+    public bool isOn;
 
     private float nextTick;
     private float endOfDuration;
@@ -20,6 +21,7 @@ public class Effect {
         this.tickFrequency = tickFrequency;
         this.damage = damage;
         this.procChance = procChance;
+        this.isOn = false;
     }
 
     public Effect() {
@@ -28,6 +30,7 @@ public class Effect {
         this.tickFrequency = 0;
         this.damage = 0;
         this.procChance = 0;
+        this.isOn = false;
     }
 
     internal void Merge(Effect effect) {

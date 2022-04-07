@@ -78,7 +78,7 @@ public class Enemy : LivingEntity {
     public override void TakeAttack(Attack attack) {
         float elementalDamage = 0;
 
-        Debug.Log("Attack " + attack.damage + ", " + attack.element + ", " + attack.effects.ToString());
+        Debug.Log("Attack " + attack.damage + ", " + attack.element);
 
         switch(attack.element) {
             case Attributes.Elements.NONE:
@@ -167,27 +167,39 @@ public class Enemy : LivingEntity {
 
     private void ApplyEffect(Effect effect) {
         switch(effect.effect) {
-            case Attributes.Effects.NONE:
-                break;
-
             case Attributes.Effects.BURN:
                 if(effect.Tick()) {
                     this.TakeAttack(new Attack(effect.damage, Attributes.Elements.FIRE));
-                    this.transform.GetComponent<Renderer>().material.color = Color.blue;
+                    this.transform.GetComponent<Renderer>().material.color = Color.red + Color.yellow;
                 }
                 break;
 
             case Attributes.Effects.BLEED:
+                if(effect.Tick()) {
+                    this.TakeAttack(new Attack(effect.damage, Attributes.Elements.NONE));
+                    this.transform.GetComponent<Renderer>().material.color = Color.red;
+                }
                 break;
 
             case Attributes.Effects.SLOW:
+                if(!effect.isOn) {
+                    effect.isOn = true;
+                    // DIMINUI VELOCIDADE
+                }
                 break;
 
             case Attributes.Effects.POISON:
+                if(effect.Tick()) {
+                    this.TakeAttack(new Attack(effect.damage, Attributes.Elements.PLANT));
+                    this.transform.GetComponent<Renderer>().material.color = Color.green;
+                }
                 break;
 
             case Attributes.Effects.STUN:
-                pathfinder.isStopped = true;
+                if(!pathfinder.isStopped) {
+                    pathfinder.isStopped = true;
+                    this.transform.GetComponent<Renderer>().material.color = Color.black;
+                }
                 break;
 
             case Attributes.Effects.FEAR:
@@ -210,7 +222,6 @@ public class Enemy : LivingEntity {
                 break;
 
             case Attributes.Effects.BURN:
-                this.transform.GetComponent<Renderer>().material.color = Color.red;
                 break;
 
             case Attributes.Effects.BLEED:
@@ -238,5 +249,6 @@ public class Enemy : LivingEntity {
             case Attributes.Effects.CURSE:
                 break;
         }
+        this.transform.GetComponent<Renderer>().material.color = Color.gray;
     }
 }
