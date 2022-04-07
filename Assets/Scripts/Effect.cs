@@ -9,17 +9,19 @@ public class Effect {
     public float duration;
     public float tickFrequency;
     public float damage;
+    public float damagePercent;
     public float procChance;
     public bool isOn;
 
     private float nextTick;
     private float endOfDuration;
 
-    public Effect(Attributes.Effects effect, float duration, float tickFrequency, float damage, float procChance) {
+    public Effect(Attributes.Effects effect, float duration, float tickFrequency, float damage, float damagePercent, float procChance) {
         this.effect = effect;
         this.duration = duration;
         this.tickFrequency = tickFrequency;
         this.damage = damage;
+        this.damagePercent = damagePercent;
         this.procChance = procChance;
         this.isOn = false;
     }
@@ -29,15 +31,41 @@ public class Effect {
         this.duration = 0;
         this.tickFrequency = 0;
         this.damage = 0;
+        this.damagePercent = 0;
         this.procChance = 0;
         this.isOn = false;
+    }
+
+    public Effect(Effect effect) {
+        this.effect = effect.effect;
+        this.duration = effect.duration;
+        this.tickFrequency = effect.tickFrequency;
+        this.damage = effect.damage;
+        this.damagePercent = effect.damagePercent;
+        this.procChance = effect.procChance;
+        this.isOn = effect.isOn;
+        this.nextTick = effect.nextTick;
+        this.endOfDuration = effect.endOfDuration;
     }
 
     internal void Merge(Effect effect) {
         this.duration = Math.Max(this.duration, effect.duration);
         this.tickFrequency += Math.Min(this.tickFrequency, effect.tickFrequency);
         this.damage += Math.Max(this.damage, effect.damage);
+        this.damagePercent = Math.Max(this.damagePercent, effect.damagePercent);
         this.procChance += effect.procChance;
+    }
+
+    internal void DeepCopy(Effect effect) {
+        this.effect = effect.effect;
+        this.duration = effect.duration;
+        this.tickFrequency = effect.tickFrequency;
+        this.damage = effect.damage;
+        this.damagePercent = effect.damagePercent;
+        this.procChance = effect.procChance;
+        this.isOn = effect.isOn;
+        this.nextTick = effect.nextTick;
+        this.endOfDuration = effect.endOfDuration;
     }
 
     public bool TryEffectProc() {
@@ -75,4 +103,5 @@ public class Effect {
             return false;
         }
     }
+    
 }

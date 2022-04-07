@@ -19,8 +19,6 @@ public abstract class Tower : MonoBehaviour {
     private float nextAttackTime;
 
     protected virtual void Awake() {
-        //baseAttributes = new Attributes(1, 5, 1, 10, 2, Attributes.Elements.NONE, Attributes.Effect.NONE);
-        //attributesMultipliers = new Attributes(1, 1, 1, 1, 1);
         attributes.DeepCopy(baseAttributes);
         attackPlaceHolder = towerPrefab.Find("Crystal").transform;
     }
@@ -121,27 +119,27 @@ public abstract class Tower : MonoBehaviour {
 
                 // Effects
                 case "Bleed":
-                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.BLEED, 4, 1, 0.5f, 50));
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.BLEED, 4, 1, 0.5f, 0, 50));
                     break;
 
                 case "Burn":
-                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.BURN, 4, 1, 0.5f, 50));
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.BURN, 4, 1, 0.5f, 0, 50));
                     break;
 
                 case "Curse":
-                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.CURSE, 4, 1, 0.5f, 50));
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.CURSE, 4, 1, 0.5f, 0, 50));
                     break;
 
                 case "Poison":
-                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.POISON, 4, 1, 0.5f, 50));
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.POISON, 4, 1, 0.5f, 0, 50));
                     break;
 
                 case "Slow":
-                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.SLOW, 4, 1, 0.5f, 50));
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.SLOW, 4, 1, 0, 20, 100));
                     break;
 
                 case "Stun":
-                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.STUN, 2, 2, 0, 50));
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.STUN, 2, 2, 0, 0, 50));
                     break;
             }
         }

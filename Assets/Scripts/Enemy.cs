@@ -141,7 +141,7 @@ public class Enemy : LivingEntity {
 
         foreach(Effect effect in attack.effects) {
             if(effect.TryEffectProc()) {
-                effects.Add(effect);
+                effects.Add(new Effect(effect));
             }
         }
     }
@@ -184,7 +184,10 @@ public class Enemy : LivingEntity {
             case Attributes.Effects.SLOW:
                 if(!effect.isOn) {
                     effect.isOn = true;
-                    // DIMINUI VELOCIDADE
+                    this.transform.GetComponent<Renderer>().material.color = Color.blue;
+                    effect.damage = this.GetComponent<NavMeshAgent>().speed * (effect.damagePercent / 100);
+                    this.GetComponent<NavMeshAgent>().speed -= effect.damage;
+                    Debug.Log("oi");
                 }
                 break;
 
@@ -228,6 +231,8 @@ public class Enemy : LivingEntity {
                 break;
 
             case Attributes.Effects.SLOW:
+                Debug.Log("xau");
+                this.GetComponent<NavMeshAgent>().speed += effect.damage;
                 break;
 
             case Attributes.Effects.POISON:
