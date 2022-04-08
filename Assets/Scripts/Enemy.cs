@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : LivingEntity {
@@ -10,7 +11,6 @@ public class Enemy : LivingEntity {
     NavMeshAgent pathfinder;
     Transform target;
     LivingEntity targetEntity;
-
     float attackDistanceThreshold = 1f;
     public float enemyDamage = 1;
     public Attributes.Elements enemyElement;
@@ -132,6 +132,7 @@ public class Enemy : LivingEntity {
             elementalDamage *= 1.5f;
         }
         health -= elementalDamage;
+        healthBarUI.fillAmount = health/startingHealth;
 
         Debug.Log("Attack " + elementalDamage + ", " + attack.element);
 

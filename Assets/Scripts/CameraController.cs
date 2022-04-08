@@ -30,7 +30,7 @@ public class CameraController : MonoBehaviour
     }
     void LateUpdate()
     {
-        offset += velocity * Time.deltaTime;
+        offset += velocity * Time.unscaledDeltaTime;
         transform.position = target.transform.position + offset * currentZoom;
         if(tag != "MainCamera")
             transform.LookAt(target.position + Vector3.up * pitch);
