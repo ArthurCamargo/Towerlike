@@ -46,7 +46,8 @@ public class LaserTower : Tower {
     }
 
     public override void Attack() {
-        Laser(target);
+        if(target)
+            Laser(target);
     }
 
     public void Laser(Transform target) {
