@@ -14,12 +14,12 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         TooltipSystem.Show(body, header);
     }
     public void OnPointerEnter(PointerEventData eventData) {
-
-        StartCoroutine("ShowTooltip");
+        TooltipSystem.Show(body, header);
+        //StartCoroutine("ShowTooltip");
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        StopCoroutine("ShowTooltip");  
+        //StopCoroutine("ShowTooltip");  
         TooltipSystem.Hide();      
     }
 }

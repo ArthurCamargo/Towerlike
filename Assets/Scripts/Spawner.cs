@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour {
     public Wave[] waves;
     public Enemy enemy;
 
+    public WaveUI waveUI;
     Wave currentWave;
     int currentWaveNumber;
 
@@ -13,7 +14,9 @@ public class Spawner : MonoBehaviour {
     int enemiesRemainingAlive;
     float nextSpawnTime;
 
+
     void Start() {
+        waveUI = GameObject.Find("WaveBar").GetComponent<WaveUI>();
         NextWave();
     }
 
@@ -36,6 +39,7 @@ public class Spawner : MonoBehaviour {
     }
 
     void NextWave() {
+        waveUI.NextWaveUI();
         currentWaveNumber++;
         if(currentWaveNumber - 1 < waves.Length) {
             currentWave = waves[currentWaveNumber - 1];

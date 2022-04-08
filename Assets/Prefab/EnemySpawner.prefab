@@ -123,3 +123,4 @@ MonoBehaviour:
   - enemyCount: 20
     timeBetweenSpawns: 0
   enemy: {fileID: 428468556249255120, guid: 61fc0366c5e13324c9f2133e1beeca8b, type: 3}
+  waveUI: {fileID: 680702434433205757, guid: f7d42fa8eb427a96a95acffff2d5b837, type: 3}
