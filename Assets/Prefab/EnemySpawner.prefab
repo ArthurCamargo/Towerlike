@@ -109,19 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dddbc15b1de39447b91164c2776dbb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waves:
-  - enemyCount: 1
-    timeBetweenSpawns: 0.5
-  - enemyCount: 4
-    timeBetweenSpawns: 0.5
-  - enemyCount: 2
-    timeBetweenSpawns: 1
-  - enemyCount: 10
-    timeBetweenSpawns: 0.55
-  - enemyCount: 1
-    timeBetweenSpawns: 0
-  - enemyCount: 20
-    timeBetweenSpawns: 0
+  waves: []
   enemiesTypes:
   - {fileID: 428468556249255120, guid: 74e9c06140689504cb4a78ddd0653023, type: 3}
   - {fileID: 428468556249255120, guid: d2cfe54cb29aacb4fa6cceff8af34105, type: 3}
@@ -141,3 +129,4 @@ MonoBehaviour:
   - {fileID: 428468556249255120, guid: 76b23fa926f999e43a2831ab73a0aaa4, type: 3}
   - {fileID: 428468556249255120, guid: 7955f5dd7a8868a438d2a0d555cbe6f7, type: 3}
   - {fileID: 428468556249255120, guid: 24518634396dc5c4786aba9da21c3c08, type: 3}
+  waveCounterUI: {fileID: 0}

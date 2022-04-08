@@ -47,6 +47,6 @@ public class LivingEntity : MonoBehaviour, IDamageable {
 
     protected void Drop()
     {
-        Inventory.instance.AddRandom();
+        Inventory.instance.TryDrop();
     }
 }

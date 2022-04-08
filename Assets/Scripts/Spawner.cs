@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Spawner : MonoBehaviour {
-    public Wave[] waves;
+    public List<Wave> waves;
     public List<Enemy> enemiesTypes;
     Wave currentWave;
     int currentWaveNumber;
@@ -14,7 +14,14 @@ public class Spawner : MonoBehaviour {
     int enemiesRemainingToSpawn;
     int enemiesRemainingAlive;
     float nextSpawnTime;
+    System.Random rand = new System.Random();
 
+
+    private void Awake() {
+        for(int i = 0; i < 50; i++) {
+            waves.Add(GenerateRandomWave(i));
+        }
+    }
 
     void Start() {
         waveCounterUI = GameObject.Find("WaveCounter").GetComponent<WaveCounterUI>();
@@ -42,7 +49,7 @@ public class Spawner : MonoBehaviour {
     void NextWave() {
         currentWaveNumber++;
         waveCounterUI.ChangeWaveNumber(currentWaveNumber);
-        if(currentWaveNumber - 1 < waves.Length) {
+        if(currentWaveNumber - 1 < waves.Count) {
             currentWave = waves[currentWaveNumber - 1];
 
             enemiesRemainingToSpawn = currentWave.enemyCount;
@@ -57,9 +64,18 @@ public class Spawner : MonoBehaviour {
         }
     }
 
+    private Wave GenerateRandomWave(int waveNum) {
+        return (new Wave(Random.Range(1, waveNum * 2), (float)rand.NextDouble()));
+    }
+
     [System.Serializable]
     public class Wave {
         public int enemyCount;
         public float timeBetweenSpawns;
+
+        public Wave(int enemyCount, float timeBetweenSpawns) {
+            this.enemyCount = enemyCount;
+            this.timeBetweenSpawns = timeBetweenSpawns;
+        }
     }
 }
