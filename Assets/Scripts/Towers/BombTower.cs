@@ -48,6 +48,7 @@ public class BombTower : Tower {
         BombProjectile newBomb = Instantiate(bomb, attackPlaceHolder.position, attackPlaceHolder.rotation) as BombProjectile;
         newBomb.SetSpeed(attributes.projectileSpeed);
         newBomb.SetFixedTarget(target.position);
+        newBomb.SetBombRange(attributes.range/2);
         newBomb.SetAttack(new Attack(attributes.damage, attributes.element, attributes.effects));
     }
 }

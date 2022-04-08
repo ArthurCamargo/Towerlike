@@ -10,7 +10,6 @@ public class BombProjectile : Projectile
     public Transform animationModel;
 
     protected override void Start() {
-        bombRange = 5;
     }
 
     protected override void Update() {
@@ -36,5 +35,9 @@ public class BombProjectile : Projectile
 
     internal void SetFixedTarget(Vector3 position) {
         fixedTarget = position;
+    }
+
+    internal void SetBombRange(float bombRange) {
+        this.bombRange = bombRange;
     }
 }
