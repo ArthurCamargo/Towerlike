@@ -42,7 +42,7 @@ public class LivingEntity : MonoBehaviour, IDamageable {
         if(OnDeath != null) {
             OnDeath();
         }
-        GameObject.Destroy(gameObject);
+        GameObject.DestroyImmediate(gameObject);
     }
 
     protected void Drop()

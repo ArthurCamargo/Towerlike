@@ -54,7 +54,6 @@ public class Player : MonoBehaviour {
             return;
 
         currentState = currentState.doAction(this);
-
     }
 
 

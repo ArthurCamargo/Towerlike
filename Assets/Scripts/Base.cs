@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Base : LivingEntity
 {
 
+    LifeUI lifeUI;
+
     private void Lose()
     {
         SceneManager.LoadScene("Menu");
@@ -14,6 +16,7 @@ public class Base : LivingEntity
     public override void TakeAttack(Attack attack)
     {
         health -= attack.damage;
+        lifeUI.UpdateUI(health);
 
         if (health <= 0 && !dead)
         {
