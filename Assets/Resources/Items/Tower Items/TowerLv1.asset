@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c6d25c76c3616869998db0f1141557e, type: 3}
   m_Name: TowerLv1
   m_EditorClassIdentifier: 
-  name: Tower Lv1
+  name: Tower
+  description: 
   icon: {fileID: 21300000, guid: 7974e80ea0e6eed0ca653fb07f12d76f, type: 3}
