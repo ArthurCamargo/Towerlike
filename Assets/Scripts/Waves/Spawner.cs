@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Spawner : MonoBehaviour {
     public List<Wave> waves;
-    public List<Enemy> enemiesTypes;
+    public Enemy enemy;
     Wave currentWave;
     int currentWaveNumber;
+    System.Random random = new System.Random();
 
     public WaveCounterUI waveCounterUI;
 
@@ -19,7 +20,7 @@ public class Spawner : MonoBehaviour {
 
     private void Awake() {
         for(int i = 0; i < 50; i++) {
-            waves.Add(GenerateRandomWave(i));
+            waves.Add(Wave.GenerateRandomWave(i));
         }
     }
 
@@ -32,8 +33,8 @@ public class Spawner : MonoBehaviour {
         if(enemiesRemainingToSpawn > 0 && Time.time > nextSpawnTime) {
             enemiesRemainingToSpawn--;
             nextSpawnTime = Time.time + currentWave.timeBetweenSpawns;
-            int enemyIdx = Random.Range(0, enemiesTypes.Count - 1);
-            Enemy spawnedEnemy = Instantiate(enemiesTypes[enemyIdx], this.transform.position, Quaternion.identity) as Enemy;
+            Enemy spawnedEnemy = Instantiate(enemy, this.transform.position, Quaternion.identity) as Enemy;
+            currentWave.GenerateEnemy(spawnedEnemy, random);
             spawnedEnemy.OnDeath += OnEnemyDeath;
         }
     }
@@ -55,27 +56,14 @@ public class Spawner : MonoBehaviour {
             enemiesRemainingToSpawn = currentWave.enemyCount;
             enemiesRemainingAlive = enemiesRemainingToSpawn;
 
-            if(currentWaveNumber > 1)
+            if(currentWaveNumber > 1) {
                 Inventory.instance.AddRandom();
+            }
+                
         }
         else {
             Debug.Log("Congratulations!!!!!!!!");
             SceneManager.LoadScene("Menu");
-        }
-    }
-
-    private Wave GenerateRandomWave(int waveNum) {
-        return (new Wave(Random.Range(1, waveNum * 2), (float)rand.NextDouble()));
-    }
-
-    [System.Serializable]
-    public class Wave {
-        public int enemyCount;
-        public float timeBetweenSpawns;
-
-        public Wave(int enemyCount, float timeBetweenSpawns) {
-            this.enemyCount = enemyCount;
-            this.timeBetweenSpawns = timeBetweenSpawns;
         }
     }
 }
