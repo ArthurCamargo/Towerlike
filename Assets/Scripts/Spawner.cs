@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Spawner : MonoBehaviour {
     public Wave[] waves;
-    public Enemy enemy;
+    public List<Enemy> enemiesTypes;
     Wave currentWave;
     int currentWaveNumber;
 
@@ -24,8 +25,8 @@ public class Spawner : MonoBehaviour {
         if(enemiesRemainingToSpawn > 0 && Time.time > nextSpawnTime) {
             enemiesRemainingToSpawn--;
             nextSpawnTime = Time.time + currentWave.timeBetweenSpawns;
-
-            Enemy spawnedEnemy = Instantiate(enemy, GameObject.FindGameObjectWithTag("EnemySpawner").transform.position, Quaternion.identity) as Enemy;
+            int enemyIdx = Random.Range(0, enemiesTypes.Count - 1);
+            Enemy spawnedEnemy = Instantiate(enemiesTypes[enemyIdx], this.transform.position, Quaternion.identity) as Enemy;
             spawnedEnemy.OnDeath += OnEnemyDeath;
         }
     }
@@ -49,6 +50,10 @@ public class Spawner : MonoBehaviour {
 
             if(currentWaveNumber > 1)
                 Inventory.instance.AddRandom();
+        }
+        else {
+            Debug.Log("Congratulations!!!!!!!!");
+            SceneManager.LoadScene("Menu");
         }
     }
 

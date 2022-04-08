@@ -27,8 +27,10 @@ public static class Utility
     public static void Explode(Vector3 pos, float range, float damage, Attributes.Elements element, List<Effect> effects) {
         Collider[] colliders = Physics.OverlapSphere(pos, range);
         foreach(Collider collider in colliders) {
-            if(collider.tag == "Enemy") {
-                collider.GetComponent<Enemy>().TakeAttack(new Attack(damage, element, effects));
+            if(collider != null) {
+                if(collider.tag == "Enemy") {
+                    collider.GetComponent<Enemy>().TakeAttack(new Attack(damage, element, effects));
+                }
             }
         }
     }

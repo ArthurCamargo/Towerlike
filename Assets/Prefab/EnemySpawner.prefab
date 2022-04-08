@@ -122,5 +122,22 @@ MonoBehaviour:
     timeBetweenSpawns: 0
   - enemyCount: 20
     timeBetweenSpawns: 0
-  enemy: {fileID: 428468556249255120, guid: 61fc0366c5e13324c9f2133e1beeca8b, type: 3}
-  waveUI: {fileID: 680702434433205757, guid: f7d42fa8eb427a96a95acffff2d5b837, type: 3}
+  enemiesTypes:
+  - {fileID: 428468556249255120, guid: 74e9c06140689504cb4a78ddd0653023, type: 3}
+  - {fileID: 428468556249255120, guid: d2cfe54cb29aacb4fa6cceff8af34105, type: 3}
+  - {fileID: 428468556249255120, guid: 213c54b6cd1ec744a8e5d0e2fca078f2, type: 3}
+  - {fileID: 428468556249255120, guid: e2bb3185ac745ff46bc7b31b67699ab4, type: 3}
+  - {fileID: 428468556249255120, guid: 215a0a7de7dbc814090c71dd1db0354e, type: 3}
+  - {fileID: 428468556249255120, guid: 90926197b64085c499fc22d058851193, type: 3}
+  - {fileID: 428468556249255120, guid: bd76fdb25c77c994585edadcc8edb754, type: 3}
+  - {fileID: 428468556249255120, guid: fad13645a58c550468be88854c243e2f, type: 3}
+  - {fileID: 428468556249255120, guid: d9bc400ee5895e74693c5a8bcfdda1e0, type: 3}
+  - {fileID: 428468556249255120, guid: 7fb9ba910be93fe48b80ed8fa65a37b9, type: 3}
+  - {fileID: 428468556249255120, guid: 577868fc2a3650d4aa25304bc5c35ecf, type: 3}
+  - {fileID: 428468556249255120, guid: 721a36a8649dddf41b622517ffb462ea, type: 3}
+  - {fileID: 428468556249255120, guid: a5f5fbcd3f3ad624894c6fd704ec7e58, type: 3}
+  - {fileID: 428468556249255120, guid: 1f6d21dbd3607444da59764bc5da7427, type: 3}
+  - {fileID: 428468556249255120, guid: b408dbfe450b3a948b1e1656f8f3c9c7, type: 3}
+  - {fileID: 428468556249255120, guid: 76b23fa926f999e43a2831ab73a0aaa4, type: 3}
+  - {fileID: 428468556249255120, guid: 7955f5dd7a8868a438d2a0d555cbe6f7, type: 3}
+  - {fileID: 428468556249255120, guid: 24518634396dc5c4786aba9da21c3c08, type: 3}

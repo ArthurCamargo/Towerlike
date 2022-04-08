@@ -3254,7 +3254,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 837.8905, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &298434831
@@ -3347,6 +3347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65ceaa5a76809fca9beb5f823f519ef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveText: {fileID: 1725911974}
 --- !u!1 &316038400
 GameObject:
   m_ObjectHideFlags: 0
@@ -20917,7 +20918,7 @@ MonoBehaviour:
     timeBetweenSpawns: 0
   - enemyCount: 20
     timeBetweenSpawns: 0
-  enemy: {fileID: 428468556249255120, guid: 61fc0366c5e13324c9f2133e1beeca8b, type: 3}
+  enemiesTypes: []
   waveCounterUI: {fileID: 0}
 --- !u!136 &1713539835
 CapsuleCollider:

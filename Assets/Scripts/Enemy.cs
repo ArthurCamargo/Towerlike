@@ -149,21 +149,19 @@ public class Enemy : LivingEntity {
     }
 
     private void UpdateEffects(List<Effect> effects) {
-        List<int> effectsIndexToRemove = new List<int>();
-        int index = 0;
+        List<Effect> effectsToRemove = new List<Effect>();
 
         foreach(Effect effect in effects) {
             if(effect.ExpiredDuration()) {
                 ApplyEffectEnd(effect);
-                effectsIndexToRemove.Add(index);
+                effectsToRemove.Add(effect);
             }
             else {
                 ApplyEffect(effect);
             }
-            index++;
         }
-        foreach(int effectIndex in effectsIndexToRemove) {
-            effects.RemoveAt(effectIndex);
+        foreach(Effect effect in effectsToRemove) {
+            effects.Remove(effect);
         }
     }
 
