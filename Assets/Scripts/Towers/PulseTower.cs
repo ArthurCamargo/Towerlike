@@ -5,9 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class PulseTower : Tower {
     public Transform attackPrefab;
-    private Transform attackSphere;
-    private float pulseEndTime;
-    private bool sphereOn = false;
 
     protected override void Awake() {
         base.Awake();
@@ -19,14 +16,6 @@ public class PulseTower : Tower {
 
     protected override void Update() {
         base.Update();
-
-        if(!sphereOn)
-            return;
-
-        if(Time.time > pulseEndTime) {
-            Destroy(attackSphere.gameObject);
-            sphereOn = false;
-        }
     }
 
     public override void Attack() {
@@ -35,10 +24,8 @@ public class PulseTower : Tower {
 
     public void Pulse() {
         //Create sphere as pulse animation
-        attackSphere = Instantiate(attackPrefab, attackPlaceHolder.transform.position, Quaternion.identity) as Transform;
-        attackSphere.localScale = Vector3.one * attributes.range * 2;
-        sphereOn = true;
-        pulseEndTime = Time.time + (1 / attributes.attackSpeed) / 2;
+        var animation = new GameObject().AddComponent<Animation>();
+        animation.SetAnimation(attackPrefab, attackPlaceHolder.transform.position, (1 / attributes.attackSpeed)*0.40f, attributes.range);
 
         //Do damage on enemies
         Explode(attackPlaceHolder.transform.position);

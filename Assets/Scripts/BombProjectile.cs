@@ -7,6 +7,7 @@ public class BombProjectile : Projectile
 {
     Vector3 fixedTarget;
     public float bombRange;
+    public Transform animationModel;
 
     protected override void Start() {
         bombRange = 5;
@@ -18,6 +19,8 @@ public class BombProjectile : Projectile
 
         if(CheckTargetHit(moveDistance)) {
             Utility.Explode(fixedTarget, bombRange, attack.damage, attack.element, attack.effects);
+            var animation = new GameObject().AddComponent<Animation>();
+            animation.SetAnimation(animationModel, transform.position, 1, bombRange);
             GameObject.Destroy(gameObject);
         }
         else {
