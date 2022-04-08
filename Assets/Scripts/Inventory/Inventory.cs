@@ -13,7 +13,10 @@ public class Inventory : MonoBehaviour {
         }
         instance = this;
         allItems = Resources.LoadAll<Item>("Items");
-        this.Add(Instantiate(defaultItem));
+        foreach(Item i in defaultItems) {
+            this.Add(Instantiate(i));
+        }
+        
     }
 
     #endregion
@@ -23,7 +26,7 @@ public class Inventory : MonoBehaviour {
 
     public int space = 20;
 
-    public Item defaultItem;
+    public List<Item> defaultItems;
 
     public List<Item> items = new List<Item>();
 
