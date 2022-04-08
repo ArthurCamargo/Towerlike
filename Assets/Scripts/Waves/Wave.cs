@@ -63,7 +63,6 @@ public class Wave {
 
     internal void GenerateEnemy(Enemy spawnedEnemy, System.Random random) {
         Color enemyColor = Color.gray;
-        elements.Add(Attributes.Elements.NONE);
 
         spawnedEnemy.startingHealth = random.Next((int)this.healthMin, (int)this.healthMax);
         spawnedEnemy.GetComponent<NavMeshAgent>().speed = random.Next((int)this.speedMin, (int)this.speedMax);
@@ -96,7 +95,7 @@ public class Wave {
 
     }
 
-    public static Wave GenerateRandomWave(int waveNum) {
+    public static Wave GenerateRandomWave(int waveNum, System.Random random) {
 
         WaveType[] waveTypes = Resources.LoadAll<WaveType>("Waves");
         int randomWaveTypeIdx = Random.Range(0, waveTypes.Length);
@@ -191,7 +190,8 @@ public class Wave {
 
         newWave.Multiply(waveNum);
 
-
+        newWave.elements.Add((Attributes.Elements)random.Next(0, System.Enum.GetNames(typeof(Attributes.Elements)).Length));
+        newWave.reward = (Rewards)random.Next(0, System.Enum.GetNames(typeof(Rewards)).Length);
         newWave.enemyCountType = waveTypes[randomWaveTypeIdx].enemyCountType;
         newWave.enemyHealthType = waveTypes[randomWaveTypeIdx].enemyHealthType;
         newWave.enemySpeedType = waveTypes[randomWaveTypeIdx].enemySpeedType;

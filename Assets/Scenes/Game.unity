@@ -3252,9 +3252,9 @@ RectTransform:
   m_Father: {fileID: 1009027866}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1114.8905, y: -42.505}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 837.8905, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &298434831
@@ -20908,17 +20908,89 @@ MonoBehaviour:
   waves:
   - enemyCount: 1
     timeBetweenSpawns: 0.5
+    healthMin: 0
+    healthMax: 0
+    speedMin: 0
+    speedMax: 0
+    damageMin: 0
+    damageMax: 0
+    elements: 
+    reward: 0
+    enemyCountType: 0
+    enemyHealthType: 0
+    enemySpeedType: 0
+    enemyDamageType: 0
   - enemyCount: 4
     timeBetweenSpawns: 0.5
+    healthMin: 0
+    healthMax: 0
+    speedMin: 0
+    speedMax: 0
+    damageMin: 0
+    damageMax: 0
+    elements: 
+    reward: 0
+    enemyCountType: 0
+    enemyHealthType: 0
+    enemySpeedType: 0
+    enemyDamageType: 0
   - enemyCount: 2
     timeBetweenSpawns: 1
+    healthMin: 0
+    healthMax: 0
+    speedMin: 0
+    speedMax: 0
+    damageMin: 0
+    damageMax: 0
+    elements: 
+    reward: 0
+    enemyCountType: 0
+    enemyHealthType: 0
+    enemySpeedType: 0
+    enemyDamageType: 0
   - enemyCount: 10
     timeBetweenSpawns: 0.55
+    healthMin: 0
+    healthMax: 0
+    speedMin: 0
+    speedMax: 0
+    damageMin: 0
+    damageMax: 0
+    elements: 
+    reward: 0
+    enemyCountType: 0
+    enemyHealthType: 0
+    enemySpeedType: 0
+    enemyDamageType: 0
   - enemyCount: 1
     timeBetweenSpawns: 0
+    healthMin: 0
+    healthMax: 0
+    speedMin: 0
+    speedMax: 0
+    damageMin: 0
+    damageMax: 0
+    elements: 
+    reward: 0
+    enemyCountType: 0
+    enemyHealthType: 0
+    enemySpeedType: 0
+    enemyDamageType: 0
   - enemyCount: 20
     timeBetweenSpawns: 0
-  enemiesTypes: []
+    healthMin: 0
+    healthMax: 0
+    speedMin: 0
+    speedMax: 0
+    damageMin: 0
+    damageMax: 0
+    elements: 
+    reward: 0
+    enemyCountType: 0
+    enemyHealthType: 0
+    enemySpeedType: 0
+    enemyDamageType: 0
+  enemy: {fileID: 0}
   waveCounterUI: {fileID: 0}
 --- !u!136 &1713539835
 CapsuleCollider:
@@ -22928,6 +23000,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e985b9fc0cb486242a264553c28db7e1, type: 2}
   - {fileID: 11400000, guid: d702444d0be92ae47bc2e68dfa57b5cd, type: 2}
   - {fileID: 11400000, guid: 406ed0fca04182243997b60976a6df58, type: 2}
+  - {fileID: 11400000, guid: 221b8a3881667c9499be7abb1403b47e, type: 2}
+  - {fileID: 11400000, guid: 221b8a3881667c9499be7abb1403b47e, type: 2}
   items: []
 --- !u!1 &1867037875
 GameObject:
