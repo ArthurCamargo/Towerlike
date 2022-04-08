@@ -13,6 +13,6 @@ public class Item : ScriptableObject {
     public virtual void Use() {
         // Use the item
         Debug.Log("Using " + name);
-        Debug.Log(description);
+        //Debug.Log(description);
     }
 }

@@ -78,8 +78,6 @@ public class Enemy : LivingEntity {
     public override void TakeAttack(Attack attack) {
         float elementalDamage = 0;
 
-        Debug.Log("Attack " + attack.damage + ", " + attack.element);
-
         switch(attack.element) {
             case Attributes.Elements.NONE:
                 elementalDamage = attack.damage;
@@ -134,6 +132,8 @@ public class Enemy : LivingEntity {
             elementalDamage *= 1.5f;
         }
         health -= elementalDamage;
+
+        Debug.Log("Attack " + elementalDamage + ", " + attack.element);
 
         if(health <= 0 && !dead) {
             Drop();
