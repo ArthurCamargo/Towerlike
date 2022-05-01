@@ -8,6 +8,7 @@ public class ShootTower : Tower {
 
     protected override void Start() {
         base.Start();
+        nameType = "Sniper Tower";
     }
 
     public override void Attack() {

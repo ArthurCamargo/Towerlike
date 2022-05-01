@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using static Utility;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : LivingEntity {
@@ -11,24 +13,30 @@ public class Enemy : LivingEntity {
     NavMeshAgent pathfinder;
     Transform target;
     LivingEntity targetEntity;
+    Animator animator;
     float attackDistanceThreshold = 1f;
     public float enemyDamage = 1;
     public Attributes.Elements enemyElement;
+    public string enemyTypeName;
     public List<Effect> effects;
 
     bool hasTarget;
 
-
-    protected override void Start() {
-        base.Start();
+    private void Awake() {
         pathfinder = GetComponent<NavMeshAgent>();
         effects = new List<Effect>();
+        animator = GetComponent<Animator>();
 
         LockOnTargetByTag("Base");
+    }
+    protected override void Start() {
+        base.Start();
+        
     }
 
     void Update() {
         if(!hasTarget) {
+            animator.SetInteger("Walk", 0);
             return;
         }
         targetEntity.OnDeath += OnTargetDeath;
@@ -63,12 +71,137 @@ public class Enemy : LivingEntity {
         }
     }
 
+    internal static Enemy GenerateEnemyFromWave(Wave currentWave, Vector3 spawnerPosition) {
+        //EnemyType[] enemyTypes = Resources.LoadAll<EnemyType>("Enemies");
+        //EnemyType randomEnemyType = enemyTypes[Random.Range(0, enemyTypes.Length)];
+
+        EnemyType randomEnemyType = currentWave.enemyTypes[Random.Range(0, currentWave.enemyTypes.Count)];
+
+        Enemy spawnedEnemy = Instantiate(randomEnemyType.prefab, spawnerPosition, Quaternion.identity);
+        spawnedEnemy.AdaptToEnemyType(randomEnemyType);
+        spawnedEnemy.AdaptToWaveType(currentWave);
+        spawnedEnemy.AdaptToWaveNumber(currentWave.waveNumber);
+        spawnedEnemy.enemyTypeName = randomEnemyType.name;
+
+       /*
+        Color enemyColor = Color.gray;
+
+
+        switch(spawnedEnemy.enemyElement) {
+            case Attributes.Elements.NONE:
+                enemyColor = Color.gray;
+                break;
+            case Attributes.Elements.FIRE:
+                enemyColor = Color.red;
+                break;
+            case Attributes.Elements.WATER:
+                enemyColor = Color.blue;
+                break;
+            case Attributes.Elements.PLANT:
+                enemyColor = Color.green;
+                break;
+            case Attributes.Elements.LIGHT:
+                enemyColor = Color.white;
+                break;
+            case Attributes.Elements.DARKNESS:
+                enemyColor = Color.magenta;
+                break;
+        }
+
+        spawnedEnemy.GetComponent<Renderer>().material.color = enemyColor;
+       */
+
+        return spawnedEnemy;
+    }
+
+    private void AdaptToWaveNumber(int waveNumber) {
+        NavMeshAgent enemyNav = this.GetComponent<NavMeshAgent>();
+
+        this.startingHealth = DifficultyIncreaseFunction(waveNumber, this.startingHealth, Wave.WAVE_DIFFICULTY_MULTIPLYER);
+        enemyNav.speed = DifficultyIncreaseFunction(waveNumber, enemyNav.speed, Wave.WAVE_DIFFICULTY_MULTIPLYER);
+        this.enemyDamage = DifficultyIncreaseFunction(waveNumber, this.enemyDamage, Wave.WAVE_DIFFICULTY_MULTIPLYER);
+    }
+
+    private void AdaptToWaveType(Wave currentWave) {
+        NavMeshAgent enemyNav = this.GetComponent<NavMeshAgent>();
+
+        this.startingHealth = AdaptToDifficulty(currentWave.enemyHealthType, this.startingHealth);
+        enemyNav.speed = AdaptToDifficulty(currentWave.enemySpeedType, enemyNav.speed);
+        this.enemyDamage = AdaptToDifficulty(currentWave.enemyDamageType, this.enemyDamage);
+    }
+
+    private void AdaptToEnemyType(EnemyType randomEnemyType) {
+
+        // VIDA
+        switch(randomEnemyType.healthType) {
+            case Difficulty.VERY_LOW:
+                this.startingHealth = Random.Range(1, 6);
+                break;
+            case Difficulty.LOW:
+                this.startingHealth = Random.Range(6, 11);
+                break;
+            case Difficulty.MEDIUM:
+                this.startingHealth = Random.Range(11, 21);
+                break;
+            case Difficulty.HIGH:
+                this.startingHealth = Random.Range(21, 41);
+                break;
+            case Difficulty.VER_HIGH:
+                this.startingHealth = Random.Range(41, 61);
+                break;
+        }
+
+
+        // VELOCIDADE
+        NavMeshAgent enemyNav = this.GetComponent<NavMeshAgent>(); 
+
+        switch(randomEnemyType.speedType) {
+            case Difficulty.VERY_LOW:
+                enemyNav.speed = 1;
+                break;
+            case Difficulty.LOW:
+                enemyNav.speed = 2;
+                break;
+            case Difficulty.MEDIUM:
+                enemyNav.speed = 3;
+                break;
+            case Difficulty.HIGH:
+                enemyNav.speed = 4;
+                break;
+            case Difficulty.VER_HIGH:
+                enemyNav.speed = 5;
+                break;
+        }
+
+        // DANO
+        switch(randomEnemyType.damageType) {
+            case Difficulty.VERY_LOW:
+                this.enemyDamage = Random.Range(1, 6);
+                break;
+            case Difficulty.LOW:
+                this.enemyDamage = Random.Range(6, 11);
+                break;
+            case Difficulty.MEDIUM:
+                this.enemyDamage = Random.Range(11, 16);
+                break;
+            case Difficulty.HIGH:
+                this.enemyDamage = Random.Range(16, 21);
+                break;
+            case Difficulty.VER_HIGH:
+                this.enemyDamage = Random.Range(30, 51);
+                break;
+        }
+
+        this.enemyElement = randomEnemyType.element;
+    }
+
     private void LockOnTargetByTag(string targetTag) {
         GameObject playerBase = GameObject.FindGameObjectWithTag(targetTag);
 
         if(playerBase != null) {
             hasTarget = true;
 
+            animator.SetInteger("Walk", 1);
             target = playerBase.transform;
             pathfinder.SetDestination(target.position);
             targetEntity = target.GetComponent<LivingEntity>();

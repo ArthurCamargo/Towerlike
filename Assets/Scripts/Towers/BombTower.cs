@@ -9,6 +9,7 @@ public class BombTower : Tower {
     private Vector3 fixedTarget;
 
     protected override void Start() {
+        nameType = "Bomb Tower";
     }
 
     protected override void Update() {

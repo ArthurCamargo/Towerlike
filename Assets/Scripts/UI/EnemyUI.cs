@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyUI : MonoBehaviour
 {
     Camera cameraMain;
+    Color primary;
+    Color secondary;
 
     void Awake () {
         cameraMain = Camera.main;
@@ -12,6 +14,7 @@ public class EnemyUI : MonoBehaviour
 
 
     void Update() {
-        transform.LookAt(cameraMain.transform.position);
+        
+        transform.LookAt(cameraMain.transform.position, Vector3.left);
     }
 }

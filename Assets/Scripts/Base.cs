@@ -12,7 +12,6 @@ public class Base : LivingEntity
     {
         lifeUI = GameObject.Find("LifeBarPanel").GetComponent<LifeUI>();
         lifeUI.maxHealth = startingHealth;
-        Debug.Log(lifeUI.maxHealth);
     }
 
     private void Lose()

@@ -4,6 +4,8 @@ using UnityEngine;
 
 [System.Serializable]
 public abstract class Tower : MonoBehaviour {
+
+    public string nameType = "Shooting Tower";
     public Transform towerPrefab;
     public Transform attackPlaceHolder;
     public Transform target;
@@ -25,6 +27,7 @@ public abstract class Tower : MonoBehaviour {
 
     protected virtual void Start() {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        
     }
 
 
@@ -171,7 +174,7 @@ public abstract class Tower : MonoBehaviour {
             }
         }
         else {
-            Debug.Log("Torre sem Sockets disponíveis");
+            Debug.Log("Torre sem Sockets disponï¿½veis");
             return;
         }
         Inventory.instance.Remove(item);

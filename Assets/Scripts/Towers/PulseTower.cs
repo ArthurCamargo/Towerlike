@@ -12,6 +12,7 @@ public class PulseTower : Tower {
 
     protected override void Start() {
         base.Start();
+        nameType = "Pulse Tower";
     }
 
     protected override void Update() {

@@ -9,6 +9,7 @@ TagManager:
   - Base
   - EnemySpawner
   - Tower
+  - Crystal
   layers:
   - Default
   - TransparentFX

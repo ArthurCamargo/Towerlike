@@ -22,19 +22,35 @@ public class Player : MonoBehaviour {
     public float cameraSpeed = 50f;
     public Tower defautTower;
 
+
+    //States
     public FreeState freeState = new FreeState();
     public BuildingState buildingState = new BuildingState();
     public ChangingCombatState changingCombatState = new ChangingCombatState();
     public EquippingItemState equippingItemState = new EquippingItemState();
 
+
+
+    //Viewing Objects
+
+    public ObjectViewUI objectViewUI;
+
+    public GameObject currentObject;
+
+
+    public SpeedController speedController;
+
     public PlayerState currentState;
     public Item holdingItem;
+
 
     private Collider hitObject;
     private Color initialColor;
     private Material hitObjectMaterial;
     private Camera playerCamera;
     private CameraController controller;
+
+    
 
 
 
@@ -48,10 +64,10 @@ public class Player : MonoBehaviour {
     void Update() {
         Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         Vector3 moveVelocity = moveInput.normalized * cameraSpeed;
-        controller.Move(moveVelocity);
 
         if(EventSystem.current.IsPointerOverGameObject())
             return;
+
 
         currentState = currentState.doAction(this);
     }
@@ -70,7 +86,6 @@ public class Player : MonoBehaviour {
     }
 
     public void PlaceTower(Tower t, Transform obj) {
-        //TODO: See if the tower already is on this object
         Transform newTower = Instantiate(t.towerPrefab, obj.position + Vector3.up * obj.localScale.y / 2f + Vector3.up * t.towerPrefab.localScale.y, Quaternion.identity) as Transform;
         Inventory.instance.Remove(holdingItem);
     }
@@ -104,75 +119,4 @@ public class Player : MonoBehaviour {
 
         return null;
     }
-
-    /*
-    void ControlHoldingItem() {
-        RaycastHit hit;
-        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-
-        if(Physics.Raycast(ray, out hit) && hit.collider.CompareTag(itemTargetTag)) {
-
-            if(hitObject != null)
-                hitObjectMaterial.color = initialColor;
-            hitObject = hit.collider;
-
-            hitObjectMaterial = hitObject.GetComponent<Renderer>().material;
-            initialColor = hitObjectMaterial.color;
-            hitObjectMaterial.color = highlightColor;
-
-            if(Input.GetMouseButtonDown(0)) {
-                if(holdingItem.GetType() == typeof(TowerItem)) {
-                    PlaceTower(defautTower, hitObject.GetComponent<Transform>());
-                }
-                else if(holdingItem.GetType() == typeof(SocketItem)) {
-                    EquipItemOnTower(hitObject.GetComponentInParent<Tower>());
-                }
-                else if(holdingItem.GetType() == typeof(CombatItem)) {
-                    ChangeTowerCombat(hitObject.GetComponentInParent<Tower>());
-                }
-
-                if(hitObject != null) {
-                    hitObjectMaterial.color = initialColor;
-                    hitObject = null;
-                    hitObjectMaterial = null;
-                }
-
-                EndHoldingItem();
-            }
-        }
-        else if(hitObject != null) {
-            hitObjectMaterial.color = initialColor;
-            hitObject = null;
-            hitObjectMaterial = null;
-        }
-    }
-
-    void EquipItemOnTower(Tower targetTower) {
-        targetTower.EquipItem(holdingItem);
-        Inventory.instance.Remove(holdingItem);
-    }
-
-    public void StartHoldingItem(Item selectedItem) {
-        if (!isHoldingItem) {
-            holdingItem = selectedItem;
-            isHoldingItem = true;
-            if(holdingItem.GetType() == typeof(TowerItem)) {
-                itemTargetTag = "Obstacle";
-            }
-            else if(holdingItem.GetType() == typeof(SocketItem)) {
-                itemTargetTag = "Tower";
-            }
-            else if(holdingItem.GetType() == typeof(CombatItem)) {
-                itemTargetTag = "Tower";
-            }
-        }
-    }
-
-    public void EndHoldingItem() {
-        if(isHoldingItem) {
-            isHoldingItem = false;
-        }
-    }
-
-    */
 }

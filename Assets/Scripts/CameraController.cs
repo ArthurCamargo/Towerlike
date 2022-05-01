@@ -4,35 +4,69 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform target;
+    public float panSpeed = 20f;
+    public Vector2 panLimit;
+    public float scrollSpeed = 20f;
+    private Vector2 scrollLimit;
+    public MapGenerator mapGen;
+    public Vector2 MapSize;
+    public float TileSize;
+
+    void Start () { 
+        mapGen = GameObject.Find("MapGenerator").GetComponent<MapGenerator>();
+
+        MapSize.x = mapGen.maps[mapGen.mapIndex].mapSize.x;
+        MapSize.y = mapGen.maps[mapGen.mapIndex].mapSize.y;
+
+        TileSize = mapGen.tileSize;
+
+        panLimit.x = MapSize.x * TileSize * 0.25f;
+        panLimit.y = MapSize.y * TileSize * 0.25f;
+
+        scrollLimit.x =  10f;
+        scrollLimit.y =  Mathf.Max(MapSize.x, MapSize.y) * TileSize * 1.5f;
+
+       
+        transform.position  = new Vector3(0, Mathf.Max(MapSize.x, MapSize.y) * TileSize * 0.75f, 0);
+    }
+
+
+    void Update() { 
+
+        Vector3 pos = transform.position;
     
-    public MapGenerator map;
-    public Vector3 offset;
-    public float zoomSpeed = 4f;
-    public float minZoom = 0.5f;
-    public float maxZoom = 1.5f;
-    public float pitch = 2f;
-    public float currentZoom = 10f;
-    public Vector3 velocity;
-    void Start()
-    {
-        offset = transform.position - target.transform.position;
-        //maxZoom = map.currentMap.mapSize.y * map.tileSize / (20f * 60f);
+        if (Input.GetKey("w")) {
+            pos.z += panSpeed * Time.unscaledDeltaTime;
+        }
+
+        if (Input.GetKey("s")) {
+            pos.z -= panSpeed * Time.unscaledDeltaTime;
+        }
+
+        if (Input.GetKey("d")) {
+            pos.x += panSpeed * Time.unscaledDeltaTime;
+        }
+
+        if (Input.GetKey("a")) {
+            pos.x -= panSpeed * Time.unscaledDeltaTime;
+        }
+
+
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        pos.y -= scroll * scrollSpeed * 100f * Time.unscaledDeltaTime;
+
+
+        pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
+        pos.y = Mathf.Clamp(pos.y, scrollLimit.x, scrollLimit.y);
+        pos.z = Mathf.Clamp(pos.z, -panLimit.y, panLimit.y);
+
+        transform.position = pos;
     }
-    public void Move(Vector3 _velocity)
-    {
-        velocity = _velocity;
-    }
-    void Update()
-    {
-        currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
-        currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
-    }
-    void LateUpdate()
-    {
-        offset += velocity * Time.unscaledDeltaTime;
-        transform.position = target.transform.position + offset * currentZoom;
-        if(tag != "MainCamera")
-            transform.LookAt(target.position + Vector3.up * pitch);
-    }
+
+
+
+
+
+
+
 }
