@@ -11,7 +11,7 @@ TrueTypeFontImporter:
   fontNames:
   - Public Pixel
   fallbackFontReferences:
-  - {fileID: 12800000, guid: f211d3fc6915693318b96c29e95e15f3, type: 3}
+  - {fileID: 12800000, guid: 8ffbcf0e95c5c3c19bf6a0d71d304e46, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
