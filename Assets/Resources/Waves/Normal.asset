@@ -21,10 +21,10 @@ MonoBehaviour:
   enemySpeedType: 2
   enemyDamageType: 2
   enemyTypes:
-  - {fileID: 11400000, guid: 9809fa773fb09ab4cbcadf5d757bcdde, type: 2}
+  - {fileID: 11400000, guid: 30e9e761834f4f24784819d1f82444f8, type: 2}
   - {fileID: 11400000, guid: 4ef7f9e609f871240afd70f8162e3232, type: 2}
-  - {fileID: 11400000, guid: 777ca6de02b36fd44b1e3213ccb22d35, type: 2}
+  - {fileID: 11400000, guid: ffa14fa702a65bf448864d6cf92b7766, type: 2}
   - {fileID: 11400000, guid: b688c714b4d83c545819a2b86ee4cd35, type: 2}
-  - {fileID: 11400000, guid: 1bd170ebae575bc4f8bb29a42f6f6e97, type: 2}
-  - {fileID: 11400000, guid: 37e4ec768fddccf41a877d991646c53e, type: 2}
+  - {fileID: 11400000, guid: 9c724d1d924119b4a9d08d02df451489, type: 2}
+  - {fileID: 11400000, guid: c5f6344a3384d154383cbe75b28c8288, type: 2}
   - {fileID: 11400000, guid: 0a2deff67484e7345b30c465d153089d, type: 2}

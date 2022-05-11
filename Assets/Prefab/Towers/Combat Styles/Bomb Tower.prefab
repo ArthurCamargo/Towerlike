@@ -101,25 +101,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1d84dbcd334204793275d3c473f4f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 1663335110803329029}
+  towerPrefab: {fileID: 0}
   attackPlaceHolder: {fileID: 0}
   target: {fileID: 0}
+  towerTypeName: 
   enemyTag: Enemy
   equipedItems: []
   baseAttributes:
-    damage: 5
-    range: 8
-    attackSpeed: 0.5
-    projectileSpeed: 10
-    sockets: 5
+    damage: 0
+    range: 0
+    attackSpeed: 0
+    projectileSpeed: 0
+    sockets: 0
     element: 0
     effects: []
   attributesMultipliers:
-    damage: 1
-    range: 1
-    attackSpeed: 1
-    projectileSpeed: 1
-    sockets: 1
+    damage: 0
+    range: 0
+    attackSpeed: 0
+    projectileSpeed: 0
+    sockets: 0
     element: 0
     effects: []
   attributes:
@@ -130,7 +131,7 @@ MonoBehaviour:
     sockets: 0
     element: 0
     effects: []
-  bomb: {fileID: 2967722364723791129, guid: 265d1fa2948c6b94dac1c8e25a8c558a, type: 3}
+  bomb: {fileID: 0}
 --- !u!95 &7833437525385503784
 Animator:
   serializedVersion: 3

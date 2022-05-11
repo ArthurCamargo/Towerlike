@@ -65,7 +65,7 @@ public class ObjectViewUI : MonoBehaviour
     public void GatherInformation(GameObject newObject) {
         SetPrefab(newObject.transform);
         currentTower = newObject.GetComponent<Tower>();
-        SetName(currentTower.nameType);
+        SetName(currentTower.towerTypeName);
         SetItems(currentTower.equipedItems);
     }
 }

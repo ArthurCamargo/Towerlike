@@ -62,6 +62,7 @@ MonoBehaviour:
   towerPrefab: {fileID: 1663335110803329029}
   attackPlaceHolder: {fileID: 0}
   target: {fileID: 0}
+  towerTypeName: Normal Tower
   enemyTag: Enemy
   equipedItems: []
   baseAttributes:

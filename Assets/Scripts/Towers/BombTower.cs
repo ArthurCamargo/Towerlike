@@ -12,17 +12,6 @@ public class BombTower : Tower {
     }
 
     protected override void Update() {
-        if(Time.time > nextAttackTime) {
-            if(UpdateTarget()) {
-                nextAttackTime = Time.time + 1 / attributes.attackSpeed;
-                Attack();
-            }
-            
-        }
-
-
-
-
         if(target == null) {
             UpdateTarget();
         }

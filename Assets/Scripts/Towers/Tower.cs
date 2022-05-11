@@ -7,6 +7,7 @@ public abstract class Tower : MonoBehaviour {
     public Transform towerPrefab;
     public Transform attackPlaceHolder;
     public Transform target;
+    public string towerTypeName;
 
     public string enemyTag = "Enemy";
 
