@@ -2,24 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
-{
-
+public class CameraController : MonoBehaviour {
     public float panSpeed = 20f;
-    public float panBorderThickness = 400f;
-
     public Vector2 panLimit;
-
     public float scrollSpeed = 20f;
     private Vector2 scrollLimit;
-
     public MapGenerator mapGen;
-
     public Vector2 MapSize;
     public float TileSize;
 
-
-    void Start () { 
+    void Start() {
         mapGen = GameObject.Find("MapGenerator").GetComponent<MapGenerator>();
 
         MapSize.x = mapGen.maps[mapGen.mapIndex].mapSize.x;
@@ -27,36 +19,34 @@ public class CameraController : MonoBehaviour
 
         TileSize = mapGen.tileSize;
 
-
         panLimit.x = MapSize.x * TileSize * 0.25f;
         panLimit.y = MapSize.y * TileSize * 0.25f;
 
+        scrollLimit.x = 10f;
+        scrollLimit.y = Mathf.Max(MapSize.x, MapSize.y) * TileSize * 1.5f;
 
-        scrollLimit.x =  10f;
-        scrollLimit.y =  Mathf.Max(MapSize.x, MapSize.y) * TileSize * 1.5f;
 
-       
-        transform.position  = new Vector3(0, Mathf.Max(MapSize.x, MapSize.y) * TileSize, 0);
+        transform.position = new Vector3(0, Mathf.Max(MapSize.x, MapSize.y) * TileSize * 0.75f, 0);
     }
 
 
-    void Update() { 
+    void Update() {
 
         Vector3 pos = transform.position;
-    
-        if (Input.GetKey("w") ) { //|| Input.mousePosition.y >= Screen.height - panBorderThickness) {
+
+        if(Input.GetKey("w")) {
             pos.z += panSpeed * Time.unscaledDeltaTime;
         }
 
-        if (Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness) {
+        if(Input.GetKey("s")) {
             pos.z -= panSpeed * Time.unscaledDeltaTime;
         }
 
-        if (Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness) {
+        if(Input.GetKey("d")) {
             pos.x += panSpeed * Time.unscaledDeltaTime;
         }
 
-        if (Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness) {
+        if(Input.GetKey("a")) {
             pos.x -= panSpeed * Time.unscaledDeltaTime;
         }
 
