@@ -22,35 +22,19 @@ public class Player : MonoBehaviour {
     public float cameraSpeed = 50f;
     public Tower defautTower;
 
-
-    //States
     public FreeState freeState = new FreeState();
     public BuildingState buildingState = new BuildingState();
     public ChangingCombatState changingCombatState = new ChangingCombatState();
     public EquippingItemState equippingItemState = new EquippingItemState();
 
-
-
-    //Viewing Objects
-
-    public ObjectViewUI objectViewUI;
-
-    public GameObject currentObject;
-
-
-    public SpeedController speedController;
-
     public PlayerState currentState;
     public Item holdingItem;
-
 
     private Collider hitObject;
     private Color initialColor;
     private Material hitObjectMaterial;
     private Camera playerCamera;
     private CameraController controller;
-
-    
 
 
 
@@ -67,7 +51,6 @@ public class Player : MonoBehaviour {
 
         if(EventSystem.current.IsPointerOverGameObject())
             return;
-
 
         currentState = currentState.doAction(this);
     }
@@ -93,28 +76,27 @@ public class Player : MonoBehaviour {
     public Collider SelectObjectWithTag(string tag) {
         RaycastHit hit;
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-
         if(Physics.Raycast(ray, out hit) && hit.collider.CompareTag(tag)) {
 
-            if(hitObject != null)
-                hitObjectMaterial.color = initialColor;
+            //if(hitObject != null)
+                //hitObjectMaterial.color = initialColor;
             hitObject = hit.collider;
 
-            hitObjectMaterial = hitObject.GetComponent<Renderer>().material;
-            initialColor = hitObjectMaterial.color;
-            hitObjectMaterial.color = highlightColor;
+            //hitObjectMaterial = hitObject.GetComponent<Renderer>().material;
+            //initialColor = hitObjectMaterial.color;
+            //hitObjectMaterial.color = highlightColor;
 
             if(Input.GetMouseButtonDown(0)) {
                 if(hitObject != null) {
-                    hitObjectMaterial.color = initialColor;
+                    //hitObjectMaterial.color = initialColor;
                     return hitObject;
                 }
             }
         }
         else if(hitObject != null) {
-            hitObjectMaterial.color = initialColor;
-            hitObject = null;
-            hitObjectMaterial = null;
+            //hitObjectMaterial.color = initialColor;
+            //hitObject = null;
+            //hitObjectMaterial = null;
         }
 
         return null;

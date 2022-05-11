@@ -36,7 +36,7 @@ public class Enemy : LivingEntity {
 
     void Update() {
         if(!hasTarget) {
-            animator.SetInteger("Walk", 0);
+            animator.SetBool("Walking", false);
             return;
         }
         targetEntity.OnDeath += OnTargetDeath;
@@ -72,9 +72,6 @@ public class Enemy : LivingEntity {
     }
 
     internal static Enemy GenerateEnemyFromWave(Wave currentWave, Vector3 spawnerPosition) {
-        //EnemyType[] enemyTypes = Resources.LoadAll<EnemyType>("Enemies");
-        //EnemyType randomEnemyType = enemyTypes[Random.Range(0, enemyTypes.Length)];
-
         EnemyType randomEnemyType = currentWave.enemyTypes[Random.Range(0, currentWave.enemyTypes.Count)];
 
         Enemy spawnedEnemy = Instantiate(randomEnemyType.prefab, spawnerPosition, Quaternion.identity);
@@ -201,7 +198,7 @@ public class Enemy : LivingEntity {
         if(playerBase != null) {
             hasTarget = true;
 
-            animator.SetInteger("Walk", 1);
+            animator.SetBool("Walking", true);
             target = playerBase.transform;
             pathfinder.SetDestination(target.position);
             targetEntity = target.GetComponent<LivingEntity>();

@@ -12,7 +12,6 @@ public class LaserTower : Tower {
 
     protected override void Start() {
         laserIsOn = false;
-        nameType = "Laser Tower";
     }
 
     protected override void Update() {
