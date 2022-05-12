@@ -30,6 +30,7 @@ public class AudioManager : MonoBehaviour
 			s.source.loop = s.loop;
 
 			s.source.outputAudioMixerGroup = mixerGroup;
+			s.source.ignoreListenerPause = true;
 		}
 	}
 
