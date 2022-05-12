@@ -7,6 +7,8 @@ public class InventoryUI : MonoBehaviour
     
     Inventory inventory;
 
+    bool isLocked = false;
+
     InventorySlot[] slots;
 
     void Start()
@@ -18,11 +20,24 @@ public class InventoryUI : MonoBehaviour
         UpdateUI();
     }
 
+
+    public void SetLock(bool locking)
+    {
+        isLocked = locking;
+    }
+
+
+    public void Toogle()
+    {
+        if(!isLocked)
+            inventoryUI.SetActive(!inventoryUI.activeSelf);
+    }
+
     void Update()
     {
-        if (Input.GetButtonDown("Inventory")) {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
-        }
+        if (Input.GetButtonDown("Inventory"))
+            Toogle();
+            
     }
 
     void UpdateUI()

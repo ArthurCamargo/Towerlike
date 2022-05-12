@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Mini Boss
   m_EditorClassIdentifier: 
   name: Mini Boss
-  icon: {fileID: 0}
-  description: 
+  icon: {fileID: 21300000, guid: f15bdd1d570f09ecca49c63277abf380, type: 3}
+  description: Mini Boss be prepared for you doom AHAHAHAHAHAH
   timeBetweenSpawnsType: 4
   enemyCountType: 0
   enemyHealthType: 3

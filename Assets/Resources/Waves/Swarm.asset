@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Swarm
   m_EditorClassIdentifier: 
   name: Swarm
-  icon: {fileID: 0}
-  description: 'A loooooot of enemies '
+  icon: {fileID: 21300000, guid: 026e01197c67fae8fb32c2238003386f, type: 3}
+  description: A lot of enemies ......
   timeBetweenSpawnsType: 3
   enemyCountType: 4
   enemyHealthType: 0

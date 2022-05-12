@@ -7,6 +7,12 @@ public class WaveGenerator: MonoBehaviour {
 
     public const float WAVE_DIFFICULTY_MULTIPLYER = 1.05f;
 
+    WaveType[] waveTypes;
+
+    public void Awake() {
+        waveTypes = Resources.LoadAll<WaveType>("Waves");
+    }
+    
     public List<Wave> GenerateRandomWaves(int waveNum, System.Random random, int waveQuantity)
     {
         List<Wave> waveOptions = new List<Wave>();
@@ -20,7 +26,6 @@ public class WaveGenerator: MonoBehaviour {
     }
     public Wave GenerateRandomWave(int waveNum, System.Random random) {
 
-        WaveType[] waveTypes = Resources.LoadAll<WaveType>("Waves");
         WaveType randomWaveType = waveTypes[Random.Range(0, waveTypes.Length)];
         Wave newWave = new Wave(waveNum);
 
