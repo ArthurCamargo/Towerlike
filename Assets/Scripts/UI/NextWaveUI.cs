@@ -15,7 +15,7 @@ public class NextWaveUI : MonoBehaviour
 
     public List<Button> buttons;
     public SpeedController speed;
-    public Image waveTypeImage;
+    public Image waveTypeIcon;
 
     public List<Image> enemyTypeImages;
     public TextMeshProUGUI[] descriptionText;
@@ -23,6 +23,7 @@ public class NextWaveUI : MonoBehaviour
     public Wave currentWave;
     public WaveController controller;
 
+    public InventoryUI inventoryUI;
 
     public void Awake () 
     { 
@@ -31,9 +32,9 @@ public class NextWaveUI : MonoBehaviour
 
     public void ChooseNextWaveUI(WaveController newController, List<Wave> waveOptions)
     {
-        Inventory.instance.enabled = false;
         controller = newController;
         nextWaveUI.SetActive(true);
+        inventoryUI.Toogle();
         Debug.Log(waveOptions);
         
         for(int i = 0; i < waveOptions.Count; i ++)
@@ -58,21 +59,26 @@ public class NextWaveUI : MonoBehaviour
 
 
             descriptionText = descriptionPanel.GetComponentsInChildren<TextMeshProUGUI>();
+            
+            waveTypeIcon = descriptionPanel.GetComponentsInChildren<Image>()[1];
+            
 
 
             descriptionText[0].text = currentWave.waveType.description;
             descriptionText[0].text += "\n";
 
-            descriptionText[1].text = "Enemy Type: ";
+            descriptionText[1].text = "Enemy Type: \n";
             foreach(EnemyType enemyType in currentWave.enemyTypes)
             {
-                descriptionText[1].text += enemyType.name + " ";
+                descriptionText[1].text += enemyType.name + "\n";
             }
 
             descriptionText[2].text = currentWave.reward.ToString();
+
+            waveTypeIcon.sprite = currentWave.waveType.icon;
             
         }
-        speed.Pause();
+        speed.TooglePlay();
     }
     public void StartWave()
     {
