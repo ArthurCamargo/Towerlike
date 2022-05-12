@@ -6,15 +6,6 @@
       "source": "builtin",
       "dependencies": {}
     },
-    "com.unity.collab-proxy": {
-      "version": "1.15.16",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.services.core": "1.0.1"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
       "depth": 1,
@@ -47,6 +38,7 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
     "com.unity.services.core": {
       "version": "1.0.1",
       "depth": 1,
@@ -56,6 +48,8 @@
       },
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> 305ffa3 (Remove o fucking plastic)
     "com.unity.sysroot": {
       "version": "1.0.0",
       "depth": 1,
