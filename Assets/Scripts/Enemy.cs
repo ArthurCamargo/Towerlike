@@ -18,7 +18,9 @@ public class Enemy : LivingEntity {
     public float enemyDamage = 1;
     public Attributes.Elements enemyElement;
     public string enemyTypeName;
+    public float enemyDropChance;
     public List<Effect> effects;
+    public List<Item> dropList;
 
     bool hasTarget;
 
@@ -79,34 +81,7 @@ public class Enemy : LivingEntity {
         spawnedEnemy.AdaptToWaveType(currentWave);
         spawnedEnemy.AdaptToWaveNumber(currentWave.waveNumber);
         spawnedEnemy.enemyTypeName = randomEnemyType.name;
-
-       /*
-        Color enemyColor = Color.gray;
-
-
-        switch(spawnedEnemy.enemyElement) {
-            case Attributes.Elements.NONE:
-                enemyColor = Color.gray;
-                break;
-            case Attributes.Elements.FIRE:
-                enemyColor = Color.red;
-                break;
-            case Attributes.Elements.WATER:
-                enemyColor = Color.blue;
-                break;
-            case Attributes.Elements.PLANT:
-                enemyColor = Color.green;
-                break;
-            case Attributes.Elements.LIGHT:
-                enemyColor = Color.white;
-                break;
-            case Attributes.Elements.DARKNESS:
-                enemyColor = Color.magenta;
-                break;
-        }
-
-        spawnedEnemy.GetComponent<Renderer>().material.color = enemyColor;
-       */
+        spawnedEnemy.dropList = randomEnemyType.dropList;
 
         return spawnedEnemy;
     }
@@ -125,6 +100,25 @@ public class Enemy : LivingEntity {
         this.startingHealth = AdaptToDifficulty(currentWave.enemyHealthType, this.startingHealth);
         enemyNav.speed = AdaptToDifficulty(currentWave.enemySpeedType, enemyNav.speed);
         this.enemyDamage = AdaptToDifficulty(currentWave.enemyDamageType, this.enemyDamage);
+
+        // VIDA
+        switch(currentWave.waveType.enemyDropRateType) {
+            case Difficulty.VERY_LOW:
+                this.enemyDropChance = 1;
+                break;
+            case Difficulty.LOW:
+                this.enemyDropChance = Random.Range(2, 5);
+                break;
+            case Difficulty.MEDIUM:
+                this.enemyDropChance = Random.Range(5, 10);
+                break;
+            case Difficulty.HIGH:
+                this.enemyDropChance = Random.Range(20, 51);
+                break;
+            case Difficulty.VER_HIGH:
+                this.enemyDropChance = 100;
+                break;
+        }
     }
 
     private void AdaptToEnemyType(EnemyType randomEnemyType) {
@@ -392,5 +386,9 @@ public class Enemy : LivingEntity {
                 break;
         }
         //this.transform.GetComponent<Renderer>().material.color = Color.gray;
+    }
+
+    protected void Drop() {
+        Inventory.instance.TryDrop(dropList, enemyDropChance);
     }
 }

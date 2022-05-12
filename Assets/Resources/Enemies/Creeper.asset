@@ -19,3 +19,9 @@ MonoBehaviour:
   healthType: 1
   speedType: 1
   damageType: 4
+  dropList:
+  - {fileID: 11400000, guid: e14d96ba87539ab4cb5b713978a8079f, type: 2}
+  - {fileID: 11400000, guid: fe0b304738c194b40b41edbcc41a6854, type: 2}
+  - {fileID: 11400000, guid: e985b9fc0cb486242a264553c28db7e1, type: 2}
+  - {fileID: 11400000, guid: 0e6ecfccd64a98846a4e0b0b53bf0fc2, type: 2}
+  - {fileID: 11400000, guid: b9d117b243121734196823568c4ea086, type: 2}

@@ -19,3 +19,11 @@ MonoBehaviour:
   healthType: 1
   speedType: 2
   damageType: 2
+  dropList:
+  - {fileID: 11400000, guid: eaffd48a61d8f2e419e1e142768eb9f7, type: 2}
+  - {fileID: 11400000, guid: fe0b304738c194b40b41edbcc41a6854, type: 2}
+  - {fileID: 11400000, guid: d702444d0be92ae47bc2e68dfa57b5cd, type: 2}
+  - {fileID: 11400000, guid: e985b9fc0cb486242a264553c28db7e1, type: 2}
+  - {fileID: 11400000, guid: d26941adb2931a04b889370867909821, type: 2}
+  - {fileID: 11400000, guid: 0e6ecfccd64a98846a4e0b0b53bf0fc2, type: 2}
+  - {fileID: 11400000, guid: ea9e6663a317c454c99c46d196c56c71, type: 2}

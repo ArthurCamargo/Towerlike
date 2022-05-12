@@ -20,6 +20,7 @@ MonoBehaviour:
   enemyHealthType: 3
   enemySpeedType: 0
   enemyDamageType: 2
+  enemyDropRateType: 4
   enemyTypes:
   - {fileID: 11400000, guid: 30e9e761834f4f24784819d1f82444f8, type: 2}
   - {fileID: 11400000, guid: 4ef7f9e609f871240afd70f8162e3232, type: 2}

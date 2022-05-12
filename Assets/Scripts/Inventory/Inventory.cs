@@ -39,7 +39,20 @@ public class Inventory : MonoBehaviour {
     private Item[] allItems, combatItems, towerItems, socketItems, elemenItems, effectItems, statItems;
     private System.Random rand = new System.Random();
 
-    public void TryDrop() {
+    public void TryDrop(List<Item> dropList, float enemyDropChance) {
+        if(dropList == null)
+            return;
+        if(dropList.Count == 0)
+            return;
+
+        double chance = rand.NextDouble();
+        int itemIdx = Random.Range(0, dropList.Count);
+        if(chance < enemyDropChance / 100.0) {       // 40% chance de combat item
+            this.Add(Instantiate(dropList[itemIdx]));
+        }
+    }
+
+    public void TryDropRandom() {
         double chance = rand.NextDouble();
         if(chance < 20 / 100.0) {       // 40% chance de combat item
             AddRandom();

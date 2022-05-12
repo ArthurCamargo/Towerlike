@@ -10,5 +10,6 @@ public class WaveType : ScriptableObject {
     public Image icon;
     public string description = "";
     public Utility.Difficulty timeBetweenSpawnsType, enemyCountType, enemyHealthType, enemySpeedType, enemyDamageType;
+    public Utility.Difficulty enemyDropRateType;
     public List<EnemyType> enemyTypes;
 }
