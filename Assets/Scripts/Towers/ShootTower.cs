@@ -21,4 +21,7 @@ public class ShootTower : Tower {
         newProjectile.SetTarget(target);
         newProjectile.SetAttack(new Attack(attributes.damage, attributes.element, attributes.effects));
     }
+
+    public override void BeforeDestroy() {
+    }
 }

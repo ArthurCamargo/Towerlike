@@ -10,6 +10,7 @@ public class BombProjectile : Projectile
     public Transform animationModel;
 
     protected override void Start() {
+        FindObjectOfType<AudioManager>().Play("Bomb Start");
     }
 
     protected override void Update() {
@@ -18,6 +19,7 @@ public class BombProjectile : Projectile
 
         if(CheckTargetHit(moveDistance)) {
             Utility.Explode(fixedTarget, bombRange, attack.damage, attack.element, attack.effects);
+            FindObjectOfType<AudioManager>().Play("Bomb Explosion");
             var animation = new GameObject().AddComponent<Animation>();
             animation.SetAnimation(animationModel, transform.position, 1, bombRange);
             GameObject.Destroy(gameObject);

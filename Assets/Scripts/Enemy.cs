@@ -301,21 +301,21 @@ public class Enemy : LivingEntity {
             case Attributes.Effects.BURN:
                 if(effect.Tick()) {
                     this.TakeAttack(new Attack(effect.damage, Attributes.Elements.FIRE));
-                    this.transform.GetComponent<Renderer>().material.color = Color.red + Color.yellow;
+                    //this.transform.GetComponent<Renderer>().material.color = Color.red + Color.yellow;
                 }
                 break;
 
             case Attributes.Effects.BLEED:
                 if(effect.Tick()) {
                     this.TakeAttack(new Attack(effect.damage, Attributes.Elements.NONE));
-                    this.transform.GetComponent<Renderer>().material.color = Color.red;
+                    //this.transform.GetComponent<Renderer>().material.color = Color.red;
                 }
                 break;
 
             case Attributes.Effects.SLOW:
                 if(!effect.isOn) {
                     effect.isOn = true;
-                    this.transform.GetComponent<Renderer>().material.color = Color.blue;
+                    //this.transform.GetComponent<Renderer>().material.color = Color.blue;
                     NavMeshAgent navMeshAgent = this.GetComponent<NavMeshAgent>();
                     effect.damage = navMeshAgent.speed * (effect.damagePercent / 100);
                     this.GetComponent<NavMeshAgent>().speed -= effect.damage;
@@ -325,21 +325,21 @@ public class Enemy : LivingEntity {
             case Attributes.Effects.POISON:
                 if(effect.Tick()) {
                     this.TakeAttack(new Attack(effect.damage, Attributes.Elements.PLANT));
-                    this.transform.GetComponent<Renderer>().material.color = Color.green;
+                    //this.transform.GetComponent<Renderer>().material.color = Color.green;
                 }
                 break;
 
             case Attributes.Effects.STUN:
                 if(!pathfinder.isStopped) {
                     pathfinder.isStopped = true;
-                    this.transform.GetComponent<Renderer>().material.color = Color.black;
+                    //this.transform.GetComponent<Renderer>().material.color = Color.black;
                 }
                 break;
 
             case Attributes.Effects.FEAR:
                 if(!effect.isOn) {
                     effect.isOn = true;
-                    this.transform.GetComponent<Renderer>().material.color = Color.cyan;
+                    //this.transform.GetComponent<Renderer>().material.color = Color.cyan;
                     pathfinder.SetDestination(GameObject.FindGameObjectWithTag("EnemySpawner").transform.position);
                 }
                 break;
@@ -353,7 +353,7 @@ public class Enemy : LivingEntity {
             case Attributes.Effects.CURSE:
                 if(!effect.isOn) {
                     effect.isOn = true;
-                    this.transform.GetComponent<Renderer>().material.color = Color.magenta;
+                    //this.transform.GetComponent<Renderer>().material.color = Color.magenta;
                 }
                 break;
         }
@@ -391,6 +391,6 @@ public class Enemy : LivingEntity {
             case Attributes.Effects.CURSE:
                 break;
         }
-        this.transform.GetComponent<Renderer>().material.color = Color.gray;
+        //this.transform.GetComponent<Renderer>().material.color = Color.gray;
     }
 }

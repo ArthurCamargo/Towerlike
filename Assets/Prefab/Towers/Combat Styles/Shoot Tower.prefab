@@ -67,7 +67,7 @@ MonoBehaviour:
   equipedItems: []
   baseAttributes:
     damage: 1
-    range: 5
+    range: 8
     attackSpeed: 1
     projectileSpeed: 20
     sockets: 5

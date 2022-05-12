@@ -81,6 +81,7 @@ public class Player : MonoBehaviour {
         newTower = Instantiate((holdingItem as CombatItem).towerPrefab, oldTower.transform.position, Quaternion.identity).GetComponent<Tower>();
         newTower.TransferTowerStats(oldTower);
 
+        oldTower.BeforeDestroy();
         Destroy(oldTower.gameObject);
         Inventory.instance.Remove(holdingItem);
     }

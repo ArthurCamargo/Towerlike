@@ -191,4 +191,5 @@ public abstract class Tower : MonoBehaviour {
     }
 
     public abstract void Attack();
+    public abstract void BeforeDestroy();
 }

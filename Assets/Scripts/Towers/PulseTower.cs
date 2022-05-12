@@ -26,11 +26,13 @@ public class PulseTower : Tower {
         //Create sphere as pulse animation
         var animation = new GameObject().AddComponent<Animation>();
         animation.SetAnimation(attackPrefab, attackPlaceHolder.transform.position, (1 / attributes.attackSpeed)*0.40f, attributes.range);
+        FindObjectOfType<AudioManager>().Play("Pulse");
 
         //Do damage on enemies
         Explode(attackPlaceHolder.transform.position);
 
     }
 
-
+    public override void BeforeDestroy() {
+    }
 }

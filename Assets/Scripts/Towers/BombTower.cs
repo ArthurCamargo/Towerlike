@@ -40,4 +40,7 @@ public class BombTower : Tower {
         newBomb.SetBombRange(attributes.range/2);
         newBomb.SetAttack(new Attack(attributes.damage, attributes.element, attributes.effects));
     }
+
+    public override void BeforeDestroy() {
+    }
 }

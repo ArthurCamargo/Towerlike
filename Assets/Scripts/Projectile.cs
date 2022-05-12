@@ -32,6 +32,10 @@ public class Projectile : MonoBehaviour
             GameObject.Destroy(gameObject);
         }    
         else {
+            if(this.name == "Sniper Bullet(Clone)")
+                FindObjectOfType<AudioManager>().Play("Sniper Shot");
+            else
+                FindObjectOfType<AudioManager>().Play("Normal Shot");
             targetEntity = target.GetComponent<LivingEntity>();
             targetEntity.OnDeath += OnTargetDeath;
         }

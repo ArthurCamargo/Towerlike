@@ -18,10 +18,12 @@ public class LaserTower : Tower {
         if(target == null) {
             if(laserIsOn) {
                 laserIsOn = false;
+                FindObjectOfType<AudioManager>().Play("Laser End");
                 Destroy(attackLaser.gameObject);
             }
             if(UpdateTarget()) {
                 laserAttackSpeed = attributes.attackSpeed;
+                FindObjectOfType<AudioManager>().Play("Laser Start");
                 attackLaser = Instantiate(attackPrefab, attackPlaceHolder.transform.position, Quaternion.identity) as Transform;
                 laserIsOn = true;
             }
@@ -52,5 +54,13 @@ public class LaserTower : Tower {
 
     public void Laser(Transform target) {
         target.GetComponent<Enemy>().TakeAttack(new Attack(attributes.damage, attributes.element, attributes.effects));
+    }
+
+    public override void BeforeDestroy() {
+        if(laserIsOn) {
+            laserIsOn = false;
+            FindObjectOfType<AudioManager>().Play("Laser End");
+            Destroy(attackLaser.gameObject);
+        }
     }
 }
