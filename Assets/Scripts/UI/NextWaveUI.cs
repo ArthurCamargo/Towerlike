@@ -31,6 +31,7 @@ public class NextWaveUI : MonoBehaviour
 
     public void ChooseNextWaveUI(WaveController newController, List<Wave> waveOptions)
     {
+        Inventory.instance.enabled = false;
         controller = newController;
         nextWaveUI.SetActive(true);
         Debug.Log(waveOptions);
