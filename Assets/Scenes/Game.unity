@@ -4270,7 +4270,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 795.8905, y: 0}
+  m_AnchoredPosition: {x: 1254.8905, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &298434831
@@ -10975,7 +10975,7 @@ MonoBehaviour:
   mixerGroup: {fileID: 24300002, guid: 2d6275f2f1eada14ca8712091e568277, type: 2}
   sounds:
   - name: Theme
-    clip: {fileID: 8300000, guid: aac337e79badb734c9d89f703ad63565, type: 3}
+    clip: {fileID: 8300000, guid: fe3b21fc925cdd28d8c30b72a2662f64, type: 3}
     volume: 0.1
     volumeVariance: 0
     pitch: 1
@@ -10984,7 +10984,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Bomb Start
-    clip: {fileID: 8300000, guid: e8749b0ca46074f498272088ec7342bc, type: 3}
+    clip: {fileID: 8300000, guid: 30075e7367c2c6356be2258940d8080c, type: 3}
     volume: 0.2
     volumeVariance: 0
     pitch: 1
@@ -10993,7 +10993,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Bomb Explosion
-    clip: {fileID: 8300000, guid: 6bf1e5b7d1776fb499ff4cefdc868087, type: 3}
+    clip: {fileID: 8300000, guid: 00af761be3744d6c09d7d1022ca2cd9b, type: 3}
     volume: 0.2
     volumeVariance: 0
     pitch: 1
@@ -11002,7 +11002,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Laser Start
-    clip: {fileID: 8300000, guid: a024d666fa7fa494886e3abdd29398b1, type: 3}
+    clip: {fileID: 8300000, guid: 858200d15019125c88b47864ccd7f183, type: 3}
     volume: 0.2
     volumeVariance: 0
     pitch: 1
@@ -11011,7 +11011,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Laser End
-    clip: {fileID: 8300000, guid: 30f975279427ead4db4254558da55604, type: 3}
+    clip: {fileID: 8300000, guid: f7899fcda0014ceeab6b8e7eeefe4c32, type: 3}
     volume: 0.2
     volumeVariance: 0
     pitch: 1
@@ -11020,7 +11020,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Normal Shot
-    clip: {fileID: 8300000, guid: e89d2ccf55a94a74b89969d3db716748, type: 3}
+    clip: {fileID: 8300000, guid: f70d1442b44c12deca906819d87f4b25, type: 3}
     volume: 0.2
     volumeVariance: 0
     pitch: 1
@@ -11029,7 +11029,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Pulse
-    clip: {fileID: 8300000, guid: c513df4eca4232d4da9c86f8bc77ef73, type: 3}
+    clip: {fileID: 8300000, guid: 47e255759c5aca82e91d6439c2d1ac13, type: 3}
     volume: 0.2
     volumeVariance: 0
     pitch: 1
@@ -11038,7 +11038,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Sniper Shot
-    clip: {fileID: 8300000, guid: 4edeb6781df344e4580c1bee15d5a661, type: 3}
+    clip: {fileID: 8300000, guid: 0d8252c10f25db07ebc5f46dbe3b9530, type: 3}
     volume: 0.2
     volumeVariance: 0
     pitch: 1
