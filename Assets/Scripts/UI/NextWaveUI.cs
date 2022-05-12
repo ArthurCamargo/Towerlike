@@ -35,6 +35,7 @@ public class NextWaveUI : MonoBehaviour
         controller = newController;
         nextWaveUI.SetActive(true);
         inventoryUI.Toogle();
+        inventoryUI.SetLock(true);
         Debug.Log(waveOptions);
         
         for(int i = 0; i < waveOptions.Count; i ++)
@@ -82,7 +83,7 @@ public class NextWaveUI : MonoBehaviour
     }
     public void StartWave()
     {
-        
+        inventoryUI.SetLock(false);
         nextWaveUI.SetActive(false);
         speed.Resume();
     }
