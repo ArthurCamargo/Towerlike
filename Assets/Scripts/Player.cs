@@ -30,44 +30,46 @@ public class Player : MonoBehaviour {
     public EquippingItemState equippingItemState = new EquippingItemState();
 
 
+    //Cameras
+    public CameraController cameraController;
 
     //Viewing Objects
-
     public ObjectViewUI objectViewUI;
-
     public GameObject currentObject;
-
-
     public SpeedController speedController;
-
     public PlayerState currentState;
     public Item holdingItem;
-
-
     private Collider hitObject;
     private Color initialColor;
     private Material hitObjectMaterial;
-    private Camera playerCamera;
-    private CameraController controller;
-
-
-
 
 
     // Start is called before the first frame update
     void Start() {
-        playerCamera = Camera.main;
-        controller = playerCamera.GetComponent<CameraController>();
         currentState = freeState;
     }
 
+
+    void handleInput() {
+        if(Input.GetButtonDown("TooglePause")) {
+            speedController.TooglePause();
+        }
+        
+        if(Input.GetButtonDown("ToogleSpeed")) {
+            speedController.Toogle3Times();
+        }
+
+        if(Input.GetButtonDown("CameraSwap")) {
+           cameraController.CameraSwap();
+        }
+    }
+
     void Update() {
-        Vector3 moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        Vector3 moveVelocity = moveInput.normalized * cameraSpeed;
 
         if(EventSystem.current.IsPointerOverGameObject())
             return;
-
+        
+        handleInput();
 
         currentState = currentState.doAction(this);
     }
@@ -93,7 +95,7 @@ public class Player : MonoBehaviour {
 
     public Collider SelectObjectWithTag(string tag) {
         RaycastHit hit;
-        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray, out hit) && hit.collider.CompareTag(tag)) {
 
             //if(hitObject != null)

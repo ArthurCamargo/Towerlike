@@ -57,9 +57,10 @@ public class ObjectViewUI : MonoBehaviour
         if(prefabView != null)
             GameObject.Destroy(prefabView.gameObject);
 
-        prefabView = Instantiate(prefab, placeHolder.position + new Vector3(0.2f, 0.5f, 0.5f), placeHolder.rotation);
+        prefabView = Instantiate(prefab, placeHolder.position , placeHolder.rotation);
+        //
         prefabView.parent = placeHolder.transform;
-        prefabView.localScale += new Vector3(30f, 30f, 30f);
+        prefabView.localScale += new Vector3(35f, 35f, 35f);
 
     }
     public void GatherInformation(GameObject newObject) {
