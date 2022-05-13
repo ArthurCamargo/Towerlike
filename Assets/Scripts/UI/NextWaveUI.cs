@@ -34,7 +34,6 @@ public class NextWaveUI : MonoBehaviour
     {
         controller = newController;
         nextWaveUI.SetActive(true);
-        inventoryUI.Toogle();
         inventoryUI.SetLock(true);
         Debug.Log(waveOptions);
         
