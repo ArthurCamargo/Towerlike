@@ -334,7 +334,8 @@ public class Enemy : LivingEntity {
                 if(!effect.isOn) {
                     effect.isOn = true;
                     //this.transform.GetComponent<Renderer>().material.color = Color.cyan;
-                    pathfinder.SetDestination(GameObject.FindGameObjectWithTag("EnemySpawner").transform.position);
+                    if(pathfinder)
+                        pathfinder.SetDestination(GameObject.FindGameObjectWithTag("EnemySpawner").transform.position);
                 }
                 break;
 

@@ -5,16 +5,31 @@ using UnityEngine;
 public class SpeedController : MonoBehaviour {
     // Start is called before the first frame update
 
-
-    public void TooglePlay() {
-        if(Time.timeScale == 0f) {
+    float timeState = 1f;
+    public void TooglePause() {
+        if(Time.timeScale == 1f || Time.timeScale == 3f) {
+            Pause();
+        }
+        else if (timeState == 3f)
+        {
+            ThreeTimes();
+        }
+        else if(timeState == 1f){
             Resume();
         }
-        else {
-            Pause();
+    }
+
+    public void Toogle3Times() {
+        if (Time.timeScale == 0f || Time.timeScale == 1f)
+        {
+            ThreeTimes();
+        }
+        else{
+            Resume();
         }
     }
     public void Pause() {
+        timeState = Time.timeScale;
         Time.timeScale = 0f;
         AudioListener.pause = true;
 

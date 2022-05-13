@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class FreeState : PlayerState {
     PlayerState PlayerState.doAction(Player player) {
-        if(Input.GetButtonDown("TooglePlay")) {
-            player.speedController.TooglePlay();
+        if(Input.GetButtonDown("TooglePause")) {
+            player.speedController.TooglePause();
+        }
+        
+        if(Input.GetButtonDown("ToogleSpeed")) {
+            player.speedController.Toogle3Times();
         }
 
         CheckObjectClick(player);

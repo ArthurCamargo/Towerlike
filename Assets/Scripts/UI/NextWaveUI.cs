@@ -78,7 +78,7 @@ public class NextWaveUI : MonoBehaviour
             waveTypeIcon.sprite = currentWave.waveType.icon;
             
         }
-        speed.TooglePlay();
+        speed.TooglePause();
     }
     public void StartWave()
     {
