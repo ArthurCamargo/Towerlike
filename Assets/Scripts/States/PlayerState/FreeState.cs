@@ -5,20 +5,18 @@ using UnityEngine;
 public class FreeState : PlayerState {
     PlayerState PlayerState.doAction(Player player) {
         
-
-        CheckObjectClick(player);
+        CheckTowerClick(player);
 
         return this;
     }
 
-    PlayerState CheckObjectClick(Player player) {
+    PlayerState CheckTowerClick(Player player) {
         Collider hitObject = null;
         hitObject = player.SelectObjectWithTag("Tower");
 
         if(hitObject != null) {
-            player.currentObject = hitObject.gameObject;
-            Debug.Log(player.currentObject);
-            player.objectViewUI.GatherInformation(player.currentObject);
+            player.objectViewUI.gameObject.SetActive(true);
+            player.objectViewUI.GatherTowerInformation(hitObject.gameObject.GetComponent<Transform>());
             return this;
         }
         return this;

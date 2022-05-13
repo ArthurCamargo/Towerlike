@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class ObjectViewUI : MonoBehaviour
 {
     public GameObject realObject;
-    public Transform defaultPrefab;
-    public Transform prefabView = null;
+    private Transform prefabView = null;
     public Transform placeHolder;
     public Canvas canvas;
 
@@ -25,14 +24,14 @@ public class ObjectViewUI : MonoBehaviour
     void Start()
     {   
         prefabView = null;
-        SetPrefab(defaultPrefab);
         slots = slotsHolder.GetComponentsInChildren<SocketSlot>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        prefabView.Rotate(new Vector3(0f, 90f, 0f) * Time.unscaledDeltaTime);
+        if(prefabView != null)
+            prefabView.Rotate(new Vector3(0f, 90f, 0f) * Time.unscaledDeltaTime);
     }
 
 
@@ -57,15 +56,15 @@ public class ObjectViewUI : MonoBehaviour
         if(prefabView != null)
             GameObject.Destroy(prefabView.gameObject);
 
-        prefabView = Instantiate(prefab, placeHolder.position , placeHolder.rotation);
-        //
+        prefabView = Instantiate(prefab, placeHolder.position, placeHolder.rotation);
         prefabView.parent = placeHolder.transform;
         prefabView.localScale += new Vector3(35f, 35f, 35f);
 
     }
-    public void GatherInformation(GameObject newObject) {
-        SetPrefab(newObject.transform);
-        currentTower = newObject.GetComponent<Tower>();
+    public void GatherTowerInformation(Transform newTransform) {
+        Debug.Log("Gathering");
+        SetPrefab(newTransform);
+        currentTower = newTransform.GetComponent<Tower>();
         SetName(currentTower.towerTypeName);
         SetItems(currentTower.equipedItems);
     }
