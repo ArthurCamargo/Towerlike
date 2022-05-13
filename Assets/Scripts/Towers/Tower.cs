@@ -9,6 +9,8 @@ public abstract class Tower : MonoBehaviour {
     public Transform target;
     public string towerTypeName;
 
+    public string towerDescription;
+
     public string enemyTag = "Enemy";
 
     public List<SocketItem> equipedItems;
@@ -181,19 +183,23 @@ public abstract class Tower : MonoBehaviour {
         FindObjectOfType<AudioManager>().Play("Item Equip");
         Inventory.instance.Remove(item);
         if(onItemChangedCallback != null)
-            onItemChangedCallback.Invoke();
+            onItemChangedCallback.Invoke(); 
         UpdateAttributes();
     }
 
     public void UnequipItem(SocketItem item) {
         equipedItems.Remove(item);
         UpdateAttributes();
+        if(onItemChangedCallback != null)
+            onItemChangedCallback.Invoke();
     }
 
     public void TransferTowerStats(Tower oldTower) {
         equipedItems = new List<SocketItem>(oldTower.equipedItems);
         attributes.sockets = oldTower.attributes.sockets;
         UpdateAttributes();
+        if(onItemChangedCallback != null)
+            onItemChangedCallback.Invoke();
     }
 
     public abstract void Attack();
