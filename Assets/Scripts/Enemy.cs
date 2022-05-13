@@ -14,7 +14,7 @@ public class Enemy : LivingEntity {
     Transform target;
     LivingEntity targetEntity;
     Animator animator;
-    float attackDistanceThreshold = 1f;
+    float attackDistanceThreshold = 2f;
     public float enemyDamage = 1;
     public Attributes.Elements enemyElement;
     public string enemyTypeName;

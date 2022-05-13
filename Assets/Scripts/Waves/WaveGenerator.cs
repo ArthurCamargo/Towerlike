@@ -42,7 +42,7 @@ public class WaveGenerator: MonoBehaviour {
 
         switch(randomWaveType.timeBetweenSpawnsType) {
             case Difficulty.VERY_LOW:
-                newWave.timeBetweenSpawns = 0.1f;
+                newWave.timeBetweenSpawns = 0.2f;
                 break;
             case Difficulty.LOW:
                 newWave.timeBetweenSpawns = 0.5f;
