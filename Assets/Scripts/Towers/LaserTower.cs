@@ -29,20 +29,26 @@ public class LaserTower : Tower {
             }
         }
         else {
-            Vector3 laserLocalScale = attackLaser.transform.localScale;
-            float distanceToTarget = Vector3.Distance(attackPlaceHolder.position, target.position);
-            if(distanceToTarget > attributes.range) {
-                target = null;
-                return;
-            }
-            attackLaser.transform.LookAt(target);  
-            attackLaser.transform.localScale = new Vector3(laserLocalScale.x, distanceToTarget / 2, laserLocalScale.z);
-            attackLaser.transform.position = attackPlaceHolder.position + (target.position - attackPlaceHolder.position)/2;
-            attackLaser.transform.Rotate(90, 0, 0);
-            if(Time.time > nextAttackTime) {
-                nextAttackTime = Time.time + 1 / laserAttackSpeed;
-                laserAttackSpeed += attributes.attackSpeed;
-                Attack();
+            if(attackLaser)
+            {
+                Vector3 laserLocalScale = attackLaser.transform.localScale;
+                float distanceToTarget = Vector3.Distance(attackPlaceHolder.position, target.position);
+
+                if(distanceToTarget > attributes.range) {
+                    target = null;
+                    return;
+                }
+
+                attackLaser.transform.LookAt(target);  
+                attackLaser.transform.localScale = new Vector3(laserLocalScale.x, distanceToTarget / 2, laserLocalScale.z);
+                attackLaser.transform.position = attackPlaceHolder.position + (target.position - attackPlaceHolder.position)/2;
+                attackLaser.transform.Rotate(90, 0, 0);
+
+                if(Time.time > nextAttackTime) {
+                    nextAttackTime = Time.time + 1 / laserAttackSpeed;
+                    laserAttackSpeed += attributes.attackSpeed;
+                    Attack();
+                }
             }
         }
     }

@@ -373,7 +373,8 @@ public class Enemy : LivingEntity {
                 break;
 
             case Attributes.Effects.STUN:
-                pathfinder.isStopped = false;
+                if(pathfinder)
+                    pathfinder.isStopped = false;
                 break;
 
             case Attributes.Effects.FEAR:

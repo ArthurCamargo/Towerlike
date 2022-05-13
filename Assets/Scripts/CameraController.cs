@@ -21,14 +21,13 @@ public class CameraController : MonoBehaviour {
         cameraTop.enabled = !cameraTop.enabled;
         cameraIso.enabled = !cameraIso.enabled;
         objectViewCanvas.worldCamera = Camera.main; 
-        
-
+    
     }
 
     void Start() {
 
-        cameraTop.enabled = true;
-        cameraIso.enabled = false;
+        cameraIso.enabled = true;
+        cameraTop.enabled = false;
 
         mapGen = GameObject.Find("MapGenerator").GetComponent<MapGenerator>();
 
@@ -69,14 +68,14 @@ public class CameraController : MonoBehaviour {
 
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        pos.y -= scroll * scrollSpeed * 100f * Time.unscaledDeltaTime;
+        Camera.main.orthographicSize -= scroll * scrollSpeed * 100f * Time.unscaledDeltaTime;
 
 
-        pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
-        pos.y = Mathf.Clamp(pos.y, scrollLimit.x, scrollLimit.y);
-        pos.z = Mathf.Clamp(pos.z, -panLimit.y, panLimit.y);
+       // pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
+       // pos.y = Mathf.Clamp(pos.y, scrollLimit.x, scrollLimit.y);
+       /// pos.z = Mathf.Clamp(pos.z, -panLimit.y, panLimit.y);
 
-        transform.position = pos;
+        Camera.main.transform.position = pos;
     }
 
 
