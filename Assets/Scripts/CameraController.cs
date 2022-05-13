@@ -42,7 +42,13 @@ public class CameraController : MonoBehaviour {
         scrollLimit.x = 10f;
         scrollLimit.y = Mathf.Max(MapSize.x, MapSize.y) * TileSize * 1.5f;
 
-        Camera.main.transform.position = new Vector3(0, Mathf.Max(MapSize.x, MapSize.y) * TileSize * 0.75f, 0);
+        if(cameraTop.enabled)
+            Camera.main.transform.position = new Vector3(0, Mathf.Max(MapSize.x, MapSize.y) * TileSize * 0.75f, 0);
+        if(cameraIso.enabled)
+        {
+            Camera.main.transform.position = new Vector3(0, Mathf.Max(MapSize.x, MapSize.y) * Mathf.Sqrt(TileSize) * 0.5f, 0);
+
+        }
     }
 
 
@@ -52,18 +58,26 @@ public class CameraController : MonoBehaviour {
 
         if(Input.GetKey("w")) {
             pos.z += panSpeed * Time.unscaledDeltaTime;
+            if(cameraIso.enabled)
+                pos.x += panSpeed * Time.unscaledDeltaTime;
         }
 
         if(Input.GetKey("s")) {
             pos.z -= panSpeed * Time.unscaledDeltaTime;
+            if(cameraIso.enabled)
+                pos.x -= panSpeed * Time.unscaledDeltaTime;
         }
 
         if(Input.GetKey("d")) {
             pos.x += panSpeed * Time.unscaledDeltaTime;
+            if(cameraIso.enabled)
+                pos.z -= panSpeed * Time.unscaledDeltaTime;
         }
 
         if(Input.GetKey("a")) {
             pos.x -= panSpeed * Time.unscaledDeltaTime;
+            if(cameraIso.enabled)
+                pos.z += panSpeed * Time.unscaledDeltaTime;
         }
 
 
@@ -71,9 +85,9 @@ public class CameraController : MonoBehaviour {
         Camera.main.orthographicSize -= scroll * scrollSpeed * 100f * Time.unscaledDeltaTime;
 
 
-       // pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
-       // pos.y = Mathf.Clamp(pos.y, scrollLimit.x, scrollLimit.y);
-       /// pos.z = Mathf.Clamp(pos.z, -panLimit.y, panLimit.y);
+        //pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
+        //Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, scrollLimit.x, scrollLimit.y);
+        //pos.z = Mathf.Clamp(pos.z, -panLimit.y, panLimit.y);
 
         Camera.main.transform.position = pos;
     }
