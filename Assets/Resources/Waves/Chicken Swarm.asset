@@ -17,7 +17,7 @@ MonoBehaviour:
   description: Don't misjudge them, especially when they are outnumbered
   timeBetweenSpawnsType: 0
   enemyCountType: 4
-  enemyHealthType: 1
+  enemyHealthType: 0
   enemySpeedType: 3
   enemyDamageType: 2
   enemyDropRateType: 0

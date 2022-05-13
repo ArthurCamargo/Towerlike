@@ -15,9 +15,9 @@ MonoBehaviour:
   name: Oh Man!
   icon: {fileID: 21300000, guid: 026e01197c67fae8fb32c2238003386f, type: 3}
   description: Creepers? Aaaaw maaaan
-  timeBetweenSpawnsType: 0
+  timeBetweenSpawnsType: 1
   enemyCountType: 3
-  enemyHealthType: 0
+  enemyHealthType: 1
   enemySpeedType: 2
   enemyDamageType: 3
   enemyDropRateType: 0

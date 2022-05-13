@@ -259,6 +259,7 @@ public class Enemy : LivingEntity {
         healthBarUI.fillAmount = health/startingHealth;
 
         Debug.Log("Attack " + elementalDamage + ", " + attack.element);
+        FindObjectOfType<AudioManager>().Play("Hitmark");
 
         if(health <= 0 && !dead) {
             Drop();
