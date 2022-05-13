@@ -6,6 +6,7 @@ using UnityEngine;
 public static class Utility {
     public enum Rewards {
         NONE,
+        RANDOM_ITEM,
         ELEMENT_ITEM,
         EFFECT_ITEM,
         STAT_ITEM,

@@ -17,6 +17,7 @@ public class SpeedController : MonoBehaviour {
     public void Pause() {
         Time.timeScale = 0f;
         AudioListener.pause = true;
+
     }
     // Update is called once per frame
     public void Resume() {

@@ -30,7 +30,9 @@ public class WaveGenerator: MonoBehaviour {
         Wave newWave = new Wave(waveNum);
 
         newWave.enemyTypes = randomWaveType.enemyTypes;
-        newWave.reward = (Rewards)random.Next(0, System.Enum.GetNames(typeof(Rewards)).Length);
+        newWave.reward = randomWaveType.rewardType;
+        while(newWave.reward == Rewards.RANDOM_ITEM)
+            newWave.reward = (Rewards)random.Next(2, System.Enum.GetNames(typeof(Rewards)).Length);
         newWave.timeBetweenSpawnsType = randomWaveType.timeBetweenSpawnsType;
         newWave.enemyCountType = randomWaveType.enemyCountType;
         newWave.enemyHealthType = randomWaveType.enemyHealthType;

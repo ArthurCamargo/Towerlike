@@ -43,7 +43,10 @@ public class WaveController : MonoBehaviour
         if(spawner != null)
         {
             if(!spawner.spawning && !choosing) {
-            
+                if(currentWave != null) {
+                    GiveWaveReward();
+                    Debug.Log("Giving reward for wave end: " + currentWave.reward);
+                }
                 waveOptions = generator.GenerateRandomWaves(waveNumber + 1, random, WAVE_QUANTITY);
                 nextWaveUI.ChooseNextWaveUI(this, waveOptions);
                 choosing = true;
@@ -69,6 +72,9 @@ public class WaveController : MonoBehaviour
     private void GiveWaveReward() {
         switch(currentWave.reward) {
             case Rewards.NONE:
+                break;
+            case Rewards.RANDOM_ITEM:
+                Inventory.instance.AddRandom();
                 break;
             case Rewards.ELEMENT_ITEM:
                 Inventory.instance.AddRandomElementItem();
