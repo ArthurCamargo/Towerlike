@@ -11,6 +11,7 @@ public class WaveType : ScriptableObject {
     public string description = "";
     public Utility.Difficulty timeBetweenSpawnsType, enemyCountType, enemyHealthType, enemySpeedType, enemyDamageType;
     public Utility.Difficulty enemyDropRateType;
+    public Utility.Difficulty priorityType;
     public Utility.Rewards rewardType;
     public List<EnemyType> enemyTypes;
 }

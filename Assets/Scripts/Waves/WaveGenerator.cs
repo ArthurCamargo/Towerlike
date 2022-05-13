@@ -26,7 +26,8 @@ public class WaveGenerator: MonoBehaviour {
     }
     public Wave GenerateRandomWave(int waveNum, System.Random random) {
 
-        WaveType randomWaveType = waveTypes[Random.Range(0, waveTypes.Length)];
+        //WaveType randomWaveType = waveTypes[Random.Range(0, waveTypes.Length)];
+        WaveType randomWaveType = PickRandomWaveTypeByPriority(random);
         Wave newWave = new Wave(waveNum);
 
         newWave.enemyTypes = randomWaveType.enemyTypes;
@@ -81,4 +82,25 @@ public class WaveGenerator: MonoBehaviour {
         return newWave;
     }
 
+    private WaveType PickRandomWaveTypeByPriority(System.Random random) {
+        int totalWeight = 0;
+        foreach(WaveType waveType in waveTypes) {
+            totalWeight += PriorityEnumToInt(waveType.priorityType);
+        }
+
+        int randomNumber = random.Next(0, totalWeight);
+        int wavePriority;
+
+        WaveType selectedWaveType = null;
+        foreach(WaveType waveType in waveTypes) {
+            wavePriority = PriorityEnumToInt(waveType.priorityType);
+            if(randomNumber < wavePriority) {
+                selectedWaveType = waveType;
+                break;
+            }
+            randomNumber = randomNumber - wavePriority;
+        }
+
+        return selectedWaveType;
+    }
 }

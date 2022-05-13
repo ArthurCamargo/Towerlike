@@ -84,4 +84,28 @@ public static class Utility {
     internal static float DifficultyIncreaseFunction(int waveNum, float value, float multiplyer) {
         return value * Mathf.Pow(multiplyer, waveNum - 1);
     }
+
+    internal static int PriorityEnumToInt(Difficulty priority) {
+        int adaptedValue = 0;
+
+        switch(priority) {
+            case Difficulty.VERY_LOW:
+                adaptedValue = 1;
+                break;
+            case Difficulty.LOW:
+                adaptedValue = 2;
+                break;
+            case Difficulty.MEDIUM:
+                adaptedValue = 3;
+                break;
+            case Difficulty.HIGH:
+                adaptedValue = 4;
+                break;
+            case Difficulty.VER_HIGH:
+                adaptedValue = 5;
+                break;
+        }
+
+        return adaptedValue;
+    }
 }

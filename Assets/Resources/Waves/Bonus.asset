@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f53cecf9d4091af4ba02dbd1770c9a25, type: 3}
-  m_Name: Mini Boss
+  m_Name: Bonus
   m_EditorClassIdentifier: 
-  name: Mini Boss
-  icon: {fileID: 21300000, guid: f15bdd1d570f09ecca49c63277abf380, type: 3}
-  description: Mini Boss be prepared for you doom AHAHAHAHAHAH
-  timeBetweenSpawnsType: 4
-  enemyCountType: 0
+  name: Give me items!
+  icon: {fileID: 21300000, guid: 124b1a351f181f14b8733b6686f4ef54, type: 3}
+  description: They are fast and tanky, but try catching them and earn your rewards
+  timeBetweenSpawnsType: 2
+  enemyCountType: 3
   enemyHealthType: 3
-  enemySpeedType: 0
-  enemyDamageType: 2
+  enemySpeedType: 4
+  enemyDamageType: 0
   enemyDropRateType: 4
-  priorityType: 1
-  rewardType: 7
+  priorityType: 0
+  rewardType: 8
   enemyTypes:
   - {fileID: 11400000, guid: 30e9e761834f4f24784819d1f82444f8, type: 2}
   - {fileID: 11400000, guid: 4ef7f9e609f871240afd70f8162e3232, type: 2}

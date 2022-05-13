@@ -97,7 +97,9 @@ public class WaveController : MonoBehaviour
                 break;
             case Rewards.BASE_HEAL:
                 GameObject playerBase = GameObject.FindGameObjectWithTag("Base");
-                playerBase.GetComponent<LivingEntity>().health += 10;
+                playerBase.GetComponent<LivingEntity>().health = playerBase.GetComponent<LivingEntity>().startingHealth;
+                LifeUI lifeUI = GameObject.Find("LifeBarPanel").GetComponent<LifeUI>();
+                lifeUI.UpdateUI(playerBase.GetComponent<LivingEntity>().health);
                 break;
         }
     }

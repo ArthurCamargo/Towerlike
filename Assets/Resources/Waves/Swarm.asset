@@ -21,6 +21,7 @@ MonoBehaviour:
   enemySpeedType: 2
   enemyDamageType: 1
   enemyDropRateType: 0
+  priorityType: 1
   rewardType: 1
   enemyTypes:
   - {fileID: 11400000, guid: 30e9e761834f4f24784819d1f82444f8, type: 2}
