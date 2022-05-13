@@ -19,6 +19,7 @@ public class Enemy : LivingEntity {
     public Attributes.Elements enemyElement;
     public string enemyTypeName;
     public float enemyDropChance;
+    public ParticleSystem hitEffect;
     public List<Effect> effects;
     public List<Item> dropList;
 
@@ -202,9 +203,12 @@ public class Enemy : LivingEntity {
     public override void TakeAttack(Attack attack) {
         float elementalDamage = 0;
 
+        Color hitEffectColor = Color.white;
+
         switch(attack.element) {
             case Attributes.Elements.NONE:
                 elementalDamage = attack.damage;
+                hitEffectColor = Color.red;
                 break;
 
             case Attributes.Elements.FIRE:
@@ -214,6 +218,7 @@ public class Enemy : LivingEntity {
                 else {
                     elementalDamage = attack.damage;
                 }
+                hitEffectColor = Color.yellow;
                 break;
 
             case Attributes.Elements.WATER:
@@ -223,6 +228,7 @@ public class Enemy : LivingEntity {
                 else {
                     elementalDamage = attack.damage;
                 }
+                hitEffectColor = Color.blue;
                 break;
 
             case Attributes.Elements.PLANT:
@@ -232,6 +238,7 @@ public class Enemy : LivingEntity {
                 else {
                     elementalDamage = attack.damage;
                 }
+                hitEffectColor = Color.green;
                 break;
 
             case Attributes.Elements.LIGHT:
@@ -241,6 +248,7 @@ public class Enemy : LivingEntity {
                 else {
                     elementalDamage = attack.damage;
                 }
+                hitEffectColor = Color.white;
                 break;
 
             case Attributes.Elements.DARKNESS:
@@ -250,6 +258,7 @@ public class Enemy : LivingEntity {
                 else {
                     elementalDamage = attack.damage;
                 }
+                hitEffectColor = Color.black;
                 break;
         }
         if(effects.Exists(e => e.effect == Attributes.Effects.CURSE)) {
@@ -257,6 +266,8 @@ public class Enemy : LivingEntity {
         }
         health -= elementalDamage;
         healthBarUI.fillAmount = health/startingHealth;
+        ParticleSystem newHitEffect = Instantiate(hitEffect, this.transform.position, Quaternion.identity);
+        newHitEffect.GetComponent<Renderer>().material.color = hitEffectColor;
 
         Debug.Log("Attack " + elementalDamage + ", " + attack.element);
         FindObjectOfType<AudioManager>().Play("Hitmark");

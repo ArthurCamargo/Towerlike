@@ -67,7 +67,10 @@ MonoBehaviour:
   enemyDamage: 1
   enemyElement: 1
   enemyTypeName: 
+  enemyDropChance: 0
+  hitEffect: {fileID: 4555473747138885285, guid: 1c215e1ea873a634484b58cc71a74fec, type: 3}
   effects: []
+  dropList: []
 --- !u!195 &2339609094376889211
 NavMeshAgent:
   m_ObjectHideFlags: 0
