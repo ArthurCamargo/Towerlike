@@ -26,7 +26,7 @@ public class LivingEntity : MonoBehaviour, IDamageable {
         Color greenColor = new Color(0x7B,0xED,0x9F);
         health -= attack.damage;
         healthBarUI.fillAmount = health/startingHealth;
-        healthBarUI.color = Color.Lerp(greenColor, redColor, health/startingHealth);
+        healthBarUI.color = Color.Lerp(Color.green, Color.red, healthBarUI.fillAmount);
         if (health <= 0 && !dead)
         {
             //Drop();
