@@ -10663,7 +10663,7 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Enemy Spawn
-    clip: {fileID: 8300000, guid: 4672a647facb55f4a89c31e31d5b60cc, type: 3}
+    clip: {fileID: 8300000, guid: fc495ccd23d56c147842d3daf9b13a7b, type: 3}
     volume: 0.2
     volumeVariance: 0
     pitch: 1
@@ -10673,6 +10673,15 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Wave End
     clip: {fileID: 8300000, guid: 658686e122517314b8efb48971745993, type: 3}
+    volume: 0.2
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Tower Deploy
+    clip: {fileID: 8300000, guid: b279ae6b165565c4b9d6f578fad432a3, type: 3}
     volume: 0.2
     volumeVariance: 0
     pitch: 1

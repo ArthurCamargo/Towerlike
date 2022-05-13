@@ -92,6 +92,7 @@ public class Player : MonoBehaviour {
     public void PlaceTower(Tower t, Transform obj) {
         Transform newTower = Instantiate(t.towerPrefab, obj.position + Vector3.up * obj.localScale.y / 2f + Vector3.up * t.towerPrefab.localScale.y, Quaternion.identity) as Transform;
         Inventory.instance.Remove(holdingItem);
+        FindObjectOfType<AudioManager>().Play("Tower Deploy");
     }
 
     public Collider SelectObjectWithTag(string tag) {
