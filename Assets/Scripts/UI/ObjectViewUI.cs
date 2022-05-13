@@ -12,9 +12,7 @@ public class ObjectViewUI : MonoBehaviour
     public Image panel;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
-
     public RectTransform slotsHolder;
-
     public SocketSlot[] slots;
 
     public Tower currentTower;
@@ -49,15 +47,48 @@ public class ObjectViewUI : MonoBehaviour
     }
 
     void UpdateItens() {
+        SetPrefab(currentTower.transform);
         SetItems(currentTower.equipedItems);
     }
 
 
     void SetItems(List<SocketItem> items) {
-        for(int i = 0; i < items.Count; i ++)
+        TextMeshProUGUI levelText;
+        Image[] panels;
+        TooltipTrigger tip;
+        for(int i = 0; i < slots.Length; i ++)
         {
-            slots[i].icon.sprite = items[i].icon;
-            slots[i].icon.enabled = true;
+            panels = slots[i].GetComponentsInChildren<Image>();
+            levelText = slots[i].GetComponentInChildren<TextMeshProUGUI>();
+            tip = slots[i].GetComponentInChildren<TooltipTrigger>();
+
+            if(i < items.Count)
+            {
+                
+                if(items[i].level > 1)
+                {
+                    levelText.enabled = true;
+                    panels[1].enabled = true;
+                    levelText.text = items[i].level.ToString();
+                }
+                else
+                {
+                    panels[1].enabled = false;
+                    levelText.enabled = false;
+                }
+
+                slots[i].icon.sprite = items[i].icon;
+                tip.header = items[i].name;
+                tip.body = items[i].description;
+
+                slots[i].icon.enabled = true;
+            }
+            else
+            {
+                slots[i].icon.enabled = false;
+                levelText.enabled = false;
+                panels[1].enabled = false;
+            }
         }
     }
 
