@@ -16,10 +16,10 @@ public class FreeState : PlayerState {
 
         if(hitObject != null) {
             player.objectViewUI.gameObject.SetActive(true);
-            player.objectViewUI.GatherTowerInformation(hitObject.gameObject.GetComponent<Transform>());
+            player.currentObject = hitObject.gameObject;
+            player.objectViewUI.GatherTowerInformation(player.currentObject.transform);
             return this;
         }
         return this;
     }
-
 }
