@@ -70,7 +70,7 @@ public static class Utility {
                 adaptedValue = value * 1.40f;
                 break;
             case Difficulty.VER_HIGH:
-                adaptedValue = value * 1.80f;
+                adaptedValue = value * 2f;
                 break;
         }
 

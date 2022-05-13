@@ -136,10 +136,10 @@ public class Enemy : LivingEntity {
                 this.startingHealth = Random.Range(11, 21);
                 break;
             case Difficulty.HIGH:
-                this.startingHealth = Random.Range(21, 41);
+                this.startingHealth = Random.Range(21, 51);
                 break;
             case Difficulty.VER_HIGH:
-                this.startingHealth = Random.Range(41, 61);
+                this.startingHealth = Random.Range(100, 201);
                 break;
         }
 
@@ -161,7 +161,7 @@ public class Enemy : LivingEntity {
                 enemyNav.speed = 4;
                 break;
             case Difficulty.VER_HIGH:
-                enemyNav.speed = 5;
+                enemyNav.speed = 10;
                 break;
         }
 

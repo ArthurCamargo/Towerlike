@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f53cecf9d4091af4ba02dbd1770c9a25, type: 3}
-  m_Name: Swarm
+  m_Name: Boss Swarm
   m_EditorClassIdentifier: 
-  name: Swarm
-  icon: {fileID: 21300000, guid: 026e01197c67fae8fb32c2238003386f, type: 3}
-  description: A lot of enemies ......
+  name: Armagedon
+  icon: {fileID: 21300000, guid: f15bdd1d570f09ecca49c63277abf380, type: 3}
+  description: Who said that a boss is always alone?
   timeBetweenSpawnsType: 3
   enemyCountType: 4
-  enemyHealthType: 0
+  enemyHealthType: 4
   enemySpeedType: 2
-  enemyDamageType: 1
-  enemyDropRateType: 0
-  priorityType: 2
-  rewardType: 1
+  enemyDamageType: 3
+  enemyDropRateType: 3
+  priorityType: 0
+  rewardType: 7
   enemyTypes:
   - {fileID: 11400000, guid: 30e9e761834f4f24784819d1f82444f8, type: 2}
   - {fileID: 11400000, guid: 4ef7f9e609f871240afd70f8162e3232, type: 2}

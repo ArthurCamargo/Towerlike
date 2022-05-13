@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f53cecf9d4091af4ba02dbd1770c9a25, type: 3}
-  m_Name: Swarm
+  m_Name: Easy
   m_EditorClassIdentifier: 
-  name: Swarm
-  icon: {fileID: 21300000, guid: 026e01197c67fae8fb32c2238003386f, type: 3}
-  description: A lot of enemies ......
-  timeBetweenSpawnsType: 3
-  enemyCountType: 4
+  name: Easy
+  icon: {fileID: 21300000, guid: bff95e60613487dcabcd9f357ff18f8e, type: 3}
+  description: For noobs
+  timeBetweenSpawnsType: 0
+  enemyCountType: 2
   enemyHealthType: 0
-  enemySpeedType: 2
-  enemyDamageType: 1
+  enemySpeedType: 0
+  enemyDamageType: 0
   enemyDropRateType: 0
-  priorityType: 2
+  priorityType: 3
   rewardType: 1
   enemyTypes:
   - {fileID: 11400000, guid: 30e9e761834f4f24784819d1f82444f8, type: 2}

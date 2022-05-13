@@ -12,10 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3975e80dca71f754fba4138928a18c91, type: 3}
   m_Name: Death
   m_EditorClassIdentifier: 
-  prefab: {fileID: 428468556249255120, guid: 432fb498c8681c74d8b0fa1c9914fbaf, type: 3}
+  prefab: {fileID: 7134997360267534246, guid: d49c295e48bfdbe4e890c6b32a08dd5d, type: 3}
   name: Death
-  description: 
+  description: Death
   element: 5
-  healthType: 3
-  speedType: 2
-  damageType: 3
+  healthType: 4
+  speedType: 4
+  damageType: 4
+  dropList:
+  - {fileID: 11400000, guid: 221b8a3881667c9499be7abb1403b47e, type: 2}
+  - {fileID: 11400000, guid: 221b8a3881667c9499be7abb1403b47e, type: 2}
+  - {fileID: 11400000, guid: 221b8a3881667c9499be7abb1403b47e, type: 2}
+  - {fileID: 11400000, guid: 221b8a3881667c9499be7abb1403b47e, type: 2}
+  - {fileID: 11400000, guid: 221b8a3881667c9499be7abb1403b47e, type: 2}
+  - {fileID: 11400000, guid: 221b8a3881667c9499be7abb1403b47e, type: 2}

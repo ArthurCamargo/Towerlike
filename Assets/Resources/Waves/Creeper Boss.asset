@@ -22,6 +22,6 @@ MonoBehaviour:
   enemyDamageType: 4
   enemyDropRateType: 4
   priorityType: 1
-  rewardType: 7
+  rewardType: 1
   enemyTypes:
   - {fileID: 11400000, guid: 4ef7f9e609f871240afd70f8162e3232, type: 2}
