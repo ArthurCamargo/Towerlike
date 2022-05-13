@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Bleed
   m_EditorClassIdentifier: 
   name: Bleed
-  description: 
+  description: 20% chance to apply {item level/2} normal damage per second effect
+    for 4 seconds
   icon: {fileID: 21300000, guid: 438ecf42ce4b12f4490bd4d72efadedd, type: 3}
   level: 1
   type: 1

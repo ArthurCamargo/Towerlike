@@ -63,10 +63,11 @@ MonoBehaviour:
   attackPlaceHolder: {fileID: 0}
   target: {fileID: 0}
   towerTypeName: Normal Tower
+  towerTypeDescription: Nothing special, just shoots normal bullets
   enemyTag: Enemy
   equipedItems: []
   baseAttributes:
-    damage: 1
+    damage: 5
     range: 8
     attackSpeed: 1
     projectileSpeed: 20

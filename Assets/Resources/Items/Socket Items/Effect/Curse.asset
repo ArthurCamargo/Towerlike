@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Curse
   m_EditorClassIdentifier: 
   name: Curse
-  description: 
+  description: 20% chance to apply 1.5 x damage on enemy for {item level} seconds
   icon: {fileID: 21300000, guid: c0246eca0b167574b9c81be5281b0e9d, type: 3}
   level: 1
   type: 1

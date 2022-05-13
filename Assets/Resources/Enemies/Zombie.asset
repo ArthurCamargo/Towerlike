@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 7134997360267534246, guid: 7a31772793308084cace1349a3c0b54d, type: 3}
   name: Zombie
-  description: 
+  description: Braaaaaains. Why brains?
   element: 5
   healthType: 3
   speedType: 2

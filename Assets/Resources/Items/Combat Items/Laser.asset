@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Laser
   m_EditorClassIdentifier: 
   name: Laser
-  description: 
+  description: Changes tower combat style to fire laser beam whose attack speed increases
+    over time hitting an enemy
   icon: {fileID: 21300000, guid: 2befada24381c4d89baec4160e50c5d1, type: 3}
   towerPrefab: {fileID: 1663335110803329029, guid: 1e090302ede60474d976837ea9160447, type: 3}

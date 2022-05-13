@@ -105,11 +105,12 @@ MonoBehaviour:
   attackPlaceHolder: {fileID: 0}
   target: {fileID: 0}
   towerTypeName: Sniper Tower
+  towerTypeDescription: High damage and range, but lower rate of fire
   enemyTag: Enemy
   equipedItems: []
   baseAttributes:
     damage: 10
-    range: 15
+    range: 16
     attackSpeed: 0.2
     projectileSpeed: 40
     sockets: 5

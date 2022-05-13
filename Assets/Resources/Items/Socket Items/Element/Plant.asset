@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Plant
   m_EditorClassIdentifier: 
   name: Plant
-  description: 
+  description: 'Gives plant element to tower attacks '
   icon: {fileID: 21300000, guid: 5c353773e6391774b8b18820c6e91690, type: 3}
   level: 1
   type: 2

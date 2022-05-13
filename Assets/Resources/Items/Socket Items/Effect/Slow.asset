@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Slow
   m_EditorClassIdentifier: 
   name: Slow
-  description: 
+  description: 20% chance to apply 50% speed reduction on enemy for {item level}
+    seconds
   icon: {fileID: 21300000, guid: 5bf5e31afd26e12448e1e25cc9998e3c, type: 3}
   level: 1
   type: 1

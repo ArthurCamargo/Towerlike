@@ -8,6 +8,7 @@ public abstract class Tower : MonoBehaviour {
     public Transform attackPlaceHolder;
     public Transform target;
     public string towerTypeName;
+    public string towerTypeDescription;
 
     public string enemyTag = "Enemy";
 
@@ -120,31 +121,31 @@ public abstract class Tower : MonoBehaviour {
 
                 // Effects
                 case "Bleed":
-                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.BLEED, 4, item.level, 0.5f, 0, 50));
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.BLEED, 4, 1, item.level/2, 0, 20));
                     break;
 
                 case "Burn":
-                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.BURN, 4, item.level, 0.5f, 0, 50));
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.BURN, 4, 1, item.level / 2, 0, 20));
                     break;
 
                 case "Curse":
-                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.CURSE, item.level, 0, 0, 0, 50));
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.CURSE, item.level, 0, 0, 0, 20));
                     break;
 
                 case "Poison":
-                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.POISON, 4, item.level, 0.5f, 0, 50));
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.POISON, 4, 1, item.level / 2, 0, 20));
                     break;
 
                 case "Slow":
-                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.SLOW, 2*item.level, 1, 0, 50, 50));
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.SLOW, 2*item.level, 1, 0, 50, 20));
                     break;
 
                 case "Stun":
-                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.STUN, item.level, 2, 0, 0, 50));
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.STUN, item.level, 2, 0, 0, 20));
                     break;
 
                 case "Fear":
-                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.FEAR, item.level, 0, 0, 0, 50));
+                    itemsAttributes.AddEffect(new Effect(Attributes.Effects.FEAR, item.level, 0, 0, 0, 20));
                     break;
             }
         }

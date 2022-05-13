@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 7463788153285044764, guid: d55ea0024a680cd4b8ff2a09c79f76f5, type: 3}
   name: Creeper
-  description: Not an copy
+  description: Aw Man...
   element: 1
   healthType: 1
   speedType: 1

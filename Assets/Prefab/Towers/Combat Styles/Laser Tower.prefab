@@ -105,6 +105,8 @@ MonoBehaviour:
   attackPlaceHolder: {fileID: 0}
   target: {fileID: 0}
   towerTypeName: Laser Tower
+  towerTypeDescription: Fires a laser that lock on a target and increases attack
+    speed until target is dead or out of range
   enemyTag: Enemy
   equipedItems: []
   baseAttributes:

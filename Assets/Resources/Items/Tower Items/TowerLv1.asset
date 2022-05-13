@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TowerLv1
   m_EditorClassIdentifier: 
   name: Tower
-  description: 
+  description: Allows placing a new tower on the field
   icon: {fileID: 21300000, guid: 7974e80ea0e6eed0ca653fb07f12d76f, type: 3}

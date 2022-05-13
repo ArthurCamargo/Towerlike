@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Burn
   m_EditorClassIdentifier: 
   name: Burn
-  description: 
+  description: 20% chance to apply {item level/2} fire damage per second effect for
+    4 seconds
   icon: {fileID: 21300000, guid: 441e67b63b490974b9ac943c593bc65b, type: 3}
   level: 1
   type: 1

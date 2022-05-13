@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   name: Water
-  description: 
+  description: 'Gives water element to tower attacks '
   icon: {fileID: 21300000, guid: 3e026f1d094a9b74aad56659a3ac7a5d, type: 3}
   level: 1
   type: 2

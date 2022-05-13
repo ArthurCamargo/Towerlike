@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fear
   m_EditorClassIdentifier: 
   name: Fear
-  description: 
+  description: 20% chance to make enemy run away for {item level} seconds
   icon: {fileID: 21300000, guid: 0cf5c3dd7e2934d4da62c2255a85bd5e, type: 3}
   level: 1
   type: 1

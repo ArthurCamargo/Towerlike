@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 7134997360267534246, guid: dfce13f4fc36c3b469dcccb05038a94c, type: 3}
   name: Penguin
-  description: Development enemy
+  description: A penguin, what did you expected?
   element: 2
   healthType: 2
   speedType: 2

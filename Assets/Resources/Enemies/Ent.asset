@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 7134997360267534246, guid: 73844c74308a50d41a81220882772465, type: 3}
   name: Ent
-  description: 
+  description: A tree whit life, does plants have a soul?
   element: 3
   healthType: 3
   speedType: 0

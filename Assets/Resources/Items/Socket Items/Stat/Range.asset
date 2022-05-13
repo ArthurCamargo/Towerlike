@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Range
   m_EditorClassIdentifier: 
   name: Range
-  description: 
+  description: Increment tower range by {item level}
   icon: {fileID: 21300000, guid: a4f9ec0428ae8664689ca1d73df26407, type: 3}
   level: 1
+  type: 0

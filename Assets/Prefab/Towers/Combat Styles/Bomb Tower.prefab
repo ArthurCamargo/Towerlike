@@ -104,7 +104,9 @@ MonoBehaviour:
   towerPrefab: {fileID: 1663335110803329029}
   attackPlaceHolder: {fileID: 0}
   target: {fileID: 0}
-  towerTypeName: 
+  towerTypeName: Bomb Tower
+  towerTypeDescription: Throw a bomb enemy position that explodes on hit and damages
+    enemies on a radius
   enemyTag: Enemy
   equipedItems: []
   baseAttributes:

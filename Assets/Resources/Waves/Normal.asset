@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Normal
   icon: {fileID: 21300000, guid: bff95e60613487dcabcd9f357ff18f8e, type: 3}
-  description: A pretty normal one
+  description: A pretty normal one, that doesn't mean that it is easy
   timeBetweenSpawnsType: 1
   enemyCountType: 2
   enemyHealthType: 2

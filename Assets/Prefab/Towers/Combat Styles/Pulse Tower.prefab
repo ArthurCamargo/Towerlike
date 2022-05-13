@@ -105,10 +105,12 @@ MonoBehaviour:
   attackPlaceHolder: {fileID: 0}
   target: {fileID: 0}
   towerTypeName: Pulse Tower
+  towerTypeDescription: Create a shockwave around the tower that hit enemies in a
+    radius. But have lower attack speed and damage
   enemyTag: Enemy
   equipedItems: []
   baseAttributes:
-    damage: 5
+    damage: 4
     range: 8
     attackSpeed: 0.33
     projectileSpeed: 0
