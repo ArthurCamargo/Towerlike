@@ -11,7 +11,24 @@ public class CameraController : MonoBehaviour {
     public Vector2 MapSize;
     public float TileSize;
 
+
+    public Canvas objectViewCanvas; 
+    public Camera cameraTop;
+    public Camera cameraIso;
+
+    public void CameraSwap() {
+        
+        cameraTop.enabled = !cameraTop.enabled;
+        cameraIso.enabled = !cameraIso.enabled;
+        objectViewCanvas.worldCamera = Camera.main; 
+    
+    }
+
     void Start() {
+
+        cameraIso.enabled = true;
+        cameraTop.enabled = false;
+
         mapGen = GameObject.Find("MapGenerator").GetComponent<MapGenerator>();
 
         MapSize.x = mapGen.maps[mapGen.mapIndex].mapSize.x;
@@ -25,14 +42,13 @@ public class CameraController : MonoBehaviour {
         scrollLimit.x = 10f;
         scrollLimit.y = Mathf.Max(MapSize.x, MapSize.y) * TileSize * 1.5f;
 
-
-        transform.position = new Vector3(0, Mathf.Max(MapSize.x, MapSize.y) * TileSize * 0.75f, 0);
+        Camera.main.transform.position = new Vector3(0, Mathf.Max(MapSize.x, MapSize.y) * TileSize * 0.75f, 0);
     }
 
 
     void Update() {
 
-        Vector3 pos = transform.position;
+        Vector3 pos = Camera.main.transform.position;
 
         if(Input.GetKey("w")) {
             pos.z += panSpeed * Time.unscaledDeltaTime;
@@ -52,14 +68,14 @@ public class CameraController : MonoBehaviour {
 
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        pos.y -= scroll * scrollSpeed * 100f * Time.unscaledDeltaTime;
+        Camera.main.orthographicSize -= scroll * scrollSpeed * 100f * Time.unscaledDeltaTime;
 
 
-        pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
-        pos.y = Mathf.Clamp(pos.y, scrollLimit.x, scrollLimit.y);
-        pos.z = Mathf.Clamp(pos.z, -panLimit.y, panLimit.y);
+       // pos.x = Mathf.Clamp(pos.x, -panLimit.x, panLimit.x);
+       // pos.y = Mathf.Clamp(pos.y, scrollLimit.x, scrollLimit.y);
+       /// pos.z = Mathf.Clamp(pos.z, -panLimit.y, panLimit.y);
 
-        transform.position = pos;
+        Camera.main.transform.position = pos;
     }
 
 

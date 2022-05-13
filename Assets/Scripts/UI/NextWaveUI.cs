@@ -16,7 +16,6 @@ public class NextWaveUI : MonoBehaviour
     public List<Button> buttons;
     public SpeedController speed;
     public Image waveTypeIcon;
-
     public List<Image> enemyTypeImages;
     public TextMeshProUGUI[] descriptionText;
     public RectTransform descriptionPanel;
@@ -34,7 +33,8 @@ public class NextWaveUI : MonoBehaviour
     {
         controller = newController;
         nextWaveUI.SetActive(true);
-        inventoryUI.SetLock(true);
+        //inventoryUI.SetLock(true);
+        inventoryUI.gameObject.SetActive(false);
         Debug.Log(waveOptions);
         
         for(int i = 0; i < waveOptions.Count; i ++)
@@ -83,8 +83,9 @@ public class NextWaveUI : MonoBehaviour
     public void StartWave()
     {
         inventoryUI.SetLock(false);
+        inventoryUI.gameObject.SetActive(true);
         nextWaveUI.SetActive(false);
-        speed.Resume();
+        speed.TooglePause();
     }
 
 }
