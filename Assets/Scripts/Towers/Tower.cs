@@ -16,6 +16,9 @@ public abstract class Tower : MonoBehaviour {
     public Attributes baseAttributes;
     public Attributes attributesMultipliers;
     public Attributes attributes;
+    
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallback;
 
     protected float nextAttackTime;
 
@@ -172,11 +175,13 @@ public abstract class Tower : MonoBehaviour {
             }
         }
         else {
-            Debug.Log("Torre sem Sockets disponíveis");
+            Debug.Log("Torre sem Sockets disponï¿½veis");
             return;
         }
         FindObjectOfType<AudioManager>().Play("Item Equip");
         Inventory.instance.Remove(item);
+        if(onItemChangedCallback != null)
+            onItemChangedCallback.Invoke();
         UpdateAttributes();
     }
 
