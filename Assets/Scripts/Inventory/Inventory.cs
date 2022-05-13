@@ -47,7 +47,8 @@ public class Inventory : MonoBehaviour {
 
         double chance = rand.NextDouble();
         int itemIdx = Random.Range(0, dropList.Count);
-        if(chance < enemyDropChance / 100.0) {       // 40% chance de combat item
+        if(chance < enemyDropChance / 100.0) {       // chance de dropar item
+            FindObjectOfType<AudioManager>().Play("Item Drop");
             this.Add(Instantiate(dropList[itemIdx]));
         }
     }

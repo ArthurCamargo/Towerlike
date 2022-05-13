@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour {
             nextSpawnTime = Time.time + currentWave.timeBetweenSpawns;
             Enemy spawnedEnemy = Enemy.GenerateEnemyFromWave(currentWave, this.transform.position);
             spawnedEnemy.OnDeath += OnEnemyDeath;
+            FindObjectOfType<AudioManager>().Play("Enemy Spawn");
         }
     }
 

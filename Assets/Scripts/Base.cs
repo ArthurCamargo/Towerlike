@@ -23,6 +23,7 @@ public class Base : LivingEntity
     {
         health -= attack.damage;
         lifeUI.UpdateUI(health);
+        FindObjectOfType<AudioManager>().Play("Base Hit");
 
         if (health <= 0 && !dead)
         {

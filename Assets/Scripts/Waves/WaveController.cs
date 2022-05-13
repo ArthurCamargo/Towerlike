@@ -44,6 +44,7 @@ public class WaveController : MonoBehaviour
         {
             if(!spawner.spawning && !choosing) {
                 if(currentWave != null) {
+                    FindObjectOfType<AudioManager>().Play("Wave End");
                     GiveWaveReward();
                     Debug.Log("Giving reward for wave end: " + currentWave.reward);
                 }

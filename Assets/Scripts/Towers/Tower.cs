@@ -175,6 +175,7 @@ public abstract class Tower : MonoBehaviour {
             Debug.Log("Torre sem Sockets disponíveis");
             return;
         }
+        FindObjectOfType<AudioManager>().Play("Item Equip");
         Inventory.instance.Remove(item);
         UpdateAttributes();
     }

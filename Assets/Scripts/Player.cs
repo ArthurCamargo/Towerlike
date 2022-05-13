@@ -82,6 +82,7 @@ public class Player : MonoBehaviour {
 
         newTower = Instantiate((holdingItem as CombatItem).towerPrefab, oldTower.transform.position, Quaternion.identity).GetComponent<Tower>();
         newTower.TransferTowerStats(oldTower);
+        FindObjectOfType<AudioManager>().Play("Change Class");
 
         oldTower.BeforeDestroy();
         Destroy(oldTower.gameObject);

@@ -10617,6 +10617,69 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Hitmark
+    clip: {fileID: 8300000, guid: 160689ed1ae9d7b428fd744101fb3c26, type: 3}
+    volume: 0.2
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Base Hit
+    clip: {fileID: 8300000, guid: cef383f3373e4c640aca9dd20f9343b6, type: 3}
+    volume: 0.2
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Change Class
+    clip: {fileID: 8300000, guid: d2931cea14a62ca46824ab7a092decf2, type: 3}
+    volume: 0.2
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Item Equip
+    clip: {fileID: 8300000, guid: 9a24a4d4cee916d4ebbbb595f6f47bbd, type: 3}
+    volume: 0.2
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Item Drop
+    clip: {fileID: 8300000, guid: b2ef4afed4fd28144950c2b8bc64cb68, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Enemy Spawn
+    clip: {fileID: 8300000, guid: 4672a647facb55f4a89c31e31d5b60cc, type: 3}
+    volume: 0.2
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Wave End
+    clip: {fileID: 8300000, guid: 658686e122517314b8efb48971745993, type: 3}
+    volume: 0.2
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!4 &761883296
 Transform:
   m_ObjectHideFlags: 0
