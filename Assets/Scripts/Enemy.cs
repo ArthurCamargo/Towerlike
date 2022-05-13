@@ -325,9 +325,12 @@ public class Enemy : LivingEntity {
                 break;
 
             case Attributes.Effects.STUN:
-                if(!pathfinder.isStopped) {
-                    pathfinder.isStopped = true;
-                    //this.transform.GetComponent<Renderer>().material.color = Color.black;
+                if(pathfinder)
+                {
+                    if(!pathfinder.isStopped) {
+                        pathfinder.isStopped = true;
+                        //this.transform.GetComponent<Renderer>().material.color = Color.black;
+                    }
                 }
                 break;
 
