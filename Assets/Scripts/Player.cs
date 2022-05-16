@@ -84,9 +84,9 @@ public class Player : MonoBehaviour {
         newTower.TransferTowerStats(oldTower);
         FindObjectOfType<AudioManager>().Play("Change Class");
         
-        objectViewUI.GatherTowerInformation(newTower.transform);
         oldTower.BeforeDestroy();
         Destroy(oldTower.gameObject);
+        objectViewUI.GatherTowerInformation(newTower.transform); 
         Inventory.instance.Remove(holdingItem);
     }
 

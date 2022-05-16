@@ -47,7 +47,6 @@ public class ObjectViewUI : MonoBehaviour
     }
 
     void UpdateItens() {
-        SetPrefab(currentTower.transform);
         SetItems(currentTower.equipedItems);
     }
 
@@ -103,7 +102,7 @@ public class ObjectViewUI : MonoBehaviour
     }
     public void GatherTowerInformation(Transform newTransform) {
         Debug.Log("Gathering");
-        SetPrefab(newTransform);
+        SetPrefab(newTransform.transform);
         currentTower = newTransform.GetComponent<Tower>();
         currentTower.onItemChangedCallback += UpdateItens;
         SetName(currentTower.towerTypeName);

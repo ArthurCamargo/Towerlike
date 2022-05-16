@@ -267,8 +267,8 @@ public class Enemy : LivingEntity {
         health -= elementalDamage;
         healthBarUI.fillAmount = health/startingHealth;
         Color redColor = Color.red;
-        Color greenColor = new Color(0x7B,0xED,0x9F);
-        healthBarUI.color = Color.Lerp(greenColor, redColor, healthBarUI.fillAmount);
+        Color greenColor = Color.green;
+        healthBarUI.color = Color.Lerp(redColor, greenColor, healthBarUI.fillAmount);
         ParticleSystem newHitEffect = Instantiate(hitEffect, this.transform.position, Quaternion.identity);
         newHitEffect.GetComponent<Renderer>().material.color = hitEffectColor;
 
