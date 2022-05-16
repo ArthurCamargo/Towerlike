@@ -297,7 +297,8 @@ public class Enemy : LivingEntity {
                 effectsToRemove.Add(effect);
             }
             else {
-                ApplyEffect(effect);
+                if(this != null)
+                    ApplyEffect(effect);
             }
         }
         foreach(Effect effect in effectsToRemove) {
